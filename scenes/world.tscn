@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://34mutmn6t51g"]
+
+[ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://scenes/environment.tres" id="1_dwbse"]
+[ext_resource type="Shader" uid="uid://ft7h58t3l64a" path="res://scripts/water.tres" id="2_4wyf3"]
+[ext_resource type="Texture2D" uid="uid://dmdb16vmgti40" path="res://images/water.png" id="3_k0juu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_71j4m"]
+size = Vector2(500, 500)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qfnet"]
+render_priority = 0
+shader = ExtResource("2_4wyf3")
+shader_parameter/Texture_1_Colour = Color(0, 0.427451, 0.984314, 1)
+shader_parameter/Texture_1_Size = Vector2(0.2, 0.2)
+shader_parameter/Texture_1_Move_Speed = Vector2(0.2, 0.2)
+shader_parameter/Texture = ExtResource("3_k0juu")
+shader_parameter/Texture__2_Size = Vector2(0.2, 0.2)
+shader_parameter/Texture_2_Move_Speed = Vector2(-0.2, -0.2)
+shader_parameter/Texture_2_Colour = Color(0, 0.568627, 1, 1)
+shader_parameter/Blend = 0.5
+
+[node name="World" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_dwbse")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.579295, -0.717389, 0.387002, 0, 0.47478, 0.880105, -0.815118, -0.50984, 0.275038, 0, 0, 0)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+directional_shadow_mode = 0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_71j4m")
+surface_material_override/0 = SubResource("ShaderMaterial_qfnet")

@@ -1,0 +1,65 @@
+[gd_scene load_steps=7 format=3 uid="uid://b6cu6npyppedb"]
+
+[ext_resource type="Script" uid="uid://cpq0587fnwra6" path="res://scripts/boat_controller.gd" id="1_viw7v"]
+[ext_resource type="PackedScene" uid="uid://dfk0iwiio2ilx" path="res://models/boat.blend" id="2_qyrje"]
+
+[sub_resource type="Animation" id="Animation_i5arm"]
+length = 0.001
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0)
+
+[sub_resource type="Animation" id="Animation_jka67"]
+resource_name = "buoyancy"
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0, 0, 0.5, 1, 0, -0.07, 0, 1, 1, 0, 0, 0)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wc5p8"]
+_data = {
+&"RESET": SubResource("Animation_i5arm"),
+&"buoyancy": SubResource("Animation_jka67")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_anwow"]
+size = Vector3(2.23303, 1.71625, 6.01721)
+
+[node name="Boat" type="RigidBody3D" node_paths=PackedStringArray("player_position_node")]
+physics_interpolation_mode = 1
+collision_layer = 8
+axis_lock_linear_y = true
+axis_lock_angular_x = true
+axis_lock_angular_z = true
+gravity_scale = 0.0
+script = ExtResource("1_viw7v")
+boat_move_speed = 7.0
+boat_deceleration = 4.0
+boat_acceleration = 2.0
+player_position_node = NodePath("boat/PlayerPosition")
+
+[node name="boat" parent="." instance=ExtResource("2_qyrje")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.229233, -0.392532)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="boat"]
+root_node = NodePath("")
+libraries = {
+&"": SubResource("AnimationLibrary_wc5p8")
+}
+autoplay = "buoyancy"
+speed_scale = 0.5
+
+[node name="PlayerPosition" type="Node3D" parent="boat"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.80163, -0.0740237, -3.50403e-08)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999938, -0.0111001, 0, 0.0111001, 0.999938, 0, 0, 0, 1, -0.0636669, 0.132267, -0.496765)
+shape = SubResource("BoxShape3D_anwow")

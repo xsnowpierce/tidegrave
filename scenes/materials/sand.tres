@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://osuu6mgmt3c"]
+
+[ext_resource type="Texture2D" uid="uid://bkdne6iw7d1b6" path="res://models/textures/untitled_sand.png" id="1_oisr7"]
+
+[resource]
+shading_mode = 0
+specular_mode = 2
+albedo_texture = ExtResource("1_oisr7")
+uv1_triplanar = true
+uv1_world_triplanar = true
+texture_filter = 0

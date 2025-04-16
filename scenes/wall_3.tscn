@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://grh4joj53s2d"]
+
+[ext_resource type="PackedScene" uid="uid://pj26wdgut0xu" path="res://models/wall3.fbx" id="1_6uj4t"]
+[ext_resource type="Material" uid="uid://ddm31ghl4jbdn" path="res://scenes/materials/floor.tres" id="2_trnhm"]
+
+[node name="wall3" instance=ExtResource("1_6uj4t")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_trnhm")
