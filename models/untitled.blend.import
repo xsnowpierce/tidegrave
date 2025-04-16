@@ -37,6 +37,9 @@ _subresources={
 "PATH:Circle": {
 "generate/physics": true
 },
+"PATH:Cube": {
+"generate/physics": true
+},
 "PATH:Cube_004": {
 "generate/physics": true
 }

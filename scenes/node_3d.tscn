@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b14k4i01q4opy"]
+[gd_scene load_steps=13 format=3 uid="uid://b14k4i01q4opy"]
 
 [ext_resource type="PackedScene" uid="uid://ckgju87agli76" path="res://scenes/player.tscn" id="2_noarx"]
 [ext_resource type="PackedScene" uid="uid://34mutmn6t51g" path="res://scenes/world.tscn" id="3_r3fl7"]
@@ -9,15 +9,19 @@
 [ext_resource type="PackedScene" uid="uid://hjon4x0ap5j" path="res://scenes/island.tscn" id="7_10v3s"]
 [ext_resource type="PackedScene" uid="uid://hv4ukaucmrok" path="res://models/father_altrius.glb" id="8_cptob"]
 [ext_resource type="Script" uid="uid://2o18ibuyyw2a" path="res://scripts/world_interactable.gd" id="9_b2yaj"]
+[ext_resource type="PackedScene" uid="uid://dyvvbvki6r55n" path="res://models/cetmyr.glb" id="10_q712h"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_q712h"]
+size = Vector3(0.7, 2, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1enmr"]
 size = Vector3(0.7, 2, 0.7)
 
 [node name="Node3D" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("2_noarx")]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 15.0032, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70385, 0)
 collision_layer = 4
 collision_mask = 3
 floor_constant_speed = true
@@ -47,7 +51,7 @@ metadata/_editor_floor_ = Vector3(0, 1, 0)
 [node name="untitled2" parent="." instance=ExtResource("7_10v3s")]
 
 [node name="father_altrius" parent="." instance=ExtResource("8_cptob")]
-transform = Transform3D(0.217803, 0, -0.975993, 0, 1, 0, 0.975993, 0, 0.217803, 9.98505, 1.04685, -19.4206)
+transform = Transform3D(0.217803, 0, -0.975993, 0, 1, 0, 0.975993, 0, 0.217803, 7.94201, 1.541, 10.4616)
 
 [node name="WorldInteractable" type="Area3D" parent="father_altrius"]
 collision_layer = 32
@@ -59,3 +63,16 @@ metadata/_custom_type_script = "uid://2o18ibuyyw2a"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_q712h")
 debug_color = Color(0.900443, 0.000171538, 0.764293, 1)
+
+[node name="cetmyr" parent="." instance=ExtResource("10_q712h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6823, 1.04959, 0.644729)
+
+[node name="WorldInteractable" type="Area3D" parent="cetmyr"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("9_b2yaj")
+metadata/_custom_type_script = "uid://2o18ibuyyw2a"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cetmyr/WorldInteractable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_1enmr")
