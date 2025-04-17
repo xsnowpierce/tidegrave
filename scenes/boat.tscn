@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b6cu6npyppedb"]
+[gd_scene load_steps=9 format=3 uid="uid://b6cu6npyppedb"]
 
 [ext_resource type="Script" uid="uid://cpq0587fnwra6" path="res://scripts/boat_controller.gd" id="1_viw7v"]
 [ext_resource type="PackedScene" uid="uid://dfk0iwiio2ilx" path="res://models/boat.blend" id="2_qyrje"]
+[ext_resource type="Script" uid="uid://bjt41a44jwt4v" path="res://scripts/VehicleInteractable.gd" id="3_lw6pk"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
 length = 0.001
@@ -33,6 +34,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_anwow"]
 size = Vector3(2.23303, 1.71625, 6.01721)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_evv4r"]
+size = Vector3(1.46, 1.77, 5.09)
+
 [node name="Boat" type="RigidBody3D" node_paths=PackedStringArray("player_position_node")]
 physics_interpolation_mode = 1
 collision_layer = 8
@@ -47,10 +51,9 @@ boat_acceleration = 2.0
 player_position_node = NodePath("boat/PlayerPosition")
 
 [node name="boat" parent="." instance=ExtResource("2_qyrje")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.229233, -0.392532)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="boat"]
-root_node = NodePath("")
 libraries = {
 &"": SubResource("AnimationLibrary_wc5p8")
 }
@@ -58,8 +61,17 @@ autoplay = "buoyancy"
 speed_scale = 0.5
 
 [node name="PlayerPosition" type="Node3D" parent="boat"]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.80163, -0.0740237, -3.50403e-08)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.80163, -0.0642004, -3.50403e-08)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.999938, -0.0111001, 0, 0.0111001, 0.999938, 0, 0, 0, 1, -0.0636669, 0.132267, -0.496765)
 shape = SubResource("BoxShape3D_anwow")
+
+[node name="VehicleInteractable" type="Area3D" parent="." node_paths=PackedStringArray("player_position_node")]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("3_lw6pk")
+player_position_node = NodePath("../boat/PlayerPosition")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VehicleInteractable"]
+shape = SubResource("BoxShape3D_evv4r")

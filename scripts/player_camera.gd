@@ -42,6 +42,10 @@ func _process(_delta: float) -> void:
 	if(!character.is_on_floor()):
 		animation_speed = 0
 	$AnimationPlayer.speed_scale = animation_speed
+	
+	var look_vector = Input.get_vector("look_left", "look_right", "look_up", "look_down")
+	if(look_vector.length() != 0):
+		apply_look(look_vector)
 
 func _unhandled_input(event)->void:
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
@@ -68,16 +72,18 @@ func _unhandled_input(event)->void:
 #Handles aim look with the mouse.
 func aim_look(event: InputEventMouseMotion)-> void:
 	var viewport_transform: Transform2D = get_tree().root.get_final_transform()
-	var motion: Vector2 = event.xformed_by(viewport_transform).relative
+	apply_look(event.xformed_by(viewport_transform).relative)
+
+
+func apply_look(vector : Vector2) -> void:
 	var degrees_per_unit: float = 0.001
 	
-	motion *= mouse_sensitivity
-	motion *= degrees_per_unit
+	vector *= mouse_sensitivity
+	vector *= degrees_per_unit
 	
-	add_yaw(motion.x)
-	add_pitch(motion.y)
+	add_yaw(vector.x)
+	add_pitch(vector.y)
 	clamp_pitch()
-
 
 #Rotates the character around the local Y axis by a given amount (In degrees) to achieve yaw.
 func add_yaw(amount)->void:

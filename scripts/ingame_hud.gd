@@ -13,8 +13,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var healthPercent = player.playerStats.current_health / player.playerStats.max_health
+	var healthPercent = player.get_player_stats().current_health / player.get_player_stats().max_health
 	$"VBoxContainer/Health/Health Change".size.x = health_starting_size_x * healthPercent
 	
-	var staminaPercent = player.playerStats.current_stamina / player.playerStats.max_stamina
+	var staminaPercent = player.get_player_stats().current_stamina / player.get_player_stats().max_stamina
 	$"VBoxContainer/Stamina/Stamina Change".size.x = stamina_starting_size_x * staminaPercent

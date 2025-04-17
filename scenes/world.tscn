@@ -1,8 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://34mutmn6t51g"]
+[gd_scene load_steps=21 format=3 uid="uid://c6vonty78poup"]
 
 [ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://scenes/environment.tres" id="1_dwbse"]
 [ext_resource type="Shader" uid="uid://ft7h58t3l64a" path="res://scripts/water.tres" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://dmdb16vmgti40" path="res://images/water.png" id="3_k0juu"]
+[ext_resource type="PackedScene" uid="uid://b6cu6npyppedb" path="res://scenes/boat.tscn" id="4_q5onr"]
+[ext_resource type="PackedScene" uid="uid://hjon4x0ap5j" path="res://scenes/island.tscn" id="5_jhx03"]
+[ext_resource type="PackedScene" uid="uid://hv4ukaucmrok" path="res://models/father_altrius.glb" id="6_o8fc1"]
+[ext_resource type="Script" uid="uid://qc8y7gmqc46j" path="res://scripts/DialogueInteractable.gd" id="7_xo05s"]
+[ext_resource type="Resource" uid="uid://d3hvfpgfne47b" path="res://dialogue/test.dialogue" id="8_dss4m"]
+[ext_resource type="PackedScene" uid="uid://dyvvbvki6r55n" path="res://models/cetmyr.glb" id="9_7t5mc"]
+[ext_resource type="Resource" uid="uid://bmql7s2o42igd" path="res://dialogue/test2.dialogue" id="10_lakw3"]
+[ext_resource type="PackedScene" uid="uid://bnr6d7vrjt5kj" path="res://scenes/island_2.tscn" id="11_pm21f"]
+[ext_resource type="Script" uid="uid://b73q7u7q01end" path="res://scripts/TeleportDoorInteractable.gd" id="12_2lf6f"]
+[ext_resource type="PackedScene" uid="uid://cxu3yoi42mvkv" path="res://scenes/dungeon1.tscn" id="13_o8fc1"]
+[ext_resource type="Script" uid="uid://cesvinv2kcel8" path="res://scripts/LoadLevel.gd" id="14_xo05s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_71j4m"]
 size = Vector2(500, 500)
@@ -19,18 +30,83 @@ shader_parameter/Texture_2_Move_Speed = Vector2(-0.2, -0.2)
 shader_parameter/Texture_2_Colour = Color(0, 0.568627, 1, 1)
 shader_parameter/Blend = 0.5
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_q712h"]
+size = Vector3(0.7, 2, 0.7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1enmr"]
+size = Vector3(0.7, 2, 0.7)
+
+[sub_resource type="Resource" id="Resource_dss4m"]
+script = ExtResource("14_xo05s")
+level_scene = ExtResource("13_o8fc1")
+metadata/_custom_type_script = "uid://cesvinv2kcel8"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cptob"]
+size = Vector3(1.94, 2.6698, 1.73486)
+
 [node name="World" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_dwbse")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.579295, -0.717389, 0.387002, 0, 0.47478, 0.880105, -0.815118, -0.50984, 0.275038, 0, 0, 0)
+transform = Transform3D(0.579295, -0.717389, 0.387002, 0, 0.47478, 0.880105, -0.815118, -0.50984, 0.275038, 0, 0, 31.7405)
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 directional_shadow_mode = 0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.7405)
 mesh = SubResource("PlaneMesh_71j4m")
+skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_qfnet")
+
+[node name="untitled2" parent="." instance=ExtResource("5_jhx03")]
+
+[node name="father_altrius" parent="." instance=ExtResource("6_o8fc1")]
+transform = Transform3D(0.217803, 0, -0.975993, 0, 1, 0, 0.975993, 0, 0.217803, 7.94201, 1.541, 10.4616)
+
+[node name="DialogueInteractable" type="Area3D" parent="father_altrius"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("7_xo05s")
+dialogue = ExtResource("8_dss4m")
+metadata/_custom_type_script = "uid://qc8y7gmqc46j"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="father_altrius/DialogueInteractable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_q712h")
+debug_color = Color(0.900443, 0.000171538, 0.764293, 1)
+
+[node name="cetmyr" parent="." instance=ExtResource("9_7t5mc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6823, 1.45082, 0.644729)
+
+[node name="DialogueInteractable" type="Area3D" parent="cetmyr"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("7_xo05s")
+dialogue = ExtResource("10_lakw3")
+metadata/_custom_type_script = "uid://qc8y7gmqc46j"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="cetmyr/DialogueInteractable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("BoxShape3D_1enmr")
+
+[node name="island2" parent="." instance=ExtResource("11_pm21f")]
+transform = Transform3D(0.755316, 0, -0.655361, 0, 1, 0, 0.655361, 0, 0.755316, -81.0273, 0, 73.5281)
+
+[node name="TeleportDoorInteractable" type="Area3D" parent="island2"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("12_2lf6f")
+level_to_load = SubResource("Resource_dss4m")
+metadata/_custom_type_script = "uid://b73q7u7q01end"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="island2/TeleportDoorInteractable"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.14441e-05, 0.8349, -0.367432)
+shape = SubResource("BoxShape3D_cptob")
+
+[node name="Boat" parent="." groups=["Boat"] instance=ExtResource("4_q5onr")]
+unique_name_in_owner = true
+transform = Transform3D(0.358401, 0, 0.933568, 0, 1, 0, -0.933568, 0, 0.358401, -20.5857, 0.231543, 26.7498)

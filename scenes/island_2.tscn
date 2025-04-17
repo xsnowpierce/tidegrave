@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnr6d7vrjt5kj"]
+
+[ext_resource type="PackedScene" uid="uid://bagf218s02m7x" path="res://models/island2.blend" id="1_bxfxt"]
+[ext_resource type="Material" uid="uid://08ug2u2ab5d5" path="res://scenes/materials/grass.tres" id="2_0g2ic"]
+
+[node name="island2" instance=ExtResource("1_bxfxt")]
+
+[node name="Circle" parent="." index="0"]
+material_override = ExtResource("2_0g2ic")

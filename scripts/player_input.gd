@@ -7,6 +7,7 @@ var sprinting : bool
 
 signal interact_pressed()
 signal jump_pressed()
+signal attack_pressed()
 
 func _process(_delta: float) -> void:
 	move_direction = Input.get_vector("move_left", "move_right", "move_up", "move_down")
@@ -15,3 +16,5 @@ func _process(_delta: float) -> void:
 		interact_pressed.emit()
 	if(Input.is_action_just_pressed("jump")):
 		jump_pressed.emit()
+	if(Input.is_action_just_pressed("attack")):
+		attack_pressed.emit()

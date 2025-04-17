@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ce4ye3074qpjq"
-path="res://.godot/imported/boat.fbx-7f2bbba82d04bd5bda0e7a467fa71349.scn"
+uid="uid://dfud7vje5557b"
+path="res://.godot/imported/straight_sword.glb-ca3a263df99ac6da20c10a18f10b01db.scn"
 
 [deps]
 
-source_file="res://models/boat.fbx"
-dest_files=["res://.godot/imported/boat.fbx-7f2bbba82d04bd5bda0e7a467fa71349.scn"]
+source_file="res://models/weapons/straight_sword.glb"
+dest_files=["res://.godot/imported/straight_sword.glb-ca3a263df99ac6da20c10a18f10b01db.scn"]
 
 [params]
 
@@ -28,18 +28,10 @@ meshes/force_disable_compression=false
 skins/use_named_skins=true
 animation/import=true
 animation/fps=30
-animation/trimming=true
+animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Cube": {
-"generate/physics": true,
-"physics/layer": 2
-}
-}
-}
-fbx/importer=0
-fbx/allow_geometry_helper_nodes=false
-fbx/embedded_image_handling=1
+_subresources={}
+gltf/naming_version=1
+gltf/embedded_image_handling=1

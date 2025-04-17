@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=24 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player_stats.gd" id="2_1jxqw"]
@@ -12,7 +12,6 @@
 [ext_resource type="Script" uid="uid://tk6ujsrpg0v1" path="res://scripts/player_combat.gd" id="9_y4r1p"]
 [ext_resource type="Script" uid="uid://di3l02i41lrtf" path="res://scripts/player_inventory.gd" id="10_d2wvv"]
 [ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://inventory_items/weapons/sword.tres" id="11_3v2ag"]
-[ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scenes/player_attack_hitbox.gd" id="13_jej6c"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
 length = 0.001
@@ -151,9 +150,6 @@ _data = {
 radius = 0.3
 height = 1.7
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3v2ag"]
-size = Vector3(0.472839, 0.565735, 0.842094)
-
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 3
 script = ExtResource("1_hqtel")
@@ -241,7 +237,7 @@ mesh = SubResource("ArrayMesh_bj2ln")
 skin = SubResource("Skin_l7ec2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
-transform = Transform3D(0.977837, 0.00167818, 0.209362, -0.00139887, 0.999998, -0.00148214, -0.209364, 0.00115642, 0.977837, 0.000917088, 0.556299, -0.000576611)
+transform = Transform3D(0.999682, -0.000443253, 0.025211, 0.000489357, 0.999998, -0.00182253, -0.0252101, 0.00183429, 0.999681, -3.75268e-05, 0.5563, -0.000181578)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -251,8 +247,7 @@ transform = Transform3D(-4.36557e-08, 1, 7.45058e-09, -1, -4.37431e-08, 8.85393e
 [node name="straight_sword" parent="Head/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D/WeaponParent" instance=ExtResource("6_ur7pv")]
 transform = Transform3D(1, -2.91038e-11, 1.05092e-09, -2.91038e-11, 1, 5.58794e-09, -1.09685e-09, -1.86265e-09, 1, 0, 0.0010798, 0.000142753)
 
-[node name="ArmAnimator" type="AnimationPlayer" parent="Head/Player Camera/arm"]
-unique_name_in_owner = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Player Camera/arm"]
 libraries = {
 &"": SubResource("AnimationLibrary_y4r1p")
 }
@@ -297,19 +292,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="AttackHitbox" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 128
-monitoring = false
-monitorable = false
-script = ExtResource("13_jej6c")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0276184, 1.35291, -0.430386)
-shape = SubResource("BoxShape3D_3v2ag")
-
-[node name="AttackBoxTimer" type="Timer" parent="AttackHitbox"]
 
 [connection signal="player_state_changed" from="." to="PlayerMovement" method="_on_player_player_state_changed"]
 [connection signal="area_entered" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_entered"]

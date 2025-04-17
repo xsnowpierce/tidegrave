@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 		else:
 			current_speed = SPEED;
 		
-		var direction := (character3d.transform.basis * Vector3(player_input.move_direction.x, 0, player_input.move_direction.y)).normalized();
+		var direction := (character3d.transform.basis * Vector3(player_input.move_direction.x, 0, player_input.move_direction.y));
 		if direction:
 			character3d.velocity.x = direction.x * current_speed;
 			character3d.velocity.z = direction.z * current_speed;
@@ -29,8 +29,8 @@ func _process(delta: float) -> void:
 			character3d.velocity.x = move_toward(character3d.velocity.x, 0, current_speed);
 			character3d.velocity.z = move_toward(character3d.velocity.z, 0, current_speed);
 
-		if(Input.is_action_just_pressed("jump") and character3d.is_on_floor() and character3d.playerStats.current_stamina > JUMPING_STAMINA_COST):
-			character3d.playerStats.current_stamina -= JUMPING_STAMINA_COST;
+		if(Input.is_action_just_pressed("jump") and character3d.is_on_floor()):
+			character3d.get_player_stats().current_stamina = 0;
 			character3d.velocity.y = JUMPING_VELOCITY;
 
 	character3d.move_and_slide();

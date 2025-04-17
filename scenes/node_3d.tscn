@@ -1,78 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://b14k4i01q4opy"]
+[gd_scene load_steps=4 format=3 uid="uid://b14k4i01q4opy"]
 
+[ext_resource type="Script" uid="uid://nqu1ftfs2c1y" path="res://scripts/game_loader.gd" id="1_5t4e2"]
 [ext_resource type="PackedScene" uid="uid://ckgju87agli76" path="res://scenes/player.tscn" id="2_noarx"]
-[ext_resource type="PackedScene" uid="uid://34mutmn6t51g" path="res://scenes/world.tscn" id="3_r3fl7"]
-[ext_resource type="PackedScene" uid="uid://b6cu6npyppedb" path="res://scenes/boat.tscn" id="4_jka67"]
-[ext_resource type="PackedScene" uid="uid://dn3ld6rf1g36t" path="res://models/basic male.blend" id="4_oqwcg"]
-[ext_resource type="PackedScene" uid="uid://chod1o3nfpumf" path="res://models/basic female.blend" id="5_a6664"]
-[ext_resource type="MeshLibrary" uid="uid://1fx8s8muiodd" path="res://scenes/tilemap.tres" id="6_a6664"]
-[ext_resource type="PackedScene" uid="uid://hjon4x0ap5j" path="res://scenes/island.tscn" id="7_10v3s"]
-[ext_resource type="PackedScene" uid="uid://hv4ukaucmrok" path="res://models/father_altrius.glb" id="8_cptob"]
-[ext_resource type="Script" uid="uid://2o18ibuyyw2a" path="res://scripts/world_interactable.gd" id="9_b2yaj"]
-[ext_resource type="PackedScene" uid="uid://dyvvbvki6r55n" path="res://models/cetmyr.glb" id="10_q712h"]
+[ext_resource type="PackedScene" uid="uid://c6vonty78poup" path="res://scenes/world.tscn" id="3_r3fl7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_q712h"]
-size = Vector3(0.7, 2, 0.7)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_1enmr"]
-size = Vector3(0.7, 2, 0.7)
-
-[node name="Node3D" type="Node"]
-
-[node name="Player" parent="." instance=ExtResource("2_noarx")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.70385, 0)
-collision_layer = 4
-collision_mask = 3
-floor_constant_speed = true
-
-[node name="World" parent="." instance=ExtResource("3_r3fl7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.7405)
-
-[node name="Boat" parent="." instance=ExtResource("4_jka67")]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.97261, 0, -32.0335)
-
-[node name="basic male" parent="." instance=ExtResource("4_oqwcg")]
-transform = Transform3D(0.156814, 0, 0.987628, 0, 1, 0, -0.987628, 0, 0.156814, -33.6351, 0.547585, -7.07904)
-
-[node name="basic female" parent="." instance=ExtResource("5_a6664")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.6231, 0.562932, -6.18131)
-
-[node name="GridMap" type="GridMap" parent="."]
-mesh_library = ExtResource("6_a6664")
-cell_size = Vector3(2, 2.6, 2)
-cell_center_y = false
-data = {
-"cells": PackedInt32Array(131021, 3, 131072, 131020, 3, 131072, 131019, 3, 131072, 131018, 3, 131072, 131017, 3, 131072, 131016, 3, 131072, 131016, 4, 524288, 131017, 4, 524288, 131018, 4, 524288, 131019, 4, 524288, 131020, 4, 524288, 131021, 4, 524288, 131015, 3, 524290, 131015, 4, 524290, 131015, 2, 1179649, 131015, 5, 524289, 131014, 2, 131072, 131013, 2, 131072, 131012, 2, 131072, 131011, 2, 131072, 131010, 2, 131072, 131014, 5, 524288, 131013, 5, 524288, 131012, 5, 524288, 131011, 5, 524288, 131010, 5, 524288, 131014, 3, 524290, 131014, 4, 524290, 131013, 4, 524290, 131012, 4, 524290, 131011, 4, 524290, 131010, 4, 524290, 131010, 3, 524290, 131011, 3, 524290, 131012, 3, 524290, 131013, 3, 524290, 131009, 1, 1179648)
-}
-metadata/_editor_floor_ = Vector3(0, 1, 0)
-
-[node name="untitled2" parent="." instance=ExtResource("7_10v3s")]
-
-[node name="father_altrius" parent="." instance=ExtResource("8_cptob")]
-transform = Transform3D(0.217803, 0, -0.975993, 0, 1, 0, 0.975993, 0, 0.217803, 7.94201, 1.541, 10.4616)
-
-[node name="WorldInteractable" type="Area3D" parent="father_altrius"]
-collision_layer = 32
-collision_mask = 16
-script = ExtResource("9_b2yaj")
-metadata/_custom_type_script = "uid://2o18ibuyyw2a"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="father_altrius/WorldInteractable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_q712h")
-debug_color = Color(0.900443, 0.000171538, 0.764293, 1)
-
-[node name="cetmyr" parent="." instance=ExtResource("10_q712h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.6823, 1.04959, 0.644729)
-
-[node name="WorldInteractable" type="Area3D" parent="cetmyr"]
-collision_layer = 32
-collision_mask = 16
-script = ExtResource("9_b2yaj")
-metadata/_custom_type_script = "uid://2o18ibuyyw2a"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="cetmyr/WorldInteractable"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-shape = SubResource("BoxShape3D_1enmr")
+[node name="SceneManager" type="Node" groups=["SceneManager"]]
+script = ExtResource("1_5t4e2")
+player_scene = ExtResource("2_noarx")
+start_scene = ExtResource("3_r3fl7")
+player_spawn_location = Vector3(0, 1.704, 0)

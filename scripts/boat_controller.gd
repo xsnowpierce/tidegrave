@@ -1,7 +1,5 @@
 extends RigidBody3D
 
-var boat_has_control : bool
-
 @export var boat_move_speed : float = 5
 @export var boat_deceleration : float = 1
 @export var boat_acceleration : float = 1
@@ -14,9 +12,6 @@ var boat_rotation_speed : float = 0
 
 func _process(delta: float) -> void:
 	
-	if(Input.is_action_just_pressed("enter_boat")):
-		boat_has_control = !boat_has_control
-	
 	boat_movement()
 
 func boat_movement() -> void:
@@ -27,7 +22,7 @@ func boat_movement() -> void:
 	angular_velocity = -Vector3(0, clampf(boat_rotation_speed * (boat_current_speed / boat_move_speed), -boat_max_rotation_speed, boat_max_rotation_speed), 0)
 
 func boat_input() -> void:
-	if(Input.is_action_pressed("move_up") and boat_has_control):
+	if(Input.is_action_pressed("move_up") and $VehicleInteractable.player_in_boat):
 		boat_current_speed += boat_acceleration * get_process_delta_time()
 		boat_current_speed = clampf(boat_current_speed, -boat_move_speed / 2, boat_move_speed)
 	else:
@@ -38,7 +33,7 @@ func boat_input() -> void:
 			
 	var rotation : float = Input.get_axis("move_left", "move_right")
 	
-	if(rotation != 0.0 and boat_has_control):
+	if(rotation != 0.0 and $VehicleInteractable.player_in_boat):
 		boat_rotation_speed += rotation * boat_acceleration * get_process_delta_time()
 		boat_rotation_speed = clampf(boat_rotation_speed, -boat_max_rotation_speed, boat_max_rotation_speed)
 	else:
