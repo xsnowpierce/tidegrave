@@ -1,43 +1,55 @@
 extends RigidBody3D
+class_name BoatBody3D
 
-@export var boat_move_speed : float = 5
-@export var boat_deceleration : float = 1
-@export var boat_acceleration : float = 1
+@export var float_force : float = 1.0
+@export var water_drag : float = 0.05
+@export var water_angular_drag : float = 0.05
 
-var boat_current_speed : float = 0
-var boat_rotation_speed : float = 0
-@export var boat_max_rotation_speed : float = 1
+@onready var gravity : Vector3 = Vector3(0, -9.8, 0)
 
-@export var player_position_node : Node3D
+@export var max_thrust_force : float = 1024
+@export var max_steering : float = 128
+@export var backwards_force_multiplier : float = 0.2
+
+var steering: float = 0 # steering rudder angle in radians
+var thrust_force: float = 0 # forward thrust force in Newtons
+
 
 func _process(delta: float) -> void:
-	
-	boat_movement()
-
-func boat_movement() -> void:
-	boat_input()
-	
-	var direction : Vector3 = Vector3($boat.global_basis.x.x, 0, $boat.global_basis.x.z)
-	linear_velocity = direction * clampf(boat_current_speed, -boat_move_speed / 2, boat_move_speed)
-	angular_velocity = -Vector3(0, clampf(boat_rotation_speed * (boat_current_speed / boat_move_speed), -boat_max_rotation_speed, boat_max_rotation_speed), 0)
-
-func boat_input() -> void:
+	if(Input.is_action_pressed("move_left") and $VehicleInteractable.player_in_boat):
+		steer_left()
+	if(Input.is_action_pressed("move_right") and $VehicleInteractable.player_in_boat):
+		steer_right()
 	if(Input.is_action_pressed("move_up") and $VehicleInteractable.player_in_boat):
-		boat_current_speed += boat_acceleration * get_process_delta_time()
-		boat_current_speed = clampf(boat_current_speed, -boat_move_speed / 2, boat_move_speed)
-	else:
-		if(boat_current_speed > 0):
-			boat_current_speed -= boat_deceleration * get_process_delta_time()
-		elif(boat_current_speed < 0):
-			boat_current_speed += boat_deceleration * get_process_delta_time()
-			
-	var rotation : float = Input.get_axis("move_left", "move_right")
+		thrust()
+	if(Input.is_action_pressed("move_down") and $VehicleInteractable.player_in_boat):
+		backpedal()
+
+func _physics_process(delta):
+	apply_central_force(-self.global_transform.basis.z.normalized() * Vector3(1, 0, 1) * thrust_force)
+	apply_torque(Vector3.UP * steering)
 	
-	if(rotation != 0.0 and $VehicleInteractable.player_in_boat):
-		boat_rotation_speed += rotation * boat_acceleration * get_process_delta_time()
-		boat_rotation_speed = clampf(boat_rotation_speed, -boat_max_rotation_speed, boat_max_rotation_speed)
-	else:
-		if(boat_rotation_speed > 0):
-			boat_rotation_speed -= boat_deceleration * get_process_delta_time()
-		elif(boat_rotation_speed < 0):
-			boat_rotation_speed += boat_deceleration * get_process_delta_time()
+	##apply_torque(-global_transform.basis.z.normalized() * steering * 0.05) # for sideways motion
+	
+	reset_forces()
+
+func _integrate_forces(state: PhysicsDirectBodyState3D):
+	state.linear_velocity *=  1 - water_drag
+	state.angular_velocity *= 1 - water_angular_drag 
+
+func thrust():
+	thrust_force = max_thrust_force
+
+func backpedal():
+	thrust_force = -max_thrust_force * backwards_force_multiplier
+
+func steer_right():
+	steering = -PI * max_steering
+
+func steer_left():
+	steering = PI * max_steering
+
+
+func reset_forces():
+	thrust_force = 0
+	steering = 0

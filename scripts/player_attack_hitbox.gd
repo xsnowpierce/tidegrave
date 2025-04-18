@@ -9,7 +9,7 @@ func _ready() -> void:
 	monitorable = false
 
 func enable_attack_hitbox( weapon : InventoryWeapon, time : float = 0.3) -> void:
-	attack_damage = weapon.damage
+	attack_damage = weapon.damage.damage_amount_slash
 	$AttackBoxTimer.start(time)
 	monitoring = true
 	monitorable = true
