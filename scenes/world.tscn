@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c6vonty78poup"]
+[gd_scene load_steps=22 format=3 uid="uid://c6vonty78poup"]
 
 [ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://scenes/environment.tres" id="1_dwbse"]
 [ext_resource type="Shader" uid="uid://ft7h58t3l64a" path="res://scripts/water.tres" id="2_4wyf3"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://b73q7u7q01end" path="res://scripts/TeleportDoorInteractable.gd" id="12_2lf6f"]
 [ext_resource type="PackedScene" uid="uid://cxu3yoi42mvkv" path="res://scenes/dungeon1.tscn" id="13_o8fc1"]
 [ext_resource type="Script" uid="uid://cesvinv2kcel8" path="res://scripts/LoadLevel.gd" id="14_xo05s"]
+[ext_resource type="PackedScene" uid="uid://cdfb1jghuedd2" path="res://scenes/enemies/slime.tscn" id="15_xo05s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_71j4m"]
 size = Vector2(500, 500)
@@ -110,3 +111,9 @@ shape = SubResource("BoxShape3D_cptob")
 [node name="Boat" parent="." groups=["Boat"] instance=ExtResource("4_q5onr")]
 unique_name_in_owner = true
 transform = Transform3D(0.358401, 0, 0.933568, 0, 1, 0, -0.933568, 0, 0.358401, -20.5857, 0.231543, 26.7498)
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79209, 0)
+
+[node name="Slime" parent="." instance=ExtResource("15_xo05s")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0576, 1.66554, 4.0211)

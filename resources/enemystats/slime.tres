@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="EnemyStats" load_steps=2 format=3 uid="uid://dse4qqh6jjops"]
+
+[ext_resource type="Script" uid="uid://bt3jeon4k1fhv" path="res://scripts/EnemyStats.gd" id="1_7eiou"]
+
+[resource]
+script = ExtResource("1_7eiou")
+name = "Slime"
+health = 10
+metadata/_custom_type_script = "uid://bt3jeon4k1fhv"

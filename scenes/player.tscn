@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://oncjf8lbhw26" path="res://scenes/ingame_hud.tscn" id="8_dw050"]
 [ext_resource type="Script" uid="uid://tk6ujsrpg0v1" path="res://scripts/player_combat.gd" id="9_y4r1p"]
 [ext_resource type="Script" uid="uid://di3l02i41lrtf" path="res://scripts/player_inventory.gd" id="10_d2wvv"]
-[ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://inventory_items/weapons/sword.tres" id="11_3v2ag"]
+[ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/weapons/sword.tres" id="11_3v2ag"]
 [ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scripts/player_attack_hitbox.gd" id="13_jej6c"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player_hitbox.gd" id="14_f1ej7"]
 
@@ -148,12 +148,13 @@ _data = {
 &"swing": SubResource("Animation_smehm")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f1ej7"]
+radius = 1.04567
+height = 2.33137
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 radius = 0.3
 height = 1.7
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_3v2ag"]
-size = Vector3(0.472839, 0.565735, 0.842094)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jej6c"]
 size = Vector3(0.8, 2, 0.8)
@@ -262,6 +263,17 @@ libraries = {
 &"": SubResource("AnimationLibrary_y4r1p")
 }
 
+[node name="AttackHitbox" type="Area3D" parent="Head/Player Camera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38356, 0)
+collision_layer = 64
+collision_mask = 128
+script = ExtResource("13_jej6c")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Player Camera/AttackHitbox"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0276184, 1.26003, -0.64296)
+shape = SubResource("CapsuleShape3D_f1ej7")
+debug_color = Color(0.686716, 0, 0.154157, 0.42)
+
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_a202f")
@@ -305,19 +317,6 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="AttackHitbox" type="Area3D" parent="."]
-collision_layer = 64
-collision_mask = 128
-monitoring = false
-monitorable = false
-script = ExtResource("13_jej6c")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackHitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0276184, 1.35291, -0.430386)
-shape = SubResource("BoxShape3D_3v2ag")
-
-[node name="AttackBoxTimer" type="Timer" parent="AttackHitbox"]
-
 [node name="PlayerHitbox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 256
@@ -330,6 +329,7 @@ shape = SubResource("BoxShape3D_jej6c")
 [connection signal="player_state_changed" from="." to="PlayerMovement" method="_on_player_player_state_changed"]
 [connection signal="area_entered" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_entered"]
 [connection signal="area_exited" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_exited"]
+[connection signal="area_entered" from="Head/Player Camera/AttackHitbox" to="Head/Player Camera/AttackHitbox" method="_on_area_entered"]
 [connection signal="attack_pressed" from="PlayerInput" to="PlayerCombat" method="_on_player_input_attack_pressed"]
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]
 [connection signal="player_attacked" from="PlayerHitbox" to="HUD" method="_on_player_hitbox_player_attacked"]
