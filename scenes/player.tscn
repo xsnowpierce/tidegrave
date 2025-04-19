@@ -149,8 +149,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f1ej7"]
-radius = 1.04567
-height = 2.33137
+radius = 0.567621
+height = 1.47265
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 radius = 0.3
@@ -263,14 +263,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_y4r1p")
 }
 
-[node name="AttackHitbox" type="Area3D" parent="Head/Player Camera"]
+[node name="AttackHitbox" type="Area3D" parent="Head/Player Camera" node_paths=PackedStringArray("coll")]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38356, 0)
 collision_layer = 64
 collision_mask = 128
 script = ExtResource("13_jej6c")
+coll = NodePath("CollisionShape3D")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Player Camera/AttackHitbox"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0276184, 1.26003, -0.64296)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0276184, 1.00698, -0.718575)
 shape = SubResource("CapsuleShape3D_f1ej7")
 debug_color = Color(0.686716, 0, 0.154157, 0.42)
 

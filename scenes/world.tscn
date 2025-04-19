@@ -4,7 +4,6 @@
 [ext_resource type="Shader" uid="uid://ft7h58t3l64a" path="res://scripts/water.tres" id="2_4wyf3"]
 [ext_resource type="Texture2D" uid="uid://dmdb16vmgti40" path="res://images/water.png" id="3_k0juu"]
 [ext_resource type="PackedScene" uid="uid://b6cu6npyppedb" path="res://scenes/boat.tscn" id="4_q5onr"]
-[ext_resource type="PackedScene" uid="uid://hjon4x0ap5j" path="res://scenes/island.tscn" id="5_jhx03"]
 [ext_resource type="PackedScene" uid="uid://hv4ukaucmrok" path="res://models/father_altrius.glb" id="6_o8fc1"]
 [ext_resource type="Script" uid="uid://qc8y7gmqc46j" path="res://scripts/DialogueInteractable.gd" id="7_xo05s"]
 [ext_resource type="Resource" uid="uid://d3hvfpgfne47b" path="res://dialogue/test.dialogue" id="8_dss4m"]
@@ -14,6 +13,7 @@
 [ext_resource type="Script" uid="uid://b73q7u7q01end" path="res://scripts/TeleportDoorInteractable.gd" id="12_2lf6f"]
 [ext_resource type="PackedScene" uid="uid://cxu3yoi42mvkv" path="res://scenes/dungeon1.tscn" id="13_o8fc1"]
 [ext_resource type="Script" uid="uid://cesvinv2kcel8" path="res://scripts/LoadLevel.gd" id="14_xo05s"]
+[ext_resource type="PackedScene" uid="uid://dytewkg1giu0p" path="res://models/home_island.glb" id="15_dss4m"]
 [ext_resource type="PackedScene" uid="uid://cdfb1jghuedd2" path="res://scenes/enemies/slime.tscn" id="15_xo05s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_71j4m"]
@@ -62,8 +62,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 31.7405)
 mesh = SubResource("PlaneMesh_71j4m")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_qfnet")
-
-[node name="untitled2" parent="." instance=ExtResource("5_jhx03")]
 
 [node name="father_altrius" parent="." instance=ExtResource("6_o8fc1")]
 transform = Transform3D(0.217803, 0, -0.975993, 0, 1, 0, 0.975993, 0, 0.217803, 7.94201, 1.541, 10.4616)
@@ -117,3 +115,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79209, 0)
 
 [node name="Slime" parent="." instance=ExtResource("15_xo05s")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0576, 1.66554, 4.0211)
+
+[node name="home_island" parent="." instance=ExtResource("15_dss4m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.99081, 0.253765, 9.26801)

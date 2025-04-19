@@ -15,6 +15,10 @@ func _on_player_input_attack_pressed() -> void:
 	
 	%PlayerStats.current_stamina = 0
 	
+	await get_tree().create_timer(0.5).timeout
+	
+	%AttackHitbox.enable_attack_hitbox(%PlayerInventory.equipped_weapon, 0.6)
+	
 	await get_tree().create_timer(1.0).timeout
 	
 	is_attacking = false

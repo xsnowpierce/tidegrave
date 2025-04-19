@@ -3,37 +3,40 @@ extends Node3D
 class_name Enemy
 
 @export var enemy_stats : EnemyStats
+@export var mesh : MeshInstance3D
+@export var attacked_animation_name : String = "slime_attacked"
 
 var current_health : int
 
-var tween : Tween
-
-var hit_effect_time : float = 0.4
+var hit_effect_speed : float = 1
 
 func _ready() -> void:
 	current_health = enemy_stats.health
-
+	
 func _on_enemy_hitbox_area_entered(area: Area3D) -> void:
-	print("area entered: " , area.name)
 	if(area is PlayerAttackHitbox):
 		take_damage(area.attack_damage)
 
 func take_damage(amount : int) -> void:
-	if(tween):
-		tween.kill()
-	
-	print("damage")
-	
 	current_health -= amount
+	
+	hit_effect()
 	
 	if(current_health <= 0):
 		death()
 		return
+
+func hit_effect() -> void:
+	var current_tint_alpha : float = .5
 	
-	tween = create_tween()
+	$AnimationPlayer.play(attacked_animation_name)
 	
-	tween.tween_property($slime/Sphere, "material:shader_parameter/HitEffect", 0.5, hit_effect_time / 2)
-	tween.tween_property($slime/Sphere, "material:shader_parameter/HitEffect", 0.0, hit_effect_time / 2)
-	
+	mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", .5)
+		
+	while(current_tint_alpha > 0):
+		mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", current_tint_alpha)
+		current_tint_alpha -= get_process_delta_time() * hit_effect_speed
+		await get_tree().process_frame
+
 func death() -> void:
 	queue_free()

@@ -289,7 +289,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-732.962, -9.92386)
 varyings/WorldPos = "0,4"
 preview_params/Texture = "Resource(\"res://images/water.png\")"
 preview_params/Texture_1_Move_Speed = "Vector2(1, 1)"

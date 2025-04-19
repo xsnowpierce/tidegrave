@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://cdfb1jghuedd2"]
+[gd_scene load_steps=17 format=4 uid="uid://cdfb1jghuedd2"]
 
 [ext_resource type="Script" uid="uid://f6bnnl758quq" path="res://scenes/enemies/Enemy.gd" id="1_ahq63"]
 [ext_resource type="Shader" uid="uid://bfr3j5emjac3n" path="res://scenes/slime.tres" id="1_rldp6"]
@@ -46,6 +46,7 @@ seamless = true
 noise = SubResource("FastNoiseLite_xo05s")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7t5mc"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_rldp6")
 shader_parameter/Slime_Colour = Color(0, 1, 0, 1)
@@ -89,19 +90,37 @@ tracks/0/keys = {
 "values": [Vector3(1, 1, 1), Vector3(1.14, 0.56, 1.14), Vector3(1, 1, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_b58ev"]
+resource_name = "slime_attacked"
+length = 0.1333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slime:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.2, 1.1), Vector3(1, 1, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b58ev"]
 _data = {
 &"RESET": SubResource("Animation_4h4y0"),
-&"slime": SubResource("Animation_ahq63")
+&"slime": SubResource("Animation_ahq63"),
+&"slime_attacked": SubResource("Animation_b58ev")
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_b58ev"]
 height = 0.634888
 radius = 0.62207
 
-[node name="Slime" type="Node3D"]
+[node name="Slime" type="Node3D" node_paths=PackedStringArray("mesh")]
 script = ExtResource("1_ahq63")
 enemy_stats = ExtResource("2_4h4y0")
+mesh = NodePath("slime/Sphere")
 
 [node name="slime" type="Node3D" parent="."]
 
@@ -125,6 +144,7 @@ libraries = {
 }
 autoplay = "slime"
 speed_scale = 0.3
+next/slime_attacked = &"slime"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
