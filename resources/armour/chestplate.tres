@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="InventoryArmour" load_steps=3 format=3 uid="uid://cfmof8qrvwdmq"]
 
 [ext_resource type="PackedScene" uid="uid://drwblo7gukvil" path="res://models/armour/chestplate2.glb" id="1_lqwga"]
-[ext_resource type="Script" uid="uid://b1gsaixvx8wwv" path="res://scripts/inventory_item_armour.gd" id="2_1b2y0"]
+[ext_resource type="Script" uid="uid://b1gsaixvx8wwv" path="res://scripts/item/inventory_item_armour.gd" id="2_1b2y0"]
 
 [resource]
 script = ExtResource("2_1b2y0")

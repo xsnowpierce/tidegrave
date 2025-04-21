@@ -1,0 +1,155 @@
+[gd_scene load_steps=17 format=4 uid="uid://cdfb1jghuedd2"]
+
+[ext_resource type="Script" uid="uid://f6bnnl758quq" path="res://scripts/enemy/Enemy.gd" id="1_ahq63"]
+[ext_resource type="Shader" uid="uid://bfr3j5emjac3n" path="res://characters/enemy/slime/slime_shader.tres" id="1_rldp6"]
+[ext_resource type="Resource" uid="uid://dse4qqh6jjops" path="res://resources/enemystats/slime.tres" id="2_4h4y0"]
+[ext_resource type="Script" uid="uid://mhhledaqsq78" path="res://scripts/enemy/enemy_hitbox.gd" id="4_b58ev"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfxm5"]
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qwjru"]
+_surfaces = [{
+"aabb": AABB(-1.06955, 0, -1.09706, 2.1391, 0.587047, 2.08547),
+"format": 34896613377,
+"index_count": 105,
+"index_data": PackedByteArray("AwAOAA8AAwAEAA4ABQADAA8ABAAQAA4ABAAJABAABQAPABEABwAFABEADwAOAAEABwARABIACgAHABIAEQAPAAAADwABAAAAEgARAAYAEQAAAAYACgASABMADAAKABMAEgAGABQAEwASABQABgAAAAIAAAABAAIAFAAGAAIADgAIAAEAAQAIAAIADgAQAAgACwAUAAIAEwAUAAsACAANAAIAEAANAAgADQALAAIAEAAVAA0AFQALAA0AFQATAAsADAATABUACQAVABAACQAMABUA"),
+"lods": [0.181946, PackedByteArray("AAABAAIAAwABAAAAAwAEAAEABQADAAAABQAAAAYABgAAAAIABwAFAAYABwAGAAIABAAIAAEAAQAIAAIABAAJAAgACgAHAAIACgACAAsADAAKAAsACAANAAIACQANAAgADQALAAIACQAMAA0ADAALAA0A")],
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 22,
+"vertex_data": PackedByteArray("/39IzYM+AAD+tkjNrlkAAP9///+qhgAA/38AAAAAAACk5gAAtDIAAFoZAAC0MgAAAElIza5ZAAAAAAAAoaQAAJPESM24lgAA//8AAKGkAAAIRwAA//8AAHphSM2sxwAA9rgAAP//AACEnkjNrMcAAPvYhUjgPQAA/3+FSOwRAAD27oVIpKAAAAMnhUjgPQAACBGFSKSgAACdToVI2e8AAGs7SM24lgAAYbGFSNnvAAA=")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_dss4m"]
+resource_name = "slime_Sphere"
+_surfaces = [{
+"aabb": AABB(-1.06955, 0, -1.09706, 2.1391, 0.587047, 2.08547),
+"attribute_data": PackedByteArray("2rYyM0iSMjORpAAA2rb/f0iS/39s2/9/bNsyMyPJAAD///9/te0AALZtMjP/fwAAtm3/fyRJMjNtWwAAJEn/f5IkMjPbNgAAkiT/f0kSAAAAAP9/SJJlZtq2ZWa2bWVmbNtlZv//ZWYkSWVm//8yM5IkZWYAADIzAABlZg=="),
+"format": 34896613399,
+"index_count": 105,
+"index_data": PackedByteArray("AwAVABYAAwAEABUABQADABYABAAXABUABAAMABcABQAWABgACAAFABgACAAYABkADAAaABcADAAPABoAGQAYAAYAGQAGABsAGwAGAAkAGAAAAAYAGAAWAAAABgAAAAcAFgABAAAAAAABAAIAFgAVAAEAFQAKAAEAAQAKAAsAFQAXAAoAFwANAAoACgANAA4AFwAaAA0AGgAQAA0ADQAQABEAGgAcABAADwAcABoADwASABwAHAAdABAAEAAdABMAHAAeAB0AEgAeABwAEgAUAB4A"),
+"lods": [0.181946, PackedByteArray("AAABAAIAAwABAAAAAwAEAAEABQADAAAABQAAAAYABgAAAAcACAAFAAYACAAGAAkABAAKAAEAAQAKAAsABAAMAAoADAANAAoACgANAA4ADAAPAA0ADwAQAA0ADQAQABEADwASABAAEgATABAAEgAUABMA")],
+"material": SubResource("StandardMaterial3D_nfxm5"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 31,
+"vertex_data": PackedByteArray("/39IzYM+///+tkjNrlnD4P9///+qhh7z/38AAAAA//+k5gAAtDLs3VoZAAC0MuzdAElIza5Zw+D/f///qoYe8wAAAAChpAXC/3///6qGytqTxEjNuJa/w/9///+qhsra//8AAKGkHr2EnkjNrMexrv9///+qhrbH9rgAAP//XqJ6YUjNrMexrv9///+qhv+/CEcAAP//XqL/f///qoa2xwAAAAChpBC6+9iFSOA9XN7/f4VI7BH///buhUikoCm+AyeFSOA9XN4IEYVIpKCrw2GxhUjZ736kaztIzbiWxcudToVI2e9+pGs7SM24liK+CBGFSKSgqLr/f5TQnLtgE43GHA3/f/nc2K3mDuaOJtJgk2HEG41xubOUB8Z8pMCt+ciZKD3SfSTFurIgRuEzT5jgM0G01chFMs+3nv///3/HxUmqMsFlnz6uUMSGsMUP/3+j2qO9SyLFj3jP5ZWOwzfY00cmmzS608fGp5O4O7NwsPrA")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_qwjru")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xo05s"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dss4m"]
+seamless = true
+noise = SubResource("FastNoiseLite_xo05s")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7t5mc"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_rldp6")
+shader_parameter/Slime_Colour = Color(0, 1, 0, 1)
+shader_parameter/Slime_Texture_Speed = 0.061
+shader_parameter/Slime_Texture = SubResource("NoiseTexture2D_dss4m")
+shader_parameter/HitEffect = 0.0
+shader_parameter/Slime_Transparency = 0.5
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_xo05s"]
+height = 0.876343
+radius = 0.966309
+
+[sub_resource type="Animation" id="Animation_4h4y0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slime:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_ahq63"]
+resource_name = "slime"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slime:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.500257, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.14, 0.56, 1.14), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_b58ev"]
+resource_name = "slime_attacked"
+length = 0.1333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("slime:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.1333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(1.1, 1.2, 1.1), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b58ev"]
+_data = {
+&"RESET": SubResource("Animation_4h4y0"),
+&"slime": SubResource("Animation_ahq63"),
+&"slime_attacked": SubResource("Animation_b58ev")
+}
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b58ev"]
+height = 0.634888
+radius = 0.62207
+
+[node name="Slime" type="Node3D" node_paths=PackedStringArray("mesh")]
+script = ExtResource("1_ahq63")
+enemy_stats = ExtResource("2_4h4y0")
+mesh = NodePath("slime/Sphere")
+
+[node name="slime" type="Node3D" parent="."]
+
+[node name="Sphere" type="MeshInstance3D" parent="slime"]
+mesh = SubResource("ArrayMesh_dss4m")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_7t5mc")
+
+[node name="EnemyHitbox" type="Area3D" parent="."]
+collision_layer = 384
+collision_mask = 68
+script = ExtResource("4_b58ev")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EnemyHitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.44403, 0)
+shape = SubResource("CylinderShape3D_xo05s")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_b58ev")
+}
+autoplay = "slime"
+speed_scale = 0.3
+next/slime_attacked = &"slime"
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.317444, 0)
+shape = SubResource("CylinderShape3D_b58ev")
+
+[connection signal="area_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_area_entered"]

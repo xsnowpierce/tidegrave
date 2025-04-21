@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpo3t3klbra2l"]
+
+[ext_resource type="PackedScene" uid="uid://cghk6p8m47u1m" path="res://levels/dungeon1/wall2.fbx" id="1_1yxst"]
+[ext_resource type="Material" uid="uid://ddm31ghl4jbdn" path="res://models/materials/floor.tres" id="2_jkmem"]
+[ext_resource type="Material" uid="uid://nr5tjnmq0f0k" path="res://models/materials/wall.tres" id="3_xoj4d"]
+
+[node name="wall2" instance=ExtResource("1_1yxst")]
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = ExtResource("2_jkmem")
+surface_material_override/1 = ExtResource("3_xoj4d")
