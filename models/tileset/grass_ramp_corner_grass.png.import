@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpxxbkof0nhhv"
-path.s3tc="res://.godot/imported/home_island_brick_wall.png-ecfb8552a533648a54939a3db7bbc377.s3tc.ctex"
+uid="uid://k6qsewae32oj"
+path.s3tc="res://.godot/imported/grass_ramp_corner_grass.png-b9f78aab988eecb8e333049ce413b97d.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "07efe6170bd53e1dda8c0763bdd922ef"
+"md5": "84cb0f08acee9c24aa5988f1fbd97f95"
 }
 
 [deps]
 
-source_file="res://models/home_island_brick_wall.png"
-dest_files=["res://.godot/imported/home_island_brick_wall.png-ecfb8552a533648a54939a3db7bbc377.s3tc.ctex"]
+source_file="res://models/tileset/grass_ramp_corner_grass.png"
+dest_files=["res://.godot/imported/grass_ramp_corner_grass.png-b9f78aab988eecb8e333049ce413b97d.s3tc.ctex"]
 
 [params]
 

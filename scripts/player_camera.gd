@@ -4,7 +4,7 @@ extends Camera3D
 @export_group("Nodes")
 
 #Character root node.
-@export var character : CharacterBody3D
+@export var character : Player
 
 #Head node.
 @export var head : Node3D
@@ -31,13 +31,13 @@ extends Camera3D
 #min pitch in degrees.
 @export var min_pitch : float = -89
 
-
-
 func _ready():
 	$AnimationPlayer.play("head_bob")
 	Input.set_use_accumulated_input(false)
 
 func _process(_delta: float) -> void:
+	if(!character.can_player_look()):
+		return
 	var animation_speed : float = player_movement.get_velocity_magnitude() * head_bob_speed
 	if(!character.is_on_floor()):
 		animation_speed = 0
@@ -48,11 +48,9 @@ func _process(_delta: float) -> void:
 		apply_look(look_vector)
 
 func _unhandled_input(event)->void:
+	if(!character.can_player_look()):
+		return
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED:
-		if event is InputEventKey:
-			if event.is_action_pressed("ui_cancel"):
-				get_tree().quit()
-		 
 		if event is InputEventMouseButton:
 			if event.button_index == 1:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://mbduwu46b22n"
-path="res://.godot/imported/house.glb-f738a752d349bde5fd3e0f6c8db3572c.scn"
+uid="uid://ccs0q7e5c14lw"
+path="res://.godot/imported/dirt_tile.glb-8dd7d0aa9d50ecefc56ac67be5fa7ef6.scn"
 
 [deps]
 
-source_file="res://models/house.glb"
-dest_files=["res://.godot/imported/house.glb-f738a752d349bde5fd3e0f6c8db3572c.scn"]
+source_file="res://models/tileset/dirt_tile.glb"
+dest_files=["res://.godot/imported/dirt_tile.glb-8dd7d0aa9d50ecefc56ac67be5fa7ef6.scn"]
 
 [params]
 
@@ -32,6 +32,14 @@ animation/trimming=false
 animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
-_subresources={}
+_subresources={
+"nodes": {
+"PATH:Plane": {
+"generate/navmesh": 1,
+"generate/occluder": 1,
+"generate/physics": true
+}
+}
+}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

@@ -4,7 +4,15 @@ class_name PlayerCombat
 
 var is_attacking : bool
 
+var character : Player
+
+func _ready() -> void:
+	character = get_parent()
+
 func _on_player_input_attack_pressed() -> void:
+	
+	if(!character.can_player_attack()):
+		return
 	
 	# Don't continue if we're attacking, don't have a weapon or don't have maximum stamina.
 	if(is_attacking or !%PlayerInventory.equipped_weapon or %PlayerStats.current_stamina < %PlayerStats.max_stamina):

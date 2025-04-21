@@ -12,12 +12,14 @@ var player : Player
 var current_scene : Node3D
 
 func _ready() -> void:
-	current_scene = start_scene.instantiate()
-	add_child(current_scene)
+	if(start_scene):
+		current_scene = start_scene.instantiate()
+		add_child(current_scene)
 	
-	player = player_scene.instantiate()
-	add_child(player)
-	player.global_position = player_spawn_location
+	if(player_scene):
+		player = player_scene.instantiate()
+		add_child(player)
+		player.global_position = player_spawn_location
 
 func load_new_level(loadlevel : LoadLevel) -> void:
 	current_scene.queue_free()

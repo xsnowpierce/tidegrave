@@ -9,7 +9,8 @@ var default_parent : Node
 
 enum PLAYER_STATE {
 	PLAYER_CONTROL,
-	BOAT
+	BOAT,
+	PICKUP_ITEM
 }
 
 var playerState : PLAYER_STATE = PLAYER_STATE.PLAYER_CONTROL
@@ -42,3 +43,23 @@ func exit_boat() -> void:
 
 func get_player_stats() -> PlayerStats:
 	return $PlayerStats
+
+func get_pickup_item_location() -> Node3D:
+	return $"Head/Player Camera/Item Pickup Position"
+
+func pickup_item(item : PickupItemInteractable) -> void:
+	change_player_state(PLAYER_STATE.PICKUP_ITEM)
+	%PlayerPickupItem.pickup_item(item)
+
+func can_player_move() -> bool:
+	if(playerState != PLAYER_STATE.PLAYER_CONTROL):
+		return false
+	return true
+
+func can_player_look() -> bool:
+	if(playerState != PLAYER_STATE.PLAYER_CONTROL and playerState != PLAYER_STATE.BOAT):
+		return false
+	return true
+
+func can_player_attack() -> bool:
+	return can_player_move()

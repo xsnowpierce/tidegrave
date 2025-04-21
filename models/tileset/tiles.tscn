@@ -1,0 +1,530 @@
+[gd_scene load_steps=57 format=3 uid="uid://budfr7pi50uev"]
+
+[ext_resource type="Texture2D" uid="uid://dpl2tutgsnjeu" path="res://models/tileset/dirt_ramp_dirt_path.png" id="1_pjoyr"]
+[ext_resource type="Texture2D" uid="uid://mc1qbvn3jo5b" path="res://models/tileset/dirt_tile_dirt_path.png" id="2_yslh6"]
+[ext_resource type="Texture2D" uid="uid://luhirf7whnnu" path="res://models/tileset/grass_tile_grass.png" id="3_n3r5o"]
+[ext_resource type="Texture2D" uid="uid://b8ygxoal748fu" path="res://models/tileset/grass_ramp_grass.png" id="4_mbja0"]
+[ext_resource type="Texture2D" uid="uid://k6qsewae32oj" path="res://models/tileset/grass_ramp_corner_grass.png" id="5_n3r5o"]
+[ext_resource type="Texture2D" uid="uid://5r2cxat3ldy4" path="res://models/tileset/dirt_ramp_corner_dirt_path.png" id="6_mbja0"]
+[ext_resource type="Texture2D" uid="uid://b60v16i1b3xro" path="res://models/tileset/grass_ramp_corner_2_grass.png" id="7_8tqnt"]
+[ext_resource type="Texture2D" uid="uid://bxtydqcuikclq" path="res://models/tileset/dirt_ramp_corner_2_dirt_path.png" id="8_1g62t"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7kxi"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("1_pjoyr")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_71jyu"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_supds"]
+resource_name = "dirt_ramp_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_l7kxi"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 38, 194, 255, 255, 0, 0, 0, 0, 38, 194, 255, 255, 0, 0, 255, 255, 38, 194, 0, 0, 255, 255, 0, 0, 38, 194, 241, 214, 120, 107, 241, 214, 120, 107, 241, 214, 120, 107, 241, 214, 120, 107)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_71jyu")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_a68m2"]
+data = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 1, 1, -1, 1, -1, 1, 0, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_44fm1"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 1, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_3ogp6"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 1, -1)
+indices = PackedInt32Array(0, 1, 2, 0, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ty0m"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("2_yslh6")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_3t4dd"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_cv85s"]
+resource_name = "dirt_tile_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_0ty0m"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_3t4dd")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_4b472"]
+data = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_y5tne"]
+vertices = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_qicxg"]
+vertices = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+indices = PackedInt32Array(0, 1, 2, 0, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4scg0"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("3_n3r5o")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_34lgw"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_qurk7"]
+resource_name = "grass_tile_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1e-05, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_4scg0"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 0, 0, 255, 255, 255, 191, 255, 255, 0, 0, 0, 0, 255, 191, 255, 255, 0, 0, 255, 255, 255, 191, 0, 0, 0, 0, 0, 0, 255, 191, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_34lgw")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_5b3x7"]
+data = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, 1, -1, 0, -1, 1, 0, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_1ucvs"]
+vertices = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_3wupy"]
+vertices = PackedVector3Array(-1, 0, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+indices = PackedInt32Array(0, 1, 2, 0, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dtx7b"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("4_mbja0")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_td6gt"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_sjris"]
+resource_name = "grass_ramp_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 0, 0, 3, 0, 1, 0),
+"material": SubResource("StandardMaterial3D_dtx7b"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 38, 194, 255, 255, 0, 0, 0, 0, 38, 194, 255, 255, 0, 0, 255, 255, 38, 194, 0, 0, 255, 255, 0, 0, 38, 194, 241, 214, 120, 107, 241, 214, 120, 107, 241, 214, 120, 107, 241, 214, 120, 107)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_td6gt")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_vbih5"]
+data = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 1, 1, -1, 1, -1, 1, 0, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_v61co"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 1, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(0, 3, 1)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_ddcda"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 1, -1)
+indices = PackedInt32Array(0, 1, 2, 0, 3, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cbntw"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("5_n3r5o")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_il77r"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_pbonk"]
+resource_name = "grass_ramp_corner_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_cbntw"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 46, 202, 255, 255, 0, 0, 0, 0, 46, 202, 255, 255, 0, 0, 255, 255, 38, 194, 0, 0, 0, 0, 0, 0, 227, 210, 244, 232, 64, 115, 244, 232, 64, 115, 241, 214, 120, 107, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_il77r")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_grnir"]
+data = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 0, -1, -1, 1, 1, -1, 0, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_nnp83"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 0, 3)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_58xol"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+indices = PackedInt32Array(0, 1, 2, 1, 0, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_f5lu6"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("6_mbja0")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_816s3"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_b8map"]
+resource_name = "dirt_ramp_corner_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_f5lu6"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 46, 202, 255, 255, 0, 0, 0, 0, 46, 202, 255, 255, 0, 0, 255, 255, 38, 194, 0, 0, 0, 0, 0, 0, 227, 210, 244, 232, 64, 115, 244, 232, 64, 115, 241, 214, 120, 107, 255, 255, 255, 127)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_816s3")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_wokvp"]
+data = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, 1, 0, -1, -1, 1, 1, -1, 0, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_2b5k5"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 0, 3)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_8gkdf"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 0, 1, -1, 0, -1)
+indices = PackedInt32Array(0, 1, 2, 1, 0, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_toru2"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("7_8tqnt")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_407ks"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_wsug7"]
+resource_name = "grass_ramp_corner_2_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_toru2"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 46, 202, 255, 255, 0, 0, 0, 0, 46, 202, 255, 255, 255, 255, 255, 255, 227, 210, 0, 0, 255, 255, 0, 0, 38, 194, 244, 232, 64, 115, 244, 232, 64, 115, 255, 255, 255, 127, 241, 214, 120, 107)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_407ks")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_qumqv"]
+data = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 1, 1, 1, 0, -1, -1, 1, 1, -1, 1, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_p8681"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 1, 1, -1, 1, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 0, 3)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_txjml"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 1, 1, -1, 1, -1)
+indices = PackedInt32Array(0, 1, 2, 1, 0, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t7g3f"]
+resource_name = "Grass"
+cull_mode = 2
+albedo_texture = ExtResource("8_1g62t")
+texture_filter = 2
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_rx5ea"]
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"format": 34896613377,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 0, 0, 0, 0, 0, 0, 255, 255, 255, 255, 255, 255, 0, 0, 0, 0, 255, 255, 0, 0, 0, 0)
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_lgirw"]
+resource_name = "dirt_ramp_corner_2_Plane"
+_surfaces = [{
+"aabb": AABB(-1, 0, -1, 2, 1, 2),
+"attribute_data": PackedByteArray(0, 0, 255, 255, 255, 255, 0, 0, 255, 255, 255, 255, 0, 0, 0, 0),
+"format": 34896613399,
+"index_count": 6,
+"index_data": PackedByteArray(0, 0, 1, 0, 2, 0, 1, 0, 0, 0, 3, 0),
+"material": SubResource("StandardMaterial3D_t7g3f"),
+"name": "Grass",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 4,
+"vertex_data": PackedByteArray(0, 0, 255, 255, 255, 255, 46, 202, 255, 255, 0, 0, 0, 0, 46, 202, 255, 255, 255, 255, 255, 255, 227, 210, 0, 0, 255, 255, 0, 0, 38, 194, 244, 232, 64, 115, 244, 232, 64, 115, 255, 255, 255, 127, 241, 214, 120, 107)
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_rx5ea")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_1tdy8"]
+data = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 1, 1, 1, 0, -1, -1, 1, 1, -1, 1, -1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_x3082"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 1, 1, -1, 1, -1)
+polygons = [PackedInt32Array(0, 1, 2), PackedInt32Array(1, 0, 3)]
+
+[sub_resource type="ArrayOccluder3D" id="ArrayOccluder3D_r87an"]
+vertices = PackedVector3Array(-1, 1, 1, 1, 0, -1, 1, 1, 1, -1, 1, -1)
+indices = PackedInt32Array(0, 1, 2, 1, 0, 3)
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Dirt Ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+mesh = SubResource("ArrayMesh_supds")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dirt Ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt Ramp/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_a68m2")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Dirt Ramp"]
+navigation_mesh = SubResource("NavigationMesh_44fm1")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Dirt Ramp"]
+occluder = SubResource("ArrayOccluder3D_3ogp6")
+
+[node name="Dirt Tile" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.99994)
+mesh = SubResource("ArrayMesh_cv85s")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dirt Tile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt Tile/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_4b472")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Dirt Tile"]
+navigation_mesh = SubResource("NavigationMesh_y5tne")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Dirt Tile"]
+occluder = SubResource("ArrayOccluder3D_qicxg")
+
+[node name="Grass Tile" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_qurk7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass Tile"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass Tile/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_5b3x7")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Grass Tile"]
+navigation_mesh = SubResource("NavigationMesh_1ucvs")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Grass Tile"]
+occluder = SubResource("ArrayOccluder3D_3wupy")
+
+[node name="Grass Ramp" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+mesh = SubResource("ArrayMesh_sjris")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass Ramp"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass Ramp/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_vbih5")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Grass Ramp"]
+navigation_mesh = SubResource("NavigationMesh_v61co")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Grass Ramp"]
+occluder = SubResource("ArrayOccluder3D_ddcda")
+
+[node name="Grass Ramp Corner" type="MeshInstance3D" parent="."]
+mesh = SubResource("ArrayMesh_pbonk")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass Ramp Corner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass Ramp Corner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_grnir")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Grass Ramp Corner"]
+navigation_mesh = SubResource("NavigationMesh_nnp83")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Grass Ramp Corner"]
+occluder = SubResource("ArrayOccluder3D_58xol")
+
+[node name="Dirt Ramp Corner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
+mesh = SubResource("ArrayMesh_b8map")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dirt Ramp Corner"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt Ramp Corner/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_wokvp")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Dirt Ramp Corner"]
+navigation_mesh = SubResource("NavigationMesh_2b5k5")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Dirt Ramp Corner"]
+occluder = SubResource("ArrayOccluder3D_8gkdf")
+
+[node name="Grass Ramp Corner 2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+mesh = SubResource("ArrayMesh_wsug7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Grass Ramp Corner 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grass Ramp Corner 2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_qumqv")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Grass Ramp Corner 2"]
+navigation_mesh = SubResource("NavigationMesh_p8681")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Grass Ramp Corner 2"]
+occluder = SubResource("ArrayOccluder3D_txjml")
+
+[node name="Dirt Ramp Corner 2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
+mesh = SubResource("ArrayMesh_lgirw")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Dirt Ramp Corner 2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dirt Ramp Corner 2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_1tdy8")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="Dirt Ramp Corner 2"]
+navigation_mesh = SubResource("NavigationMesh_x3082")
+
+[node name="OccluderInstance3D" type="OccluderInstance3D" parent="Dirt Ramp Corner 2"]
+occluder = SubResource("ArrayOccluder3D_r87an")

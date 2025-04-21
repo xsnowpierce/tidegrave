@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=29 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player_stats.gd" id="2_1jxqw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://di3l02i41lrtf" path="res://scripts/player_inventory.gd" id="10_d2wvv"]
 [ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/weapons/sword.tres" id="11_3v2ag"]
 [ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scripts/player_attack_hitbox.gd" id="13_jej6c"]
+[ext_resource type="Script" uid="uid://byorchnqvpehk" path="res://scenes/player_pickup_item.gd" id="13_oprun"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player_hitbox.gd" id="14_f1ej7"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
@@ -168,6 +169,7 @@ script = ExtResource("1_hqtel")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, 0)
 
 [node name="Player Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("character", "head", "player_movement")]
+unique_name_in_owner = true
 environment = ExtResource("2_2hs0m")
 current = true
 fov = 60.0
@@ -306,7 +308,12 @@ script = ExtResource("2_1jxqw")
 max_health = 10.0
 max_stamina = 10.0
 
+[node name="PlayerPickupItem" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("13_oprun")
+
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_dw050")]
+unique_name_in_owner = true
 player = NodePath("..")
 damage_flash_colour = Color(1, 0, 0, 0.556863)
 
@@ -319,6 +326,31 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
+[node name="Background" type="ColorRect" parent="Pause Menu"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.1
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Pause Menu/Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/Background/HBoxContainer"]
+layout_mode = 2
+
+[node name="Control" type="Control" parent="Pause Menu/Background/HBoxContainer"]
+layout_mode = 2
+
 [node name="PlayerHitbox" type="Area3D" parent="."]
 collision_layer = 4
 collision_mask = 256
@@ -327,6 +359,14 @@ script = ExtResource("14_f1ej7")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("BoxShape3D_jej6c")
+
+[node name="Item Pickup Position" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, -0.97914)
+
+[node name="Item Accept Pickup Position" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527047, 1.05893, -0.320865)
 
 [connection signal="player_state_changed" from="." to="PlayerMovement" method="_on_player_player_state_changed"]
 [connection signal="area_entered" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_entered"]

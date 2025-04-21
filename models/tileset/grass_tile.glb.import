@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cjiccpwev2d5x"
-path="res://.godot/imported/home_island.glb-bb0ebbcbdef4c4e0818b95f8de6f8fae.scn"
+uid="uid://cto16yye24c5l"
+path="res://.godot/imported/grass_tile.glb-42dd6bd1f51855f26e5b4a56e8413b5e.scn"
 
 [deps]
 
-source_file="res://models/home_island.glb"
-dest_files=["res://.godot/imported/home_island.glb-bb0ebbcbdef4c4e0818b95f8de6f8fae.scn"]
+source_file="res://models/tileset/grass_tile.glb"
+dest_files=["res://.godot/imported/grass_tile.glb-42dd6bd1f51855f26e5b4a56e8413b5e.scn"]
 
 [params]
 
@@ -34,10 +34,9 @@ animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
 "nodes": {
-"PATH:Cube": {
-"generate/physics": true
-},
 "PATH:Plane": {
+"generate/navmesh": 1,
+"generate/occluder": 1,
 "generate/physics": true
 }
 }

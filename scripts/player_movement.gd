@@ -11,7 +11,14 @@ class_name PlayerMovement
 var current_speed : float;
 var player_has_control : bool
 
+var character : Player
+
+func _ready() -> void:
+	character = get_parent()
+
 func _process(delta: float) -> void:
+	if(!character.can_player_move()):
+		return
 	if not character3d.is_on_floor():
 		character3d.velocity += character3d.get_gravity() * delta;
 	

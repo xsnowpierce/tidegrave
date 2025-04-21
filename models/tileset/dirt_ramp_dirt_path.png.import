@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vcrjtbh8wl1c"
-path.s3tc="res://.godot/imported/house_roof.png-ff435716510d72e26f4a56e609a20652.s3tc.ctex"
+uid="uid://dpl2tutgsnjeu"
+path.s3tc="res://.godot/imported/dirt_ramp_dirt_path.png-9fee07e4dd99dfd88cb44351f04a73c0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "74de0bb8b83019915f14b986806b5722"
+"md5": "a3be4da95901267bede2880dcd804da8"
 }
 
 [deps]
 
-source_file="res://models/house_roof.png"
-dest_files=["res://.godot/imported/house_roof.png-ff435716510d72e26f4a56e609a20652.s3tc.ctex"]
+source_file="res://models/tileset/dirt_ramp_dirt_path.png"
+dest_files=["res://.godot/imported/dirt_ramp_dirt_path.png-9fee07e4dd99dfd88cb44351f04a73c0.s3tc.ctex"]
 
 [params]
 

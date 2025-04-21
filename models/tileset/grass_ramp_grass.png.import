@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnxmacrtrolty"
-path.s3tc="res://.godot/imported/house_brick_wall.png-3935d97ae17700ba90ea1fe9847ff31a.s3tc.ctex"
+uid="uid://b8ygxoal748fu"
+path.s3tc="res://.godot/imported/grass_ramp_grass.png-29262db14f271d31fe919e5c249d75cc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "07efe6170bd53e1dda8c0763bdd922ef"
+"md5": "84cb0f08acee9c24aa5988f1fbd97f95"
 }
 
 [deps]
 
-source_file="res://models/house_brick_wall.png"
-dest_files=["res://.godot/imported/house_brick_wall.png-3935d97ae17700ba90ea1fe9847ff31a.s3tc.ctex"]
+source_file="res://models/tileset/grass_ramp_grass.png"
+dest_files=["res://.godot/imported/grass_ramp_grass.png-29262db14f271d31fe919e5c249d75cc.s3tc.ctex"]
 
 [params]
 
