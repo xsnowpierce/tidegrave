@@ -33,6 +33,12 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Grass": {
+"use_external/enabled": true,
+"use_external/path": "uid://ybi1s4bqpu5t"
+}
+},
 "nodes": {
 "PATH:Plane": {
 "generate/navmesh": 1,

@@ -2,23 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ch5dl4rwk3rj2"
-path="res://.godot/imported/wall3_1.png-9b618ee82b170c5627676b3c894358bd.ctex"
+uid="uid://dc0n3f6n1un0l"
+path.s3tc="res://.godot/imported/grass.png-ad0dab249a882c651e72a04c54d6c2c3.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "697f0c08900a1a0898f530de010cfabe"
+"md5": "84cb0f08acee9c24aa5988f1fbd97f95"
 }
 
 [deps]
 
-source_file="res://levels/dungeon1/wall3_1.png"
-dest_files=["res://.godot/imported/wall3_1.png-9b618ee82b170c5627676b3c894358bd.ctex"]
+source_file="res://levels/island/materials/grass.png"
+dest_files=["res://.godot/imported/grass.png-ad0dab249a882c651e72a04c54d6c2c3.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -34,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -3,7 +3,7 @@ extends UIPausePanel
 class_name UIPausePanelItemSelect
 
 @onready var button_holder: VBoxContainer = $"Items/MarginContainer/ScrollContainer/Button Holder"
-const UI_ITEM_SELECT_ITEM = preload("res://scenes/ui_item_select_item.tscn")
+const UI_ITEM_SELECT_ITEM = preload("res://characters/player/ui_item_select_item.tscn")
 @onready var take_off_button: Button = $"Items/MarginContainer/ScrollContainer/Button Holder/Take Off Button"
 @onready var mesh_instance: Node3D = $"Items/Item Image/SubViewportContainer/SubViewport/MeshInstance"
 

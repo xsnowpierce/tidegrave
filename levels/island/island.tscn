@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://hjon4x0ap5j"]
+[gd_scene load_steps=6 format=3 uid="uid://hjon4x0ap5j"]
 
-[ext_resource type="PackedScene" uid="uid://e1tm5y3py37g" path="res://models/untitled.blend" id="1_1uhhg"]
+[ext_resource type="PackedScene" uid="uid://e1tm5y3py37g" path="res://models/blender_files/main_island.blend" id="1_1uhhg"]
+[ext_resource type="Material" uid="uid://br55iak55c2x1" path="res://levels/island/materials/grass.tres" id="2_uunxy"]
 [ext_resource type="Material" uid="uid://08ug2u2ab5d5" path="res://models/materials/grass.tres" id="3_cngje"]
 [ext_resource type="Texture2D" uid="uid://oxpivnycuicq" path="res://levels/island/church_wall.png" id="4_gt8d0"]
 
@@ -15,6 +16,7 @@ texture_filter = 0
 [node name="untitled" instance=ExtResource("1_1uhhg")]
 
 [node name="Circle" parent="." index="0"]
+material_override = ExtResource("2_uunxy")
 surface_material_override/0 = ExtResource("3_cngje")
 
 [node name="Cube_004" parent="." index="1"]

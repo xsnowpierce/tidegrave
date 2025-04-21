@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://e1tm5y3py37g"
-path="res://.godot/imported/untitled.blend-aa04de1fb218960a130137af2a54b147.scn"
+path="res://.godot/imported/main_island.blend-f32de177a8eb929744633a9fbc280114.scn"
 
 [deps]
 
-source_file="res://models/untitled.blend"
-dest_files=["res://.godot/imported/untitled.blend-aa04de1fb218960a130137af2a54b147.scn"]
+source_file="res://models/blender_files/main_island.blend"
+dest_files=["res://.godot/imported/main_island.blend-f32de177a8eb929744633a9fbc280114.scn"]
 
 [params]
 
@@ -33,11 +33,14 @@ animation/remove_immutable_tracks=true
 animation/import_rest_as_RESET=false
 import_script/path=""
 _subresources={
+"materials": {
+"Island Grass": {
+"use_external/enabled": true,
+"use_external/path": "uid://br55iak55c2x1"
+}
+},
 "nodes": {
 "PATH:Circle": {
-"generate/physics": true
-},
-"PATH:Cube": {
 "generate/physics": true
 },
 "PATH:Cube_004": {

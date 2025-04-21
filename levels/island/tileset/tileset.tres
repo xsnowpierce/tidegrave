@@ -1,13 +1,13 @@
 [gd_resource type="MeshLibrary" load_steps=65 format=3 uid="uid://cvn2kutl1ck6c"]
 
-[ext_resource type="Texture2D" uid="uid://dpl2tutgsnjeu" path="res://levels/island/tileset/dirt_ramp_dirt_path.png" id="1_46bnn"]
-[ext_resource type="Texture2D" uid="uid://mc1qbvn3jo5b" path="res://levels/island/tileset/dirt_tile_dirt_path.png" id="2_qdag1"]
+[ext_resource type="Texture2D" uid="uid://dqmby8e0kcbj" path="res://levels/island/tileset/dirt_ramp_dirt_path.png" id="1_46bnn"]
+[ext_resource type="Texture2D" uid="uid://mc1qbvn3jo5b" path="res://levels/island/materials/dirt.png" id="2_qdag1"]
 [ext_resource type="Texture2D" uid="uid://luhirf7whnnu" path="res://levels/island/tileset/grass_tile_grass.png" id="3_fx52c"]
 [ext_resource type="Texture2D" uid="uid://b8ygxoal748fu" path="res://levels/island/tileset/grass_ramp_grass.png" id="4_sb0oo"]
 [ext_resource type="Texture2D" uid="uid://k6qsewae32oj" path="res://levels/island/tileset/grass_ramp_corner_grass.png" id="5_fx52c"]
-[ext_resource type="Texture2D" uid="uid://5r2cxat3ldy4" path="res://levels/island/tileset/dirt_ramp_corner_dirt_path.png" id="6_sb0oo"]
+[ext_resource type="Texture2D" uid="uid://u3w1ofm2j6kq" path="res://levels/island/tileset/dirt_ramp_corner_dirt_path.png" id="6_sb0oo"]
 [ext_resource type="Texture2D" uid="uid://b60v16i1b3xro" path="res://levels/island/tileset/grass_ramp_corner_2_grass.png" id="7_slq65"]
-[ext_resource type="Texture2D" uid="uid://bxtydqcuikclq" path="res://levels/island/tileset/dirt_ramp_corner_2_dirt_path.png" id="8_gvtcn"]
+[ext_resource type="Texture2D" uid="uid://4ou8cudrgx0e" path="res://levels/island/tileset/dirt_ramp_corner_2_dirt_path.png" id="8_gvtcn"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l7kxi"]
 resource_name = "Grass"

@@ -2,11 +2,14 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://etue2hhgyigf"
+uid="uid://dqmby8e0kcbj"
 path.s3tc="res://.godot/imported/dirt_ramp_dirt_path.png-f369073beef9b9d162ceed2ae7568387.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
+}
+generator_parameters={
+"md5": "a3be4da95901267bede2880dcd804da8"
 }
 
 [deps]

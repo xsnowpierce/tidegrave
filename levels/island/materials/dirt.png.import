@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dg8lmkldnmw2s"
-path.s3tc="res://.godot/imported/wall_1.png-c74964b75b0537a55144bb71f59d6f7e.s3tc.ctex"
+uid="uid://mc1qbvn3jo5b"
+path.s3tc="res://.godot/imported/dirt.png-f599b30cafed7aec73ee757642959283.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "697f0c08900a1a0898f530de010cfabe"
+"md5": "a3be4da95901267bede2880dcd804da8"
 }
 
 [deps]
 
-source_file="res://levels/dungeon1/wall_1.png"
-dest_files=["res://.godot/imported/wall_1.png-c74964b75b0537a55144bb71f59d6f7e.s3tc.ctex"]
+source_file="res://levels/island/materials/dirt.png"
+dest_files=["res://.godot/imported/dirt.png-f599b30cafed7aec73ee757642959283.s3tc.ctex"]
 
 [params]
 

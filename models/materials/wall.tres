@@ -1,6 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://nr5tjnmq0f0k"]
-
-[resource]
-cull_mode = 2
-texture_filter = 0
-texture_repeat = false

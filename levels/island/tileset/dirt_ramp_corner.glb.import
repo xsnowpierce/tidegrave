@@ -36,7 +36,7 @@ _subresources={
 "materials": {
 "Grass": {
 "use_external/enabled": true,
-"use_external/path": ""
+"use_external/path": "uid://ybi1s4bqpu5t"
 }
 },
 "nodes": {

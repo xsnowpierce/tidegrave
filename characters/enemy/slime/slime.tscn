@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://f6bnnl758quq" path="res://scripts/enemy/Enemy.gd" id="1_ahq63"]
 [ext_resource type="Shader" uid="uid://bfr3j5emjac3n" path="res://characters/enemy/slime/slime_shader.tres" id="1_rldp6"]
-[ext_resource type="Resource" uid="uid://dse4qqh6jjops" path="res://resources/enemystats/slime.tres" id="2_4h4y0"]
+[ext_resource type="Resource" uid="uid://dse4qqh6jjops" path="res://characters/enemy/slime/slime.tres" id="2_4h4y0"]
 [ext_resource type="Script" uid="uid://mhhledaqsq78" path="res://scripts/enemy/enemy_hitbox.gd" id="4_b58ev"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfxm5"]

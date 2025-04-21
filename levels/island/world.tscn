@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://dfud7vje5557b" path="res://models/weapons/straight_sword.glb" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://dyvvbvki6r55n" path="res://characters/npc/cetmyr/cetmyr.glb" id="9_7t5mc"]
 [ext_resource type="Script" uid="uid://csaq3oacdxvwh" path="res://scripts/item/pickup_item_interactable.gd" id="9_w7kh3"]
-[ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/weapons/sword.tres" id="10_e3hyu"]
-[ext_resource type="Resource" uid="uid://cfmof8qrvwdmq" path="res://resources/armour/chestplate.tres" id="12_jhx03"]
+[ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/items/weapons/sword.tres" id="10_e3hyu"]
+[ext_resource type="Resource" uid="uid://cfmof8qrvwdmq" path="res://resources/items/armour/chestplate.tres" id="12_jhx03"]
 [ext_resource type="PackedScene" uid="uid://drwblo7gukvil" path="res://models/armour/chestplate2.glb" id="13_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://cdfb1jghuedd2" path="res://characters/enemy/slime/slime.tscn" id="15_xo05s"]
 
