@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bccdmclusd5u7"]
+[gd_scene load_steps=17 format=3 uid="uid://bccdmclusd5u7"]
 
 [ext_resource type="PackedScene" uid="uid://hjon4x0ap5j" path="res://scenes/island.tscn" id="1_4mrxx"]
 [ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://scenes/environment.tres" id="1_dwbse"]
@@ -8,8 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://hv4ukaucmrok" path="res://models/father_altrius.glb" id="6_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://dfud7vje5557b" path="res://models/weapons/straight_sword.glb" id="9_7r4gi"]
 [ext_resource type="PackedScene" uid="uid://dyvvbvki6r55n" path="res://models/cetmyr.glb" id="9_7t5mc"]
-[ext_resource type="Script" uid="uid://csaq3oacdxvwh" path="res://scenes/pickup_item_interactable.gd" id="9_w7kh3"]
+[ext_resource type="Script" uid="uid://csaq3oacdxvwh" path="res://scripts/pickup_item_interactable.gd" id="9_w7kh3"]
 [ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/weapons/sword.tres" id="10_e3hyu"]
+[ext_resource type="Resource" uid="uid://cfmof8qrvwdmq" path="res://resources/armour/chestplate.tres" id="12_jhx03"]
+[ext_resource type="PackedScene" uid="uid://drwblo7gukvil" path="res://models/armour/chestplate2.glb" id="13_o8fc1"]
 [ext_resource type="PackedScene" uid="uid://cdfb1jghuedd2" path="res://scenes/enemies/slime.tscn" id="15_xo05s"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_b2yaj"]
@@ -74,4 +76,19 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.23108, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup Item"]
+shape = SubResource("SphereShape3D_w7kh3")
+
+[node name="Pickup Item2" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.142622, 1.71672, 2.83154)
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("9_w7kh3")
+holding_item = ExtResource("12_jhx03")
+
+[node name="Mesh Centre" type="Node3D" parent="Pickup Item2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0132865, 0)
+
+[node name="chestplate2" parent="Pickup Item2/Mesh Centre" instance=ExtResource("13_o8fc1")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pickup Item2"]
 shape = SubResource("SphereShape3D_w7kh3")

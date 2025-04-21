@@ -57,9 +57,12 @@ func can_player_move() -> bool:
 	return true
 
 func can_player_look() -> bool:
-	if(playerState != PLAYER_STATE.PLAYER_CONTROL and playerState != PLAYER_STATE.BOAT):
+	if((playerState != PLAYER_STATE.PLAYER_CONTROL and playerState != PLAYER_STATE.BOAT) or %"Pause Menu".pause_menu_open):
 		return false
 	return true
 
 func can_player_attack() -> bool:
-	return can_player_move()
+	return can_player_move() and !%"Pause Menu".pause_menu_open
+
+func get_inventory() -> PlayerInventory:
+	return %"PlayerInventory"

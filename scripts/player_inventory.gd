@@ -11,6 +11,7 @@ var inventory_items : Dictionary[InventoryItem, int]
 @export var equipped_gauntlets : InventoryArmour
 @export var equipped_leggings : InventoryArmour
 @export var equipped_shield : InventoryArmour
+@export var equipped_item : InventoryItem
 
 func _ready() -> void:
 	if(equipped_weapon):
@@ -50,7 +51,7 @@ func equip_item(item : InventoryEquippable) -> void:
 		%PlayerStats.set_stamina_recover_speed(item.cooldown_speed)
 	
 	elif(item is InventoryArmour):
-		match(item.EQUIP_TYPE):
+		match(item.equip_type):
 			InventoryArmour.EQUIP_TYPE.HELMET:
 				equipped_helmet = item
 			InventoryArmour.EQUIP_TYPE.CHESTPLATE:

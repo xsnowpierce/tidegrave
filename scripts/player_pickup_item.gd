@@ -22,7 +22,8 @@ func _ready() -> void:
 	character = get_parent()
 
 func pickup_item(item : PickupItemInteractable) -> void:
-	
+	if(current_item_pickup):
+		return
 	current_item_pickup = item
 	current_item_original_position = item.global_position
 	current_item_original_rotation = item.global_rotation

@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://di3l02i41lrtf" path="res://scripts/player_inventory.gd" id="10_d2wvv"]
 [ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/weapons/sword.tres" id="11_3v2ag"]
 [ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scripts/player_attack_hitbox.gd" id="13_jej6c"]
-[ext_resource type="Script" uid="uid://byorchnqvpehk" path="res://scenes/player_pickup_item.gd" id="13_oprun"]
+[ext_resource type="Script" uid="uid://byorchnqvpehk" path="res://scripts/player_pickup_item.gd" id="13_oprun"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player_hitbox.gd" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://wsryyhg4yd4r" path="res://scenes/pause_menu.tscn" id="15_a8ls1"]
 
@@ -171,6 +171,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, 0)
 
 [node name="Player Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("character", "head", "player_movement")]
 unique_name_in_owner = true
+process_mode = 1
+cull_mask = 1048571
 environment = ExtResource("2_2hs0m")
 current = true
 fov = 60.0
@@ -337,6 +339,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, -0.97914)
 [node name="Item Accept Pickup Position" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527047, 1.05893, -0.320865)
+
+[node name="SubViewport" type="SubViewport" parent="."]
 
 [connection signal="player_state_changed" from="." to="PlayerMovement" method="_on_player_player_state_changed"]
 [connection signal="area_entered" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_entered"]
