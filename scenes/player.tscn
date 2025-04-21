@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=30 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player_stats.gd" id="2_1jxqw"]
@@ -15,8 +15,7 @@
 [ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scripts/player_attack_hitbox.gd" id="13_jej6c"]
 [ext_resource type="Script" uid="uid://byorchnqvpehk" path="res://scenes/player_pickup_item.gd" id="13_oprun"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player_hitbox.gd" id="14_f1ej7"]
-[ext_resource type="Script" uid="uid://5ciie1nmlavn" path="res://scenes/ui_pause_menu.gd" id="15_a8ls1"]
-[ext_resource type="Script" uid="uid://drtogl2hun737" path="res://scenes/ui_menu_item.gd" id="16_qfm1y"]
+[ext_resource type="PackedScene" uid="uid://wsryyhg4yd4r" path="res://scenes/pause_menu.tscn" id="15_a8ls1"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
 length = 0.001
@@ -319,65 +318,8 @@ unique_name_in_owner = true
 player = NodePath("..")
 damage_flash_colour = Color(1, 0, 0, 0.556863)
 
-[node name="Pause Menu" type="Control" parent="."]
+[node name="Pause Menu" parent="." instance=ExtResource("15_a8ls1")]
 unique_name_in_owner = true
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("15_a8ls1")
-
-[node name="Background" type="ColorRect" parent="Pause Menu"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.1
-anchor_top = 0.1
-anchor_right = 0.9
-anchor_bottom = 0.9
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 0.45098)
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Pause Menu/Background"]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.3
-anchor_bottom = 1.0
-grow_vertical = 2
-mouse_filter = 0
-
-[node name="ColorRect" type="Control" parent="Pause Menu/Background/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Menu Item" type="ColorRect" parent="Pause Menu/Background/VBoxContainer/ColorRect"]
-layout_mode = 1
-anchors_preset = -1
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.521569, 0.521569, 0.521569, 0.47451)
-script = ExtResource("16_qfm1y")
-selected_colour = Color(0.521569, 0.521569, 0.521569, 1)
-deselected_colour = Color(0.521569, 0.521569, 0.521569, 0.47451)
-
-[node name="Label" type="Label" parent="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-text = "Inventory"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="PlayerHitbox" type="Area3D" parent="."]
 collision_layer = 4
@@ -401,9 +343,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527047, 1.05893, -0.320865
 [connection signal="area_exited" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_exited"]
 [connection signal="area_entered" from="Head/Player Camera/AttackHitbox" to="Head/Player Camera/AttackHitbox" method="_on_area_entered"]
 [connection signal="attack_pressed" from="PlayerInput" to="PlayerCombat" method="_on_player_input_attack_pressed"]
-[connection signal="menu_item_mouse_event" from="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item" to="Pause Menu" method="_on_menu_item_menu_item_mouse_event"]
-[connection signal="menu_item_mouse_leave_event" from="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item" to="Pause Menu" method="_on_menu_item_menu_item_mouse_leave_event"]
-[connection signal="mouse_entered" from="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item" to="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item" to="Pause Menu/Background/VBoxContainer/ColorRect/Menu Item" method="_on_mouse_exited"]
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]
 [connection signal="player_attacked" from="PlayerHitbox" to="HUD" method="_on_player_hitbox_player_attacked"]
