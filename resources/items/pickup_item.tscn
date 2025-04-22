@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://chrdtvwvi0kkj"]
+
+[ext_resource type="Script" uid="uid://csaq3oacdxvwh" path="res://scripts/item/pickup_item_interactable.gd" id="1_huy83"]
+[ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/items/weapons/straight_sword/straight_sword.tres" id="2_p2h58"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_w7kh3"]
+
+[node name="Pickup Item" type="Area3D"]
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_huy83")
+holding_item = ExtResource("2_p2h58")
+
+[node name="Mesh Centre" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.0132865, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_w7kh3")

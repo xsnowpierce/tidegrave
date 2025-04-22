@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dp8wa4edprna3"]
+
+[ext_resource type="PackedScene" uid="uid://bl8ykwksgrawm" path="res://models/chest/chest.glb" id="1_v4tp4"]
+
+[node name="chest" instance=ExtResource("1_v4tp4")]

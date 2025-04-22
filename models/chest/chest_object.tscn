@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://r5vmjrts3spl"]
+
+[ext_resource type="Script" uid="uid://ci04j8ovllvt2" path="res://levels/island/chest_interactable.gd" id="1_sbig3"]
+[ext_resource type="Resource" uid="uid://ctp4spwvdaarf" path="res://resources/items/weapons/epee/epee.tres" id="2_m1y47"]
+[ext_resource type="PackedScene" uid="uid://dp8wa4edprna3" path="res://models/chest/chest.tscn" id="3_awiwh"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ppdq1"]
+size = Vector3(1, 0.739532, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p6jna"]
+size = Vector3(0.541885, 0.682129, 0.847046)
+
+[node name="Chest" type="Area3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_sbig3")
+holding_item = ExtResource("2_m1y47")
+item_amount = 1
+
+[node name="chest" parent="." instance=ExtResource("3_awiwh")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.369614, 0)
+shape = SubResource("BoxShape3D_ppdq1")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0594559, 0.341553, 0.00115967)
+shape = SubResource("BoxShape3D_p6jna")

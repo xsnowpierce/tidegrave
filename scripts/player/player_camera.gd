@@ -43,6 +43,9 @@ func _process(_delta: float) -> void:
 		animation_speed = 0
 	$AnimationPlayer.speed_scale = animation_speed
 	
+	if(!character.can_player_move()):
+		$AnimationPlayer.speed_scale = 0
+	
 	var look_vector = Input.get_vector("look_left", "look_right", "look_up", "look_down")
 	if(look_vector.length() != 0):
 		apply_look(look_vector)

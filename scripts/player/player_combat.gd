@@ -2,9 +2,16 @@ extends Node
 
 class_name PlayerCombat
 
-var is_attacking : bool
+@onready var weapon_parent: Node3D = $"../Head/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D/WeaponParent"
 
+var is_attacking : bool
 var character : Player
+
+enum ATTACK_ANIMATION_STYLE {
+	SWING,
+	JAB,
+	SMASH
+}
 
 func _ready() -> void:
 	character = get_parent()
@@ -18,16 +25,28 @@ func _on_player_input_attack_pressed() -> void:
 	if(is_attacking or !%PlayerInventory.equipped_weapon or %PlayerStats.current_stamina < %PlayerStats.max_stamina):
 		return
 	
+	var weapon : Node3D = %PlayerInventory.equipped_weapon.item_scene.instantiate()
+	weapon_parent.add_child(weapon)
+	weapon.position = Vector3.ZERO
+	weapon.rotation = Vector3.ZERO
+	
 	is_attacking = true
-	%ArmAnimator.play("swing")
+	
+	match(%PlayerInventory.equipped_weapon.attack_animation_type):
+		ATTACK_ANIMATION_STYLE.SWING:
+			%ArmAnimator.play("swing")
+		ATTACK_ANIMATION_STYLE.JAB:
+			%ArmAnimator.play("jab")
 	
 	%PlayerStats.current_stamina = 0
 	
-	await get_tree().create_timer(0.5).timeout
+	await get_tree().create_timer(%ArmAnimator.current_animation_length / 2).timeout
 	
 	%AttackHitbox.enable_attack_hitbox(%PlayerInventory.equipped_weapon, 0.6)
 	
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(%ArmAnimator.current_animation_length / 2).timeout
 	
 	is_attacking = false
 	%ArmAnimator.play("RESET")
+	
+	weapon.queue_free()

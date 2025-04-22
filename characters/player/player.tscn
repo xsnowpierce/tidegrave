@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
-[ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://levels/island/environment.tres" id="2_2hs0m"]
 [ext_resource type="Script" uid="uid://dfpnth5k6p1u2" path="res://scripts/player/player_camera.gd" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dxmbfb4qphdfj" path="res://scripts/player/player_movement.gd" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://b6b20656cg47d" path="res://scripts/player/player_input.gd" id="4_1jxqw"]
@@ -117,6 +116,13 @@ tracks/2/path = NodePath("Armature/Skeleton3D:Bone")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, 0.000195581, -0.00174368, 0.000939185, 0.999998)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:Bone.003")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.008, 0.016, 0.329, 0.944)
 
 [sub_resource type="Animation" id="Animation_smehm"]
 resource_name = "swing"
@@ -142,9 +148,42 @@ tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.091, 0, 0.996, 1, 1, 0.091, 0.004, 0.995, 0.048)
 
+[sub_resource type="Animation" id="Animation_58jvb"]
+resource_name = "jab"
+length = 0.8
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:Bone.001")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0.896996, 0.000999995, -0.00599997, 0.441998, 0.266667, 1, 0, 0.008, 0.003, 1, 0.8, 1, 0.897, 0.001, -0.006, 0.442)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:Bone")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.315, -0.669, 0.634, 0.226, 0.266667, 1, -0.228, 0.228, 0.67, 0.668, 0.8, 1, -0.315, -0.669, 0.634, 0.226)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:Bone.002")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.035, 0.333, -0.291, 0.896, 0.266667, 1, -0.017, -0.266, 0.054, 0.962, 0.8, 1, 0.035, 0.333, -0.291, 0.896)
+tracks/3/type = "rotation_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Armature/Skeleton3D:Bone.003")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.065, -0.025, 0.585, 0.808, 0.266667, 1, 0.065, -0.025, 0.585, 0.808, 0.8, 1, 0.065, -0.025, 0.585, 0.808)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
 _data = {
 &"RESET": SubResource("Animation_ur7pv"),
+&"jab": SubResource("Animation_58jvb"),
 &"swing": SubResource("Animation_smehm")
 }
 
@@ -171,7 +210,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, 0)
 unique_name_in_owner = true
 process_mode = 1
 cull_mask = 1048571
-environment = ExtResource("2_2hs0m")
 current = true
 fov = 60.0
 near = 0.001
@@ -228,21 +266,21 @@ bones/3/parent = 2
 bones/3/rest = Transform3D(0.999228, -0.0156545, 0.0360209, 0.0158241, 0.999865, -0.00443001, -0.0359467, 0.00499659, 0.999341, 6.00267e-10, 0.0617105, -1.03427e-10)
 bones/3/enabled = true
 bones/3/position = Vector3(6.00267e-10, 0.0617105, -1.03427e-10)
-bones/3/rotation = Quaternion(0.00235711, 0.0179954, 0.00787119, 0.999804)
+bones/3/rotation = Quaternion(0.00800121, 0.0160024, 0.32905, 0.944143)
 bones/3/scale = Vector3(1, 1, 1)
 bones/4/name = "Bone.004"
 bones/4/parent = 2
 bones/4/rest = Transform3D(0.575007, -0.815685, 0.0634427, 0.815685, 0.565536, -0.121765, 0.0634428, 0.121765, 0.990529, 6.00267e-10, 0.0617105, -1.03427e-10)
 bones/4/enabled = true
 bones/4/position = Vector3(6.00267e-10, 0.0617105, -1.03427e-10)
-bones/4/rotation = Quaternion(0.0688138, -2.31583e-08, 0.460974, 0.884742)
+bones/4/rotation = Quaternion(0.0688139, -2.52636e-08, 0.460973, 0.884742)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Bone.005"
 bones/5/parent = 2
 bones/5/rest = Transform3D(0.895779, 0.444268, -0.0143464, -0.444312, 0.895872, 0.000144468, 0.0129167, 0.00624486, 0.999897, 6.00267e-10, 0.0617105, -1.03427e-10)
 bones/5/enabled = true
 bones/5/position = Vector3(6.00267e-10, 0.0617105, -1.03427e-10)
-bones/5/rotation = Quaternion(0.00156646, -0.00700063, -0.22817, 0.973595)
+bones/5/rotation = Quaternion(0.00156646, -0.00700062, -0.22817, 0.973595)
 bones/5/scale = Vector3(1, 1, 1)
 
 [node name="Character" type="MeshInstance3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
@@ -250,7 +288,7 @@ mesh = SubResource("ArrayMesh_bj2ln")
 skin = SubResource("Skin_l7ec2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
-transform = Transform3D(0.999682, -0.000443253, 0.025211, 0.000489357, 0.999998, -0.00182253, -0.0252101, 0.00183429, 0.999681, -3.75268e-05, 0.5563, -0.000181578)
+transform = Transform3D(-0.990491, -0.00422143, 0.137513, 0.127867, -0.397107, 0.908821, 0.0507709, 0.917763, 0.393871, -0.166496, -0.13224, -0.13263)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -333,8 +371,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, -0.97914)
 [node name="Item Accept Pickup Position" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.527047, 1.05893, -0.320865)
-
-[node name="SubViewport" type="SubViewport" parent="."]
 
 [connection signal="player_state_changed" from="." to="PlayerMovement" method="_on_player_player_state_changed"]
 [connection signal="area_entered" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_entered"]
