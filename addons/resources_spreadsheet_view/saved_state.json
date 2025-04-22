@@ -32,12 +32,24 @@
       "resource_name": {
         "visibility": 0.0
       }
+    },
+    "res://resources/items/": {
+      "metadata/_custom_type_script": {
+        "visibility": 0
+      },
+      "resource_local_to_scene": {
+        "visibility": 0
+      },
+      "resource_name": {
+        "visibility": 0
+      }
     }
   },
   "recent_paths": [
     "res://inventory_items/armour/",
     "res://inventory_items/",
-    "res://resources/"
+    "res://resources/",
+    "res://resources/items/"
   ],
   "table_functions": {
     "filter": [
