@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="InventoryItem" load_steps=3 format=3 uid="uid://dbrcymut50xbk"]
+
+[ext_resource type="PackedScene" uid="uid://b73l3vitnbult" path="res://resources/items/dungeon key/dungeon key.glb" id="1_to653"]
+[ext_resource type="Script" uid="uid://bip1mddvvyep8" path="res://scripts/item/inventory_item.gd" id="2_t0o4c"]
+
+[resource]
+script = ExtResource("2_t0o4c")
+name = "Dungeon Key"
+description = "a key"
+item_scene = ExtResource("1_to653")
+centre_mesh_offset = Vector3(0, 0, 0)
+purchase_price = 0
+sell_price = 0
+metadata/_custom_type_script = "uid://bip1mddvvyep8"

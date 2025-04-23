@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://nqu1ftfs2c1y" path="res://scripts/game_loader.gd" id="1_gyfs4"]
 [ext_resource type="PackedScene" uid="uid://ckgju87agli76" path="res://characters/player/player.tscn" id="2_d5x1h"]
-[ext_resource type="PackedScene" uid="uid://bccdmclusd5u7" path="res://levels/island/world.tscn" id="3_8mm7a"]
+[ext_resource type="PackedScene" uid="uid://dt4ibdhjqfriw" path="res://levels/dungeon1/dungeon1.tscn" id="3_gyfs4"]
 
 [node name="SceneManager" type="Node" groups=["SceneManager"]]
 script = ExtResource("1_gyfs4")
 player_scene = ExtResource("2_d5x1h")
-start_scene = ExtResource("3_8mm7a")
+start_scene = ExtResource("3_gyfs4")
 player_spawn_location = Vector3(0, 1.704, 0)

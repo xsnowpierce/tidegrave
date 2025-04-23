@@ -11,10 +11,15 @@ const UI_ITEM_SELECT_ITEM = preload("res://characters/player/ui_item_select_item
 
 var current_buttons : Array[Control]
 
-var item_panel_type : UIPausePanelInventory.ITEM_PANEL_TYPE
+var item_panel_type : UIPausePanelEquipment.ITEM_PANEL_TYPE
 
 signal item_selected(item : InventoryItem)
 var current_item_selected_scene : Node3D
+
+enum ITEM_SELECT_TYPE {
+	INVENTORY,
+	EQUIPMENT
+}
 
 func show_panel() -> void:
 	$"Items/Item Image/SubViewportContainer/SubViewport/AnimationPlayer".play("rotate_item")
@@ -34,34 +39,46 @@ func hide_panel() -> void:
 	if(current_item_selected_scene):
 		current_item_selected_scene.queue_free()
 
-func load_item_type(item_type : UIPausePanelInventory.ITEM_PANEL_TYPE) -> void:
+func load_item_select_type(type : ITEM_SELECT_TYPE) -> void:
+	match(type):
+		ITEM_SELECT_TYPE.INVENTORY:
+			$"Items/Menu Title".text = "   INVENTORY   "
+			take_off_button.hide()
+		ITEM_SELECT_TYPE.EQUIPMENT:
+			$"Items/Menu Title".text = "   EQUIPMENT   "
+			take_off_button.show()
+
+func load_item_type(item_type : UIPausePanelEquipment.ITEM_PANEL_TYPE) -> void:
 	item_panel_type = item_type
 	var inventory : Dictionary[InventoryItem, int] = pause_menu.character.get_inventory().inventory_items
 	var chosen_category_inventory : Dictionary[InventoryItem, int]
 	
-	for key in inventory:
-		if(key is InventoryWeapon):
-			if(item_type == UIPausePanelInventory.ITEM_PANEL_TYPE.WEAPON):
-				chosen_category_inventory[key] = inventory[key]
-		if(key is InventoryArmour):
-			match(item_type):
-				UIPausePanelInventory.ITEM_PANEL_TYPE.SHIELD:
-					if(key.equip_type == key.EQUIP_TYPE.SHIELD):
-						chosen_category_inventory[key] = inventory[key]
-				UIPausePanelInventory.ITEM_PANEL_TYPE.HELMET:
-					if(key.equip_type == key.EQUIP_TYPE.HELMET):
-						chosen_category_inventory[key] = inventory[key]
-				UIPausePanelInventory.ITEM_PANEL_TYPE.CHESTPLATE:
-					if(key.equip_type == key.EQUIP_TYPE.CHESTPLATE):
-						chosen_category_inventory[key] = inventory[key]
-				UIPausePanelInventory.ITEM_PANEL_TYPE.ARMS:
-					if(key.equip_type == key.EQUIP_TYPE.GAUNTLETS):
-						chosen_category_inventory[key] = inventory[key]
-				UIPausePanelInventory.ITEM_PANEL_TYPE.LEGGINGS:
-					if(key.equip_type == key.EQUIP_TYPE.LEGGINGS):
-						chosen_category_inventory[key] = inventory[key]
-		elif(key is InventoryItem):
-			continue
+	if(item_type == UIPausePanelEquipment.ITEM_PANEL_TYPE.ALL):
+		chosen_category_inventory = inventory.duplicate()
+	else:
+		for key in inventory:
+			if(key is InventoryWeapon):
+				if(item_type == UIPausePanelEquipment.ITEM_PANEL_TYPE.WEAPON):
+					chosen_category_inventory[key] = inventory[key]
+			if(key is InventoryArmour):
+				match(item_type):
+					UIPausePanelEquipment.ITEM_PANEL_TYPE.SHIELD:
+						if(key.equip_type == key.EQUIP_TYPE.SHIELD):
+							chosen_category_inventory[key] = inventory[key]
+					UIPausePanelEquipment.ITEM_PANEL_TYPE.HELMET:
+						if(key.equip_type == key.EQUIP_TYPE.HELMET):
+							chosen_category_inventory[key] = inventory[key]
+					UIPausePanelEquipment.ITEM_PANEL_TYPE.CHESTPLATE:
+						if(key.equip_type == key.EQUIP_TYPE.CHESTPLATE):
+							chosen_category_inventory[key] = inventory[key]
+					UIPausePanelEquipment.ITEM_PANEL_TYPE.ARMS:
+						if(key.equip_type == key.EQUIP_TYPE.GAUNTLETS):
+							chosen_category_inventory[key] = inventory[key]
+					UIPausePanelEquipment.ITEM_PANEL_TYPE.LEGGINGS:
+						if(key.equip_type == key.EQUIP_TYPE.LEGGINGS):
+							chosen_category_inventory[key] = inventory[key]
+			elif(key is InventoryItem):
+				continue
 	
 	for key in chosen_category_inventory:
 		var new_button = UI_ITEM_SELECT_ITEM.instantiate()

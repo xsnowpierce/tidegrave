@@ -2,7 +2,7 @@ extends Node
 
 class_name PlayerInventory
 
-var inventory_items : Dictionary[InventoryItem, int]
+@export var inventory_items : Dictionary[InventoryItem, int]
 
 @export_group("Equipped Items")
 @export var equipped_weapon : InventoryWeapon

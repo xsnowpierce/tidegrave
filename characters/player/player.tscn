@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=30 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://oncjf8lbhw26" path="res://characters/player/ingame_hud.tscn" id="8_dw050"]
 [ext_resource type="Script" uid="uid://tk6ujsrpg0v1" path="res://scripts/player/player_combat.gd" id="9_y4r1p"]
 [ext_resource type="Script" uid="uid://di3l02i41lrtf" path="res://scripts/player/player_inventory.gd" id="10_d2wvv"]
+[ext_resource type="Script" uid="uid://26jidbn6glxh" path="res://characters/player/player_use_item.gd" id="11_icpky"]
 [ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scripts/player/player_attack_hitbox.gd" id="13_jej6c"]
 [ext_resource type="Script" uid="uid://byorchnqvpehk" path="res://scripts/player/player_pickup_item.gd" id="13_oprun"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player/player_hitbox.gd" id="14_f1ej7"]
@@ -124,30 +125,6 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = PackedFloat32Array(0, 1, 0.008, 0.016, 0.329, 0.944)
 
-[sub_resource type="Animation" id="Animation_smehm"]
-resource_name = "swing"
-tracks/0/type = "rotation_3d"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Armature/Skeleton3D:Bone.002")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = PackedFloat32Array(0.333333, 1, 0.002, -0.009, -0.359, 0.933, 0.7, 1, -0.003, -0.008, 0.17, 0.985)
-tracks/1/type = "rotation_3d"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Armature/Skeleton3D:Bone.001")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = PackedFloat32Array(0, 1, -0.003, 0.004, -0.658, 0.753, 1, 1, 0.001, 0.005, 0.09, 0.996)
-tracks/2/type = "rotation_3d"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Armature/Skeleton3D:Bone")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.091, 0, 0.996, 1, 1, 0.091, 0.004, 0.995, 0.048)
-
 [sub_resource type="Animation" id="Animation_58jvb"]
 resource_name = "jab"
 length = 0.8
@@ -180,6 +157,30 @@ tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = PackedFloat32Array(0, 1, 0.065, -0.025, 0.585, 0.808, 0.266667, 1, 0.065, -0.025, 0.585, 0.808, 0.8, 1, 0.065, -0.025, 0.585, 0.808)
 
+[sub_resource type="Animation" id="Animation_smehm"]
+resource_name = "swing"
+tracks/0/type = "rotation_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Armature/Skeleton3D:Bone.002")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0.333333, 1, 0.002, -0.009, -0.359, 0.933, 0.7, 1, -0.003, -0.008, 0.17, 0.985)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Armature/Skeleton3D:Bone.001")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, -0.003, 0.004, -0.658, 0.753, 1, 1, 0.001, 0.005, 0.09, 0.996)
+tracks/2/type = "rotation_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Armature/Skeleton3D:Bone")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0, 0.091, 0, 0.996, 1, 1, 0.091, 0.004, 0.995, 0.048)
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y4r1p"]
 _data = {
 &"RESET": SubResource("Animation_ur7pv"),
@@ -194,6 +195,9 @@ height = 1.47265
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_a202f"]
 radius = 0.3
 height = 1.7
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_icpky"]
+size = Vector3(0.5, 1, 0.8)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jej6c"]
 size = Vector3(0.8, 2, 0.8)
@@ -288,7 +292,7 @@ mesh = SubResource("ArrayMesh_bj2ln")
 skin = SubResource("Skin_l7ec2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
-transform = Transform3D(-0.990491, -0.00422143, 0.137513, 0.127867, -0.397107, 0.908821, 0.0507709, 0.917763, 0.393871, -0.166496, -0.13224, -0.13263)
+transform = Transform3D(0.79256, -0.609295, 0.0246705, 0.609517, 0.79277, -0.00196164, -0.0183628, 0.0165918, 0.999694, -3.75268e-05, 0.5563, -0.000181578)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -346,6 +350,17 @@ max_stamina = 10.0
 [node name="PlayerPickupItem" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("13_oprun")
+
+[node name="PlayerUseItem" type="Node3D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("11_icpky")
+
+[node name="ShapeCast3D" type="ShapeCast3D" parent="PlayerUseItem"]
+shape = SubResource("BoxShape3D_icpky")
+target_position = Vector3(0, 1, -0.7)
+collision_mask = 32
+collide_with_areas = true
+collide_with_bodies = false
 
 [node name="HUD" parent="." node_paths=PackedStringArray("player") instance=ExtResource("8_dw050")]
 unique_name_in_owner = true

@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cf7fe42irmhj4"
-path.s3tc="res://.godot/imported/stone.png-dd8fafc685bb1f10418a5f5cc0294752.s3tc.ctex"
+uid="uid://bytsj3hcpofhi"
+path.s3tc="res://.godot/imported/stone.png-b7a9521133165cf7eeec64f8f4a1fb58.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://blender_files/textures/stone.png"
-dest_files=["res://.godot/imported/stone.png-dd8fafc685bb1f10418a5f5cc0294752.s3tc.ctex"]
+source_file="res://levels/dungeon1/models/torch_pillar/stone.png"
+dest_files=["res://.godot/imported/stone.png-b7a9521133165cf7eeec64f8f4a1fb58.s3tc.ctex"]
 
 [params]
 

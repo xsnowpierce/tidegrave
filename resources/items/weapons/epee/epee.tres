@@ -20,6 +20,7 @@ cooldown_speed = 1.0
 name = "Épée"
 description = "stabby"
 item_scene = ExtResource("2_y7tfj")
+centre_mesh_offset = Vector3(0, 0, 0)
 purchase_price = 0
 sell_price = 0
 metadata/_custom_type_script = "uid://ds3k4nnb7njr5"

@@ -1,7 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://r5vmjrts3spl"]
+[gd_scene load_steps=5 format=3 uid="uid://r5vmjrts3spl"]
 
 [ext_resource type="Script" uid="uid://ci04j8ovllvt2" path="res://levels/island/chest_interactable.gd" id="1_sbig3"]
-[ext_resource type="Resource" uid="uid://ctp4spwvdaarf" path="res://resources/items/weapons/epee/epee.tres" id="2_m1y47"]
 [ext_resource type="PackedScene" uid="uid://dp8wa4edprna3" path="res://models/chest/chest.tscn" id="3_awiwh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ppdq1"]
@@ -15,8 +14,6 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 
 collision_layer = 32
 collision_mask = 16
 script = ExtResource("1_sbig3")
-holding_item = ExtResource("2_m1y47")
-item_amount = 1
 
 [node name="chest" parent="." instance=ExtResource("3_awiwh")]
 

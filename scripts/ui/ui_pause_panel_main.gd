@@ -14,3 +14,7 @@ func _on_quit_pressed() -> void:
 func cancel_pressed() -> void:
 	pause_menu.close_pause_menu()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+func _on_inventory_pressed() -> void:
+	pause_menu.switch_menu_panel(PauseMenu.PANEL.INVENTORY)

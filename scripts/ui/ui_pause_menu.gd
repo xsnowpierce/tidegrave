@@ -70,4 +70,6 @@ func switch_menu_panel(panel : PANEL) -> void:
 			current_panel = $"Background/Main Panel"
 		PANEL.EQUIPMENT:
 			current_panel = $"Background/Equipment Panel"
+		PANEL.INVENTORY:
+			current_panel = $"Background/Inventory Panel"
 	current_panel.show_panel()

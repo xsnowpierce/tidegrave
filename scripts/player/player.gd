@@ -66,3 +66,6 @@ func can_player_attack() -> bool:
 
 func get_inventory() -> PlayerInventory:
 	return %"PlayerInventory"
+
+func get_use_item() -> PlayerUseItem:
+	return %PlayerUseItem

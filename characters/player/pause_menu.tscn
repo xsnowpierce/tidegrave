@@ -1,10 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://wsryyhg4yd4r"]
+[gd_scene load_steps=12 format=3 uid="uid://wsryyhg4yd4r"]
 
 [ext_resource type="Script" uid="uid://5ciie1nmlavn" path="res://scripts/ui/ui_pause_menu.gd" id="1_myx47"]
 [ext_resource type="Script" uid="uid://bg5sbnki1m7ei" path="res://scripts/ui/ui_pause_panel_main.gd" id="2_7l7mv"]
 [ext_resource type="Script" uid="uid://c2fcgptdb6l7m" path="res://scripts/ui/ui_menu_stats.gd" id="2_kukqi"]
 [ext_resource type="Script" uid="uid://3pehvfkkhgyu" path="res://scripts/ui/ui_menu_text_item.gd" id="3_5d2l8"]
-[ext_resource type="Script" uid="uid://x712rvdyi660" path="res://scripts/ui/ui_pause_panel_inventory.gd" id="5_7l7mv"]
+[ext_resource type="Script" uid="uid://x712rvdyi660" path="res://scripts/ui/ui_pause_panel_equipment.gd" id="5_7l7mv"]
+[ext_resource type="Script" uid="uid://droqqtx815fq4" path="res://scripts/ui/ui_pause_panel_inventory.gd" id="6_22hgx"]
 [ext_resource type="Script" uid="uid://dlgridhkbtjhw" path="res://scripts/ui/ui_pause_panel_item_select.gd" id="6_v4r4p"]
 [ext_resource type="PackedScene" uid="uid://c4urpynr740c8" path="res://characters/player/ui_item_select_item.tscn" id="7_1s2dm"]
 
@@ -91,6 +92,11 @@ alignment = 1
 [node name="EQUIPMENT" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
 layout_mode = 2
 text = "    EQUIPMENT    "
+icon_alignment = 1
+
+[node name="INVENTORY" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
+layout_mode = 2
+text = "    INVENTORY    "
 icon_alignment = 1
 
 [node name="QUIT" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
@@ -453,7 +459,95 @@ size_flags_vertical = 3
 layout_mode = 2
 default_text = "TAKE OFF"
 
+[node name="Inventory Panel" type="MarginContainer" parent="Background"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("6_22hgx")
+
+[node name="Item Information" type="MarginContainer" parent="Background/Inventory Panel"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 50
+
+[node name="Item Description Box" type="ColorRect" parent="Background/Inventory Panel/Item Information"]
+layout_mode = 2
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Inventory Panel/Item Information/Item Description Box"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Inventory Panel/Item Information/Item Description Box/MarginContainer"]
+layout_mode = 2
+
+[node name="Item Name" type="Label" parent="Background/Inventory Panel/Item Information/Item Description Box/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "item name"
+horizontal_alignment = 1
+
+[node name="Item Description" type="Label" parent="Background/Inventory Panel/Item Information/Item Description Box/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+text = "item description"
+horizontal_alignment = 1
+
+[node name="Item Use" type="MarginContainer" parent="Background/Inventory Panel"]
+visible = false
+layout_mode = 2
+theme_override_constants/margin_left = 380
+theme_override_constants/margin_top = 130
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 170
+
+[node name="ColorRect" type="ColorRect" parent="Background/Inventory Panel/Item Use"]
+layout_mode = 2
+color = Color(0.333333, 0.333333, 0.333333, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="Background/Inventory Panel/Item Use/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Inventory Panel/Item Use/ColorRect/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="USE BUTTON" type="Button" parent="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "USE"
+
+[node name="CANCEL BUTTON" type="Button" parent="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "CANCEL"
+
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/EQUIPMENT" to="Background/Main Panel" method="_on_equipment_pressed"]
+[connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/INVENTORY" to="Background/Main Panel" method="_on_inventory_pressed"]
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/QUIT" to="Background/Main Panel" method="_on_quit_pressed"]
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Weapon Item" to="Background/Equipment Panel" method="_on_weapon_item_pressed"]
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Shield Item" to="Background/Equipment Panel" method="_on_shield_item_pressed"]
@@ -463,5 +557,8 @@ default_text = "TAKE OFF"
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Feet Item" to="Background/Equipment Panel" method="_on_feet_item_pressed"]
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Item Item" to="Background/Equipment Panel" method="_on_item_item_pressed"]
 [connection signal="item_selected" from="Background/Item Select Panel" to="Background/Equipment Panel" method="_on_item_select_panel_item_selected"]
+[connection signal="item_selected" from="Background/Item Select Panel" to="Background/Inventory Panel" method="_on_item_select_panel_item_selected"]
 [connection signal="item_button_selected" from="Background/Item Select Panel/Items/MarginContainer/ScrollContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_item_button_selected"]
 [connection signal="pressed" from="Background/Item Select Panel/Items/MarginContainer/ScrollContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_pressed"]
+[connection signal="pressed" from="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer/USE BUTTON" to="Background/Inventory Panel" method="_on_use_button_pressed"]
+[connection signal="pressed" from="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer/CANCEL BUTTON" to="Background/Inventory Panel" method="_on_cancel_button_pressed"]
