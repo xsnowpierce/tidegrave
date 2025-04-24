@@ -3,7 +3,7 @@ extends Node3D
 class_name Enemy
 
 @export var enemy_stats : EnemyStats
-@export var mesh : MeshInstance3D
+@export var meshes : Array[MeshInstance3D]
 @export var attacked_animation_name : String = "slime_attacked"
 
 var current_health : int
@@ -31,10 +31,12 @@ func hit_effect() -> void:
 	
 	$AnimationPlayer.play(attacked_animation_name)
 	
-	mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", .5)
+	for mesh in meshes:
+		mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", .5)
 		
 	while(current_tint_alpha > 0):
-		mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", current_tint_alpha)
+		for mesh in meshes:
+			mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", current_tint_alpha)
 		current_tint_alpha -= get_process_delta_time() * hit_effect_speed
 		await get_tree().process_frame
 

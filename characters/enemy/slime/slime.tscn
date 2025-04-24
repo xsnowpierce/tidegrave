@@ -117,10 +117,10 @@ _data = {
 height = 0.634888
 radius = 0.62207
 
-[node name="Slime" type="Node3D" node_paths=PackedStringArray("mesh")]
+[node name="Slime" type="Node3D" node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_ahq63")
 enemy_stats = ExtResource("2_4h4y0")
-mesh = NodePath("slime/Sphere")
+meshes = [NodePath("slime/Sphere")]
 
 [node name="slime" type="Node3D" parent="."]
 
