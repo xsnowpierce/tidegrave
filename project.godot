@@ -193,6 +193,7 @@ menu_cancel={
 3d_physics/layer_7="PlayerAttackHitbox"
 3d_physics/layer_8="EnemyHitbox"
 3d_physics/layer_9="EnemyAttackHitbox"
+3d_physics/layer_10="EnemyWakeupCollider"
 
 [rendering]
 

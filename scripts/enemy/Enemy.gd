@@ -1,10 +1,23 @@
-extends Node3D
+extends CharacterBody3D
 
 class_name Enemy
 
 @export var enemy_stats : EnemyStats
 @export var meshes : Array[MeshInstance3D]
-@export var attacked_animation_name : String = "slime_attacked"
+
+@export_category("Animations")
+@export var move_animation_name : String = ""
+@export var hit_animation_name : String = ""
+@export var attack_animation_name : String = ""
+@export var idle_animation_name : String = ""
+@export var death_animation_name : String = ""
+
+@export_category("AI")
+@export var turn_speed : float = 1
+@export var move_speed : float = 1
+@export var target_distance_to_player : float = 2
+@export var max_angle_to_player_acceptable : float = 10
+@export var can_attack : bool = true
 
 var current_health : int
 
@@ -20,25 +33,7 @@ func _on_enemy_hitbox_area_entered(area: Area3D) -> void:
 func take_damage(amount : int) -> void:
 	current_health -= amount
 	
-	hit_effect()
-	
-	if(current_health <= 0):
-		death()
-		return
-
-func hit_effect() -> void:
-	var current_tint_alpha : float = .5
-	
-	$AnimationPlayer.play(attacked_animation_name)
-	
-	for mesh in meshes:
-		mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", .5)
-		
-	while(current_tint_alpha > 0):
-		for mesh in meshes:
-			mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", current_tint_alpha)
-		current_tint_alpha -= get_process_delta_time() * hit_effect_speed
-		await get_tree().process_frame
-
-func death() -> void:
-	queue_free()
+	if(current_health > 0):
+		$EnemyAI.attacked_from_player()
+	else:
+		$EnemyAI.death()

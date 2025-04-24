@@ -1,0 +1,61 @@
+[gd_resource type="VisualShader" load_steps=5 format=3 uid="uid://dkyfo8fkc0yr4"]
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_qk4hv"]
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeColorConstant" id="VisualShaderNodeColorConstant_5m6po"]
+constant = Color(1, 0, 0, 1)
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_eo453"]
+parameter_name = "HitEffect"
+hint = 1
+max = 0.5
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_hncuu"]
+parameter_name = "Colour"
+default_value_enabled = true
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform vec4 Colour : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+uniform float HitEffect : hint_range(0.0, 0.5) = 0.0;
+
+
+
+void fragment() {
+// ColorParameter:5
+	vec4 n_out5p0 = Colour;
+
+
+// ColorConstant:3
+	vec4 n_out3p0 = vec4(1.000000, 0.000000, 0.000000, 1.000000);
+
+
+// FloatParameter:4
+	float n_out4p0 = HitEffect;
+
+
+// Mix:2
+	vec3 n_out2p0 = mix(vec3(n_out5p0.xyz), vec3(n_out3p0.xyz), vec3(n_out4p0));
+
+
+// Output:0
+	ALBEDO = n_out2p0;
+
+
+}
+"
+graph_offset = Vector2(-645.534, -102.37)
+nodes/fragment/2/node = SubResource("VisualShaderNodeMix_qk4hv")
+nodes/fragment/2/position = Vector2(20, 120)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorConstant_5m6po")
+nodes/fragment/3/position = Vector2(-240, -140)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatParameter_eo453")
+nodes/fragment/4/position = Vector2(-320, -60)
+nodes/fragment/5/node = SubResource("VisualShaderNodeColorParameter_hncuu")
+nodes/fragment/5/position = Vector2(-400, 280)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 1, 4, 0, 2, 2, 2, 0, 0, 0, 5, 0, 2, 0)

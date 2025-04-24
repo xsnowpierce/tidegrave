@@ -10,7 +10,7 @@ func _ready() -> void:
 	coll.disabled = true
 
 func enable_attack_hitbox( weapon : InventoryWeapon, time : float = 0.3) -> void:
-	attack_damage = weapon.damage.damage_amount_slash
+	attack_damage = weapon.damage.damage_amount_slash + weapon.damage.damage_amount_pierce + weapon.damage.damage_amount_blunt
 	coll.disabled = false
 	await get_tree().create_timer(time).timeout
 	disable_attack_hitbox()

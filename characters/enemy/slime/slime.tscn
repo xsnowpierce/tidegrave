@@ -5,6 +5,10 @@
 [ext_resource type="Resource" uid="uid://dse4qqh6jjops" path="res://characters/enemy/slime/slime.tres" id="2_4h4y0"]
 [ext_resource type="Script" uid="uid://mhhledaqsq78" path="res://scripts/enemy/enemy_hitbox.gd" id="4_b58ev"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_b58ev"]
+height = 0.634888
+radius = 0.62207
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nfxm5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_qwjru"]
@@ -113,14 +117,14 @@ _data = {
 &"slime_attacked": SubResource("Animation_b58ev")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_b58ev"]
-height = 0.634888
-radius = 0.62207
-
-[node name="Slime" type="Node3D" node_paths=PackedStringArray("meshes")]
+[node name="Slime" type="CharacterBody3D" node_paths=PackedStringArray("meshes")]
 script = ExtResource("1_ahq63")
 enemy_stats = ExtResource("2_4h4y0")
 meshes = [NodePath("slime/Sphere")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.317444, 0)
+shape = SubResource("CylinderShape3D_b58ev")
 
 [node name="slime" type="Node3D" parent="."]
 
@@ -145,11 +149,5 @@ libraries = {
 autoplay = "slime"
 speed_scale = 0.3
 next/slime_attacked = &"slime"
-
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.317444, 0)
-shape = SubResource("CylinderShape3D_b58ev")
 
 [connection signal="area_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_area_entered"]

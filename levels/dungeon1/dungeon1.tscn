@@ -55,6 +55,10 @@ _data = {
 
 [node name="Dungeon1" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.538945, 0.709566, -0.453931, -0.554408, 0.106905, 0.82535, 0.634168, 0.696482, 0.335773, 0, 0, 0)
+light_energy = 0.281
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_qf0tt")
 
@@ -70,16 +74,16 @@ data = {
 }
 
 [node name="torch_pillar" parent="." instance=ExtResource("2_q0r4u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.244, -4.76837e-07, 9.58905)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.9802, -4.76837e-07, 9.86108)
 
 [node name="torch_pillar2" parent="." instance=ExtResource("2_q0r4u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3233, 0, 18.9088)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.0822, 0, 18.9088)
 
 [node name="torch_pillar3" parent="." instance=ExtResource("2_q0r4u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.43433, -4.76838e-07, 18.9064)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.11327, -4.76838e-07, 18.9064)
 
 [node name="torch_pillar4" parent="." instance=ExtResource("2_q0r4u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.49112, 0, 9.62078)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.97688, 0, 9.62078)
 
 [node name="Chest" parent="." instance=ExtResource("3_202ew")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 38.6007, 0, -1.30569)
