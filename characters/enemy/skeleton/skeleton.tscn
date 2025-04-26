@@ -100,6 +100,7 @@ bind/17/bone = -1
 bind/17/pose = Transform3D(7.54979e-08, 0, 1, 0, -1, 0, 1, 0, -1.94707e-07, -1.28417e-08, 0.0589393, -0.170093)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nltyv"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("3_pm7ye")
 shader_parameter/Colour = Color(1, 1, 1, 1)

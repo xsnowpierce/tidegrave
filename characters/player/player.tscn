@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=37 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dxmbfb4qphdfj" path="res://scripts/player/player_movement.gd" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://b6b20656cg47d" path="res://scripts/player/player_input.gd" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://savfgqh610vg" path="res://scripts/player/player_interact.gd" id="5_1jxqw"]
+[ext_resource type="Shader" uid="uid://deeajevkd7lj" path="res://scripts/shaders/psx.gdshader" id="5_kyfeq"]
 [ext_resource type="PackedScene" uid="uid://oncjf8lbhw26" path="res://characters/player/ingame_hud.tscn" id="8_dw050"]
 [ext_resource type="Resource" uid="uid://ctp4spwvdaarf" path="res://resources/items/weapons/epee/epee.tres" id="9_58jvb"]
 [ext_resource type="Script" uid="uid://bip1mddvvyep8" path="res://scripts/item/inventory_item.gd" id="9_fpo3a"]
@@ -204,6 +205,15 @@ height = 1.7
 [sub_resource type="BoxShape3D" id="BoxShape3D_icpky"]
 size = Vector3(0.5, 1, 0.8)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kyfeq"]
+shader = ExtResource("5_kyfeq")
+shader_parameter/change_color_depth = true
+shader_parameter/target_color_depth = 5
+shader_parameter/dithering = true
+shader_parameter/scale_resolution = false
+shader_parameter/target_resolution_scale = 3
+shader_parameter/enable_recolor = false
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_jej6c"]
 size = Vector3(0.8, 2, 0.8)
 
@@ -297,7 +307,7 @@ mesh = SubResource("ArrayMesh_bj2ln")
 skin = SubResource("Skin_l7ec2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
-transform = Transform3D(0.79256, -0.609295, 0.0246705, 0.609518, 0.79277, -0.00196165, -0.0183628, 0.0165918, 0.999694, -3.75268e-05, 0.5563, -0.000181578)
+transform = Transform3D(0.79256, -0.609295, 0.0246705, 0.609517, 0.79277, -0.00196164, -0.0183628, 0.0165918, 0.999694, -3.75268e-05, 0.5563, -0.000181578)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -381,6 +391,25 @@ damage_flash_colour = Color(1, 0, 0, 0.556863)
 
 [node name="Pause Menu" parent="." instance=ExtResource("15_a8ls1")]
 unique_name_in_owner = true
+
+[node name="Post Process" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="Post Process"]
+material = SubResource("ShaderMaterial_kyfeq")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
 
 [node name="PlayerHitbox" type="Area3D" parent="."]
 collision_layer = 4

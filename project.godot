@@ -204,6 +204,7 @@ menu_cancel={
 textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+shading/overrides/force_vertex_shading=true
 textures/default_filters/use_nearest_mipmap_filter=true
 textures/decals/filter=2
 textures/light_projectors/filter=2
