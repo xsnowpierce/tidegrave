@@ -34,16 +34,15 @@ func _on_item_select_panel_item_selected(item : InventoryItem) -> void:
 	show()
 	current_selecting_item = item
 	last_selected_menu_item = get_viewport().gui_get_focus_owner()
-	$"Item Use".show()
-	$"Item Use/ColorRect/MarginContainer/VBoxContainer/USE BUTTON".grab_focus()
+	$"ColorRect/VBoxContainer/USE BUTTON".grab_focus()
 
 func _on_use_button_pressed() -> void:
 	if(current_selecting_item):
-		var result : PlayerUseItem.USE_ITEM_RESULT = pause_menu.character.get_use_item().try_use_item(current_selecting_item)
-		print(result)
+		pause_menu.character.get_use_item().try_use_item(current_selecting_item)
 	pause_menu.close_pause_menu()
 
 func _on_cancel_button_pressed() -> void:
-	$"Item Use".hide()
-	last_selected_menu_item.grab_focus()
+	hide()
+	if(last_selected_menu_item):
+		last_selected_menu_item.grab_focus()
 	

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpx64tfr0dkud"
-path.s3tc="res://.godot/imported/room2_dungeon_01_floor_tile_stone_floor.png-be4421a12a9d2ccf9993b746cd58b357.s3tc.ctex"
+uid="uid://fbdnbwwqfhmo"
+path.s3tc="res://.godot/imported/dungeon_stone.png-f4907890aa5ffbc36748c6a896d91775.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "01b6b053cd5420a111bb780196370bf4"
+"md5": "83becffe03a0a4e772009e3795fe2bcc"
 }
 
 [deps]
 
-source_file="res://levels/dungeon1/test/room2_dungeon_01_floor_tile_stone_floor.png"
-dest_files=["res://.godot/imported/room2_dungeon_01_floor_tile_stone_floor.png-be4421a12a9d2ccf9993b746cd58b357.s3tc.ctex"]
+source_file="res://levels/dungeon1/test/dungeon_stone.png"
+dest_files=["res://.godot/imported/dungeon_stone.png-f4907890aa5ffbc36748c6a896d91775.s3tc.ctex"]
 
 [params]
 

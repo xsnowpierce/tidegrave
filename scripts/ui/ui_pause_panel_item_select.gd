@@ -2,9 +2,9 @@ extends UIPausePanel
 
 class_name UIPausePanelItemSelect
 
-@onready var button_holder: VBoxContainer = $"Items/MarginContainer/ScrollContainer/Button Holder"
+@onready var button_holder: VBoxContainer = $"Items/Control/ScrollContainer/MarginContainer/Button Holder"
 const UI_ITEM_SELECT_ITEM = preload("res://characters/player/ui_item_select_item.tscn")
-@onready var take_off_button: Button = $"Items/MarginContainer/ScrollContainer/Button Holder/Take Off Button"
+@onready var take_off_button: Button = $"Items/Control/ScrollContainer/MarginContainer/Button Holder/Take Off Button"
 @onready var mesh_instance: Node3D = $"Items/Item Image/SubViewportContainer/SubViewport/MeshInstance"
 
 @export_flags_3d_render var item_render_layer : int
@@ -42,10 +42,10 @@ func hide_panel() -> void:
 func load_item_select_type(type : ITEM_SELECT_TYPE) -> void:
 	match(type):
 		ITEM_SELECT_TYPE.INVENTORY:
-			$"Items/Menu Title".text = "   INVENTORY   "
+			$"Items/Control/Menu Title".text = "   INVENTORY   "
 			take_off_button.hide()
 		ITEM_SELECT_TYPE.EQUIPMENT:
-			$"Items/Menu Title".text = "   EQUIPMENT   "
+			$"Items/Control/Menu Title".text = "   EQUIPMENT   "
 			take_off_button.show()
 
 func load_item_type(item_type : UIPausePanelEquipment.ITEM_PANEL_TYPE) -> void:

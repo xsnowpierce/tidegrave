@@ -1,8 +1,9 @@
 extends Control
 
+class_name PlayerHUD
+
 @export var player : Player
 
-var health_starting_size_x
 var stamina_starting_size_x
 
 @export var damage_flash_colour : Color
@@ -13,20 +14,17 @@ var stamina_starting_size_x
 var interact_message_list : Array[String]
 
 var damage_flash_tween : Tween
+var text_tween : Tween
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await get_tree().process_frame
-	health_starting_size_x = $"VBoxContainer/Health/Health Change".size.x
-	stamina_starting_size_x = $"VBoxContainer/Stamina/Stamina Change".size.x
+	stamina_starting_size_x = $"MarginContainer/VBoxContainer/Stamina/Stamina Change".size.x
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	var healthPercent = player.get_player_stats().current_health / player.get_player_stats().max_health
-	$"VBoxContainer/Health/Health Change".size.x = health_starting_size_x * healthPercent
+	$"MarginContainer/VBoxContainer/Health Amount".text = "HP " + str(floori(player.get_player_stats().current_health))
 	
 	var staminaPercent = player.get_player_stats().current_stamina / player.get_player_stats().max_stamina
-	$"VBoxContainer/Stamina/Stamina Change".size.x = stamina_starting_size_x * staminaPercent
+	$"MarginContainer/VBoxContainer/Stamina/Stamina Change".size.x = stamina_starting_size_x * staminaPercent
 
 func _on_player_hitbox_player_attacked() -> void:
 	play_player_damaged_flash()
@@ -45,20 +43,22 @@ func show_interact_message(message : String) -> void:
 	play_interact_messages()
 
 func play_interact_messages() -> void:
-	set_font_colour(Color(1,1,1,0))
+	
+	if(!interact_message_list[0]):
+		return
+		
+	if(text_tween):
+		text_tween.kill()
+		
 	$"Interact Text".text = interact_message_list[0]
-	
-	var tween : Tween = create_tween()
-	tween.tween_method(set_font_colour, Color(1,1,1,0), Color(1,1,1,1), interact_message_fade_time)
-	tween.tween_method(set_font_colour, Color(1,1,1,1), Color(1,1,1,0), interact_message_fade_time).set_delay(interact_message_stay_time)
-	
-	await tween.finished
-	
 	interact_message_list.remove_at(0)
-	$"Interact Text".text = ""
+	
+	$"Interact Text".position = Vector2(0, 172.8)
+	text_tween = create_tween()
+	
+	text_tween.tween_property($"Interact Text", "position", Vector2(0, 300), interact_message_fade_time).set_delay(interact_message_stay_time)
+	
+	await text_tween.finished
 	
 	if(!interact_message_list.is_empty()):
 		play_interact_messages()
-
-func set_font_colour(colour : Color) -> void:
-	$"Interact Text".add_theme_color_override("font_color", colour)

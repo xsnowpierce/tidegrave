@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b24infuva77nk"
-path="res://.godot/imported/room.glb-3f79bb3d29e2649689c0ab029ab36782.scn"
+uid="uid://cqb3w7enofd1q"
+path="res://.godot/imported/dungeon.glb-0d021c7c515431b6bb0fc5c9f1f828fa.scn"
 
 [deps]
 
-source_file="res://levels/dungeon1/test/room.glb"
-dest_files=["res://.godot/imported/room.glb-3f79bb3d29e2649689c0ab029ab36782.scn"]
+source_file="res://levels/dungeon1/test/dungeon.glb"
+dest_files=["res://.godot/imported/dungeon.glb-0d021c7c515431b6bb0fc5c9f1f828fa.scn"]
 
 [params]
 

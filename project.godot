@@ -33,8 +33,8 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 
 [display]
 
-window/size/viewport_width=640
-window/size/viewport_height=480
+window/size/viewport_width=320
+window/size/viewport_height=240
 window/stretch/mode="viewport"
 window/vsync/vsync_mode=0
 
@@ -55,6 +55,10 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 
 SceneManager=""
 Boat=""
+
+[gui]
+
+theme/custom_font="uid://kvcsvwmw1muq"
 
 [input]
 
@@ -197,8 +201,12 @@ menu_cancel={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=3
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/default_filters/use_nearest_mipmap_filter=true
+textures/decals/filter=2
+textures/light_projectors/filter=2
 occlusion_culling/use_occlusion_culling=true
 
 [xr]

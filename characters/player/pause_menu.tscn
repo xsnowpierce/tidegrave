@@ -91,17 +91,21 @@ alignment = 1
 
 [node name="EQUIPMENT" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
 layout_mode = 2
-text = "    EQUIPMENT    "
+theme_override_font_sizes/font_size = 13
+text = "EQUIPMENT"
 icon_alignment = 1
 
 [node name="INVENTORY" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
 layout_mode = 2
-text = "    INVENTORY    "
+theme_override_font_sizes/font_size = 13
+text = "INVENTORY"
 icon_alignment = 1
 
 [node name="QUIT" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
 layout_mode = 2
-text = "QUIT GAME"
+theme_override_font_sizes/font_size = 13
+text = "QUIT
+"
 
 [node name="Stats" type="MarginContainer" parent="Background/Main Panel"]
 process_mode = 3
@@ -125,10 +129,12 @@ script = ExtResource("3_5d2l8")
 [node name="String" type="Label" parent="Background/Main Panel/Stats/Items/CharacterNameItem"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 text = "sadsadsa"
 
 [node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/CharacterNameItem"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "543243"
 
 [node name="HealthItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
@@ -138,10 +144,12 @@ script = ExtResource("3_5d2l8")
 [node name="String" type="Label" parent="Background/Main Panel/Stats/Items/HealthItem"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 text = "sadsadsa"
 
 [node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/HealthItem"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "543243"
 
 [node name="StaminaItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
@@ -151,10 +159,12 @@ script = ExtResource("3_5d2l8")
 [node name="String" type="Label" parent="Background/Main Panel/Stats/Items/StaminaItem"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 text = "sadsadsa"
 
 [node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/StaminaItem"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "543243"
 
 [node name="Equipment Panel" type="MarginContainer" parent="Background"]
@@ -173,9 +183,11 @@ script = ExtResource("5_7l7mv")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background/Equipment Panel"]
 layout_mode = 2
+theme_override_constants/separation = 5
 
 [node name="Weapon Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Weapon Item"]
@@ -195,14 +207,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "WEAPON"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Weapon Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Shield Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Shield Item"]
@@ -222,14 +237,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "SHIELD"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Shield Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Head Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Head Item"]
@@ -249,14 +267,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "HEAD"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Head Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Body Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Body Item"]
@@ -276,14 +297,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "BODY"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Body Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Arms Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Arms Item"]
@@ -303,14 +327,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "ARMS"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Arms Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Feet Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Feet Item"]
@@ -330,14 +357,17 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "FEET"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Feet Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Item Item" type="Button" parent="Background/Equipment Panel/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 10
 text = " "
 
 [node name="MarginContainer" type="MarginContainer" parent="Background/Equipment Panel/VBoxContainer/Item Item"]
@@ -357,23 +387,23 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.7
+theme_override_font_sizes/font_size = 13
 text = "ITEM"
 
 [node name="Value" type="Label" parent="Background/Equipment Panel/VBoxContainer/Item Item/MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
 
 [node name="Item Select Panel" type="MarginContainer" parent="Background"]
+visible = false
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 30
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 30
 script = ExtResource("6_v4r4p")
 item_render_layer = 4
 
@@ -381,10 +411,12 @@ item_render_layer = 4
 layout_mode = 2
 
 [node name="Item Image" type="Control" parent="Background/Item Select Panel/Items"]
-layout_mode = 2
-anchors_preset = 0
-offset_right = 452.0
-offset_bottom = 324.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_vertical = 3
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="Background/Item Select Panel/Items/Item Image"]
@@ -399,8 +431,9 @@ stretch = true
 [node name="SubViewport" type="SubViewport" parent="Background/Item Select Panel/Items/Item Image/SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(452, 324)
-render_target_update_mode = 4
+canvas_item_default_texture_filter = 0
+size = Vector2i(2, 2)
+render_target_update_mode = 0
 
 [node name="Camera3D" type="Camera3D" parent="Background/Item Select Panel/Items/Item Image/SubViewportContainer/SubViewport"]
 cull_mask = 4
@@ -420,13 +453,23 @@ libraries = {
 autoplay = "rotate_item"
 speed_scale = 0.2
 
-[node name="Menu Title" type="Label" parent="Background/Item Select Panel/Items"]
-layout_mode = 0
-offset_right = 94.0
-offset_bottom = 23.0
-text = "   EQUIPMENT   "
+[node name="Control" type="VBoxContainer" parent="Background/Item Select Panel/Items"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Background/Item Select Panel/Items/Menu Title"]
+[node name="Menu Title" type="Label" parent="Background/Item Select Panel/Items/Control"]
+layout_mode = 2
+size_flags_vertical = 2
+theme_override_font_sizes/font_size = 13
+text = "EQUIPMENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ColorRect" type="ColorRect" parent="Background/Item Select Panel/Items/Control/Menu Title"]
 show_behind_parent = true
 layout_mode = 1
 anchors_preset = 15
@@ -436,114 +479,76 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.992157, 0.992157, 0.992157, 0.203922)
 
-[node name="MarginContainer" type="MarginContainer" parent="Background/Item Select Panel/Items"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_top = 190
-
-[node name="ScrollContainer" type="ScrollContainer" parent="Background/Item Select Panel/Items/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Background/Item Select Panel/Items/Control"]
 clip_contents = false
 layout_mode = 2
+size_flags_vertical = 3
+follow_focus = true
 horizontal_scroll_mode = 0
 
-[node name="Button Holder" type="VBoxContainer" parent="Background/Item Select Panel/Items/MarginContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Background/Item Select Panel/Items/Control/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+
+[node name="Button Holder" type="VBoxContainer" parent="Background/Item Select Panel/Items/Control/ScrollContainer/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Take Off Button" parent="Background/Item Select Panel/Items/MarginContainer/ScrollContainer/Button Holder" instance=ExtResource("7_1s2dm")]
+[node name="Take Off Button" parent="Background/Item Select Panel/Items/Control/ScrollContainer/MarginContainer/Button Holder" instance=ExtResource("7_1s2dm")]
 layout_mode = 2
 default_text = "TAKE OFF"
 
-[node name="Inventory Panel" type="MarginContainer" parent="Background"]
+[node name="Inventory Panel" type="Control" parent="Background"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 script = ExtResource("6_22hgx")
 
-[node name="Item Information" type="MarginContainer" parent="Background/Inventory Panel"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 30
-theme_override_constants/margin_top = 200
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 50
-
-[node name="Item Description Box" type="ColorRect" parent="Background/Inventory Panel/Item Information"]
-layout_mode = 2
-color = Color(0.333333, 0.333333, 0.333333, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/Inventory Panel/Item Information/Item Description Box"]
+[node name="ColorRect" type="ColorRect" parent="Background/Inventory Panel"]
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -61.0
+offset_top = -36.0
+offset_right = -13.0
+offset_bottom = 21.0
+grow_horizontal = 0
+grow_vertical = 2
+color = Color(1, 1, 1, 0.372549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Background/Inventory Panel/ColorRect"]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
+offset_left = -21.0
+offset_right = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Inventory Panel/Item Information/Item Description Box/MarginContainer"]
-layout_mode = 2
-
-[node name="Item Name" type="Label" parent="Background/Inventory Panel/Item Information/Item Description Box/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "item name"
-horizontal_alignment = 1
-
-[node name="Item Description" type="Label" parent="Background/Inventory Panel/Item Information/Item Description Box/MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-text = "item description"
-horizontal_alignment = 1
-
-[node name="Item Use" type="MarginContainer" parent="Background/Inventory Panel"]
-visible = false
-layout_mode = 2
-theme_override_constants/margin_left = 380
-theme_override_constants/margin_top = 130
-theme_override_constants/margin_right = 30
-theme_override_constants/margin_bottom = 170
-
-[node name="ColorRect" type="ColorRect" parent="Background/Inventory Panel/Item Use"]
-layout_mode = 2
-color = Color(0.333333, 0.333333, 0.333333, 1)
-
-[node name="MarginContainer" type="MarginContainer" parent="Background/Inventory Panel/Item Use/ColorRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Background/Inventory Panel/Item Use/ColorRect/MarginContainer"]
-layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 alignment = 1
 
-[node name="USE BUTTON" type="Button" parent="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer"]
+[node name="USE BUTTON" type="Button" parent="Background/Inventory Panel/ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "USE"
 
-[node name="CANCEL BUTTON" type="Button" parent="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer"]
+[node name="CANCEL BUTTON" type="Button" parent="Background/Inventory Panel/ColorRect/VBoxContainer"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 13
 text = "CANCEL"
 
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/EQUIPMENT" to="Background/Main Panel" method="_on_equipment_pressed"]
@@ -558,7 +563,7 @@ text = "CANCEL"
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Item Item" to="Background/Equipment Panel" method="_on_item_item_pressed"]
 [connection signal="item_selected" from="Background/Item Select Panel" to="Background/Equipment Panel" method="_on_item_select_panel_item_selected"]
 [connection signal="item_selected" from="Background/Item Select Panel" to="Background/Inventory Panel" method="_on_item_select_panel_item_selected"]
-[connection signal="item_button_selected" from="Background/Item Select Panel/Items/MarginContainer/ScrollContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_item_button_selected"]
-[connection signal="pressed" from="Background/Item Select Panel/Items/MarginContainer/ScrollContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_pressed"]
-[connection signal="pressed" from="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer/USE BUTTON" to="Background/Inventory Panel" method="_on_use_button_pressed"]
-[connection signal="pressed" from="Background/Inventory Panel/Item Use/ColorRect/MarginContainer/VBoxContainer/CANCEL BUTTON" to="Background/Inventory Panel" method="_on_cancel_button_pressed"]
+[connection signal="item_button_selected" from="Background/Item Select Panel/Items/Control/ScrollContainer/MarginContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_item_button_selected"]
+[connection signal="pressed" from="Background/Item Select Panel/Items/Control/ScrollContainer/MarginContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_pressed"]
+[connection signal="pressed" from="Background/Inventory Panel/ColorRect/VBoxContainer/USE BUTTON" to="Background/Inventory Panel" method="_on_use_button_pressed"]
+[connection signal="pressed" from="Background/Inventory Panel/ColorRect/VBoxContainer/CANCEL BUTTON" to="Background/Inventory Panel" method="_on_cancel_button_pressed"]

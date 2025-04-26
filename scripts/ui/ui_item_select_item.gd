@@ -11,8 +11,8 @@ signal item_button_selected(item_held : InventoryItem)
 
 func set_item(item : InventoryItem, amount : int) -> void:
 	item_held = item
-	$"Margin/Text/Item Name".text = item.name
-	$Margin/Text/Quantity.text = "x " + str(amount)
+	$"MarginContainer/Text/Item Name".text = item.name
+	$MarginContainer/Text/Quantity.text = "x " + str(amount)
 
 func _on_pressed() -> void:
 	item_button_pressed.emit(item_held)
