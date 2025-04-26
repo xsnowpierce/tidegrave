@@ -2,17 +2,24 @@ extends Node
 
 class_name PlayerStats
 
-@export var max_health : float
-var current_health : float
+@export var player_level : int = 1
 
+var current_experience : int = 0
+
+var current_gold : int = 0
+
+var current_status : StatusCondition.CONDITION
+
+var current_health : float
 @export var max_stamina : float
 var current_stamina : float
+
 @export var default_stamina_recover_speed : float = 5
 @export var stamina_recovery_multiplier : float = 1
 @export var sprinting_stamina_decrease_speed : float = 10
 
 func _ready() -> void:
-	current_health = max_health
+	current_health = get_max_health()
 	current_stamina = max_stamina
 
 func _process(delta: float) -> void:
@@ -29,3 +36,9 @@ func can_stamina_regen() -> bool:
 
 func set_stamina_recover_speed(speed : float) -> void:
 	stamina_recovery_multiplier = speed
+
+func get_max_health() -> int:
+	return 50 + ceili((player_level * 12.4))
+
+func get_exp_to_level_up(level : int) -> int:
+	return 100 + (level * 73.6)

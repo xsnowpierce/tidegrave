@@ -22,12 +22,6 @@ func _ready() -> void:
 	
 	change_player_state(playerState)
 
-func _process(delta: float) -> void:
-	if(Input.is_action_just_pressed("interact")):
-		if(!$"Head/Player Camera/Interact Area".interactables.is_empty()):
-			var interactable : WorldInteractable = $"Head/Player Camera/Interact Area".interactables[0]
-			interactable.interact(self)
-	
 func change_player_state(new_state : PLAYER_STATE):
 	playerState = new_state
 	player_state_changed.emit(new_state)

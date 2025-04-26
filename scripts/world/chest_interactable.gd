@@ -11,13 +11,17 @@ const PICKUP_ITEM = preload("res://resources/items/pickup_item.tscn")
 
 var chest_is_open : bool
 
-func interact(player : Player) -> void:
+func interact(player : Player) -> PlayerUseItem.USE_ITEM_RESULT:
 	if(!chest_is_open):
-		$CollisionShape3D.disabled = true
-		animation_player.play("Open")
-		await animation_player.animation_finished
-		spawn_item()
-		chest_is_open = true
+		open_chest()
+	return PlayerUseItem.USE_ITEM_RESULT.IGNORE
+
+func open_chest() -> void:
+	$CollisionShape3D.disabled = true
+	animation_player.play("Open")
+	await animation_player.animation_finished
+	spawn_item()
+	chest_is_open = true
 
 func spawn_item() -> void:
 	var item : Node3D = PICKUP_ITEM.instantiate()

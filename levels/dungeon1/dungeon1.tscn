@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dt4ibdhjqfriw"]
+[gd_scene load_steps=17 format=3 uid="uid://dt4ibdhjqfriw"]
 
 [ext_resource type="PackedScene" uid="uid://bicr1knp8vkyb" path="res://levels/dungeon1/models/torch_pillar/torch_pillar_object.tscn" id="2_q0r4u"]
 [ext_resource type="PackedScene" uid="uid://r5vmjrts3spl" path="res://models/chest/chest_object.tscn" id="3_202ew"]
@@ -7,8 +7,9 @@
 [ext_resource type="Script" uid="uid://dfker8qg5kkku" path="res://scripts/world/wall_door_interactable.gd" id="7_ulpql"]
 [ext_resource type="Resource" uid="uid://dbrcymut50xbk" path="res://resources/items/dungeon key/dungeon_key.tres" id="8_qxj5j"]
 [ext_resource type="PackedScene" uid="uid://chrdtvwvi0kkj" path="res://resources/items/pickup_item.tscn" id="9_r3gnu"]
-[ext_resource type="Environment" uid="uid://cnxq7oyfis56g" path="res://levels/dungeon1/dungeon_environment.tres" id="10_i76xq"]
+[ext_resource type="PackedScene" uid="uid://tsfmu41ajqnm" path="res://models/barrel/barrel.tscn" id="10_slc4o"]
 [ext_resource type="ArrayOccluder3D" uid="uid://dlmyy2684pl8s" path="res://levels/dungeon1/test/dungeon1.occ" id="10_ssd7a"]
+[ext_resource type="PackedScene" uid="uid://bfrbsfxb557wm" path="res://characters/enemy/skeleton/skeleton.tscn" id="11_i76xq"]
 [ext_resource type="PackedScene" uid="uid://cqb3w7enofd1q" path="res://levels/dungeon1/test/dungeon.glb" id="11_yowmm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r3gnu"]
@@ -58,13 +59,11 @@ _data = {
 [node name="dungeon" parent="." instance=ExtResource("11_yowmm")]
 transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("10_i76xq")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.538945, 0.709566, -0.453931, -0.554408, 0.106905, 0.82535, 0.634168, 0.696482, 0.335773, 0, 0, 0)
+transform = Transform3D(-0.286342, -0.774286, 0.564349, 0.944279, -0.128272, 0.303124, -0.162314, 0.6197, 0.767871, 0, 0, 0)
 light_energy = 0.2
 light_volumetric_fog_energy = 0.0
+sky_mode = 1
 
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = ExtResource("10_ssd7a")
@@ -122,5 +121,11 @@ item_amount = 1
 [node name="Pickup Item" parent="Objects" instance=ExtResource("9_r3gnu")]
 holding_item = ExtResource("8_qxj5j")
 
+[node name="Barrel" parent="Objects" instance=ExtResource("10_slc4o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.09985, 0, 8.30124)
+item_inside = ExtResource("8_qxj5j")
+
 [node name="Enemies" type="Node3D" parent="."]
-visible = false
+
+[node name="Skeleton" parent="Enemies" instance=ExtResource("11_i76xq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.81805, -3.57628e-07, 27.6341)

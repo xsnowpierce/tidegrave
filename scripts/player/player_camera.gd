@@ -31,6 +31,10 @@ extends Camera3D
 #min pitch in degrees.
 @export var min_pitch : float = -89
 
+@export_subgroup("Camera Shake")
+@export var shake_intensity : float = 1
+@export var shake_reduction_speed : float = 1
+
 func _ready():
 	$AnimationPlayer.play("head_bob")
 	Input.set_use_accumulated_input(false)
@@ -110,3 +114,6 @@ func clamp_pitch()->void:
 	
 	head.rotation.x = clamp(head.rotation.x, deg_to_rad(min_pitch), deg_to_rad(max_pitch))
 	head.orthonormalize()
+
+func shake_camera(intensity : float) -> void:
+	pass

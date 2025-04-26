@@ -1,12 +1,14 @@
-[gd_scene load_steps=33 format=4 uid="uid://bfrbsfxb557wm"]
+[gd_scene load_steps=35 format=4 uid="uid://bfrbsfxb557wm"]
 
 [ext_resource type="Script" uid="uid://f6bnnl758quq" path="res://scripts/enemy/Enemy.gd" id="1_we66r"]
 [ext_resource type="Script" uid="uid://bt3jeon4k1fhv" path="res://scripts/enemy/EnemyStats.gd" id="2_ceslt"]
+[ext_resource type="AudioStream" uid="uid://c07s7wsi7avdb" path="res://characters/enemy/skeleton/skeleton_hit.ogg" id="3_osq6w"]
 [ext_resource type="Shader" uid="uid://dkyfo8fkc0yr4" path="res://characters/enemy/skeleton/skeleton_shader.tres" id="3_pm7ye"]
 [ext_resource type="Script" uid="uid://mhhledaqsq78" path="res://scripts/enemy/enemy_hitbox.gd" id="3_we66r"]
+[ext_resource type="AudioStream" uid="uid://blwbdqpsj8o21" path="res://characters/enemy/skeleton/skeleton_death.ogg" id="4_15h7t"]
 [ext_resource type="Material" uid="uid://cjhrs6dhc7s04" path="res://characters/enemy/skeleton/metal.tres" id="4_nltyv"]
 [ext_resource type="Material" uid="uid://qp2qvif422pv" path="res://models/chest/wood.tres" id="4_pm7ye"]
-[ext_resource type="Script" uid="uid://fsuxeuaiufu4" path="res://characters/enemy/skeleton/enemy_ai.gd" id="5_0dqdt"]
+[ext_resource type="Script" uid="uid://fsuxeuaiufu4" path="res://scripts/enemy/enemy_ai.gd" id="5_0dqdt"]
 
 [sub_resource type="Resource" id="Resource_pm7ye"]
 script = ExtResource("2_ceslt")
@@ -532,7 +534,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.113446, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/6/type = "rotation_3d"
 tracks/6/imported = false
@@ -666,14 +668,16 @@ hit_animation_name = "Attacked"
 attack_animation_name = "Attack"
 idle_animation_name = "RESET"
 block_animation_name = "Block"
-turn_speed = 1.2
+turn_speed = 1.8
+move_speed = 1.3
+attacked_sound = ExtResource("3_osq6w")
+death_sound = ExtResource("4_15h7t")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.825195, 0)
 shape = SubResource("CylinderShape3D_8n0in")
 
 [node name="skeleton" type="Node3D" parent="."]
-transform = Transform3D(0.993572, 0, -0.113203, 0, 1, 0, 0.113203, 0, 0.993572, 0, 0, 0)
 
 [node name="Armature" type="Node3D" parent="skeleton"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.804579, 0)
@@ -812,7 +816,7 @@ skin = SubResource("Skin_5xy0m")
 surface_material_override/0 = SubResource("ShaderMaterial_nltyv")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="skeleton/Armature/Skeleton3D"]
-transform = Transform3D(1.3029e-07, -1, -4.91738e-07, 1, 1.22876e-07, 7.61744e-08, -9.17941e-08, -2.98023e-08, 0.999999, -0.951729, 0.774528, 0.0617618)
+transform = Transform3D(-0.96669, -0.25595, 0.000139847, 0.25595, -0.966689, -0.000318199, 0.00021711, -0.000271671, 0.999998, -0.423202, 0.0878521, 0.0615688)
 bone_name = "Bone.003"
 bone_idx = 4
 
@@ -835,7 +839,7 @@ transform = Transform3D(1, 7.27596e-11, 3.42105e-07, 1.1496e-09, 1, 4.45289e-09,
 shape = SubResource("BoxShape3D_pm7ye")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="skeleton/Armature/Skeleton3D"]
-transform = Transform3D(-1.04702e-07, 1, 2.04714e-22, -1, -1.21055e-07, 5.2825e-08, 6.1928e-08, -9.47077e-23, 1, 0.961223, 0.774528, 0.0617618)
+transform = Transform3D(-0.967118, 0.254327, 0.000155583, -0.254327, -0.967118, 0.000336121, 0.00023593, 0.000285536, 1, 0.428133, 0.0831246, 0.0619659)
 bone_name = "Bone.006"
 bone_idx = 8
 
@@ -855,6 +859,7 @@ surface_material_override/1 = ExtResource("4_pm7ye")
 libraries = {
 &"": SubResource("AnimationLibrary_0dqdt")
 }
+blend_times = [&"Attacked", &"Attack", 0.15, &"Attacked", &"Attacked", 0.15, &"Attacked", &"Block", 0.15, &"Attacked", &"Death", 0.15, &"Attacked", &"RESET", 0.15, &"Attacked", &"Walk", 0.15]
 
 [node name="EnemyHitbox" type="Area3D" parent="."]
 collision_layer = 128
@@ -876,6 +881,10 @@ collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wakeup Area"]
 shape = SubResource("SphereShape3D_nltyv")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2614, 0)
+bus = &"SFX"
 
 [connection signal="area_entered" from="EnemyHitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="body_entered" from="Wakeup Area" to="EnemyAI" method="_on_wakeup_area_body_entered"]

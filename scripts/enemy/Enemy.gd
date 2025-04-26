@@ -22,6 +22,10 @@ class_name Enemy
 @export var can_block_attack : bool = true
 @export_range(0, 1) var block_chance : float = 0.2
 
+@export_category("Audio")
+@export var attacked_sound : AudioStream
+@export var death_sound : AudioStream
+
 var current_health : int
 
 var hit_effect_speed : float = 1

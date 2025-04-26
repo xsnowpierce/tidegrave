@@ -5,12 +5,13 @@ class_name EnemyAI
 @export var character : CharacterBody3D
 @onready var enemy : Enemy = $".."
 @onready var animation_player : AnimationPlayer = $"../AnimationPlayer"
+@onready var audio_player : AudioStreamPlayer3D = $"../AudioStreamPlayer3D"
+
 var player : CharacterBody3D
 var has_player : bool
 
 var is_attacking : bool
 var is_being_hit : bool
-
 
 func _on_wakeup_area_body_entered(body : Node3D) -> void:
 	if(body is CharacterBody3D):
@@ -115,6 +116,9 @@ func attacked_from_player() -> void:
 		
 	is_being_hit = true
 	
+	audio_player.stream = enemy.attacked_sound
+	audio_player.play()
+	
 	play_hit_animation()
 	play_hit_flash()
 
@@ -144,5 +148,9 @@ func death() -> void:
 	
 	play_hit_flash()
 	animation_player.play(enemy.death_animation_name)
+	
+	audio_player.stream = enemy.death_sound
+	audio_player.play()
+	
 	await animation_player.animation_finished
 	enemy.queue_free()

@@ -48,6 +48,7 @@ _data = {
 
 [node name="Pause Menu" type="Control"]
 process_mode = 3
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -120,19 +121,34 @@ script = ExtResource("2_kukqi")
 
 [node name="Items" type="VBoxContainer" parent="Background/Main Panel/Stats"]
 layout_mode = 2
-theme_override_constants/separation = 5
+theme_override_constants/separation = 1
 
-[node name="CharacterNameItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
+[node name="ExperienceItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
 layout_mode = 2
 script = ExtResource("3_5d2l8")
 
-[node name="String" type="Label" parent="Background/Main Panel/Stats/Items/CharacterNameItem"]
+[node name="String" type="Label" parent="Background/Main Panel/Stats/Items/ExperienceItem"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 13
 text = "sadsadsa"
 
-[node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/CharacterNameItem"]
+[node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/ExperienceItem"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "543243"
+
+[node name="LevelItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
+layout_mode = 2
+script = ExtResource("3_5d2l8")
+
+[node name="String" type="Label" parent="Background/Main Panel/Stats/Items/LevelItem"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "sadsadsa"
+
+[node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/LevelItem"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "543243"
@@ -152,17 +168,32 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "543243"
 
-[node name="StaminaItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
+[node name="StatusItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
 layout_mode = 2
 script = ExtResource("3_5d2l8")
 
-[node name="String" type="Label" parent="Background/Main Panel/Stats/Items/StaminaItem"]
+[node name="String" type="Label" parent="Background/Main Panel/Stats/Items/StatusItem"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 13
 text = "sadsadsa"
 
-[node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/StaminaItem"]
+[node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/StatusItem"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "543243"
+
+[node name="GoldItem" type="HBoxContainer" parent="Background/Main Panel/Stats/Items"]
+layout_mode = 2
+script = ExtResource("3_5d2l8")
+
+[node name="String" type="Label" parent="Background/Main Panel/Stats/Items/GoldItem"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 13
+text = "sadsadsa"
+
+[node name="Value" type="Label" parent="Background/Main Panel/Stats/Items/GoldItem"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "543243"

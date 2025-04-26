@@ -10,7 +10,9 @@ enum USE_ITEM_RESULT {
 	
 	NOTHING_HAPPENED,
 	SUCCESS,
-	IGNORE
+	IGNORE,
+	EMPTY,
+	LOCKED
 }
 
 func try_use_item(item : InventoryItem) -> void:
@@ -24,8 +26,6 @@ func try_use_item(item : InventoryItem) -> void:
 			var interactable : WorldInteractable = $ShapeCast3D.get_collider(col)
 			
 			send_interact_message(interactable.item_interact(item))
-			
-	
 	return
 
 func send_interact_message(type : USE_ITEM_RESULT) -> void:
@@ -35,4 +35,10 @@ func send_interact_message(type : USE_ITEM_RESULT) -> void:
 		USE_ITEM_RESULT.SUCCESS:
 			return
 		USE_ITEM_RESULT.IGNORE:
+			return
+		USE_ITEM_RESULT.EMPTY:
+			hud.show_interact_message("EMPTY")
+		USE_ITEM_RESULT.LOCKED:
+			hud.show_interact_message("LOCKED")
+		_:
 			return

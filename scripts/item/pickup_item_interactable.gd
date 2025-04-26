@@ -24,8 +24,9 @@ func spawn_mesh() -> void:
 	$"Mesh Centre".add_child(current_mesh)
 	current_mesh.position = holding_item.centre_mesh_offset
 
-func interact(player : Player) -> void:
+func interact(player : Player) -> PlayerUseItem.USE_ITEM_RESULT:
 	player.pickup_item(self)
+	return PlayerUseItem.USE_ITEM_RESULT.IGNORE
 
 func get_item_mesh_holder() -> Node3D:
 	return $"Mesh Centre"

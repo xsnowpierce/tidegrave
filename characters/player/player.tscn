@@ -1,7 +1,8 @@
-[gd_scene load_steps=44 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=46 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
+[ext_resource type="Environment" uid="uid://cnxq7oyfis56g" path="res://levels/dungeon1/dungeon_environment.tres" id="2_4cx7u"]
 [ext_resource type="Script" uid="uid://dfpnth5k6p1u2" path="res://scripts/player/player_camera.gd" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dxmbfb4qphdfj" path="res://scripts/player/player_movement.gd" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://b6b20656cg47d" path="res://scripts/player/player_input.gd" id="4_1jxqw"]
@@ -25,6 +26,7 @@
 [ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/items/weapons/straight_sword/straight_sword.tres" id="13_yybc7"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player/player_hitbox.gd" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://wsryyhg4yd4r" path="res://characters/player/pause_menu.tscn" id="15_a8ls1"]
+[ext_resource type="Script" uid="uid://cy7t328tvg8ey" path="res://characters/player/player_interact.gd" id="22_w53g3"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
 length = 0.001
@@ -327,10 +329,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, 0)
 unique_name_in_owner = true
 process_mode = 1
 cull_mask = 1048571
+environment = ExtResource("2_4cx7u")
 current = true
 fov = 60.0
 near = 0.001
-far = 25.0
+far = 100.0
 script = ExtResource("2_sweqy")
 character = NodePath("../..")
 head = NodePath("..")
@@ -418,7 +421,7 @@ mesh = SubResource("ArrayMesh_hkr0w")
 skin = SubResource("Skin_h2fb0")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
-transform = Transform3D(1, 0, 2.38419e-07, 0, 1, 0, -2.38419e-07, 0, 1, 0, 0.538187, 0)
+transform = Transform3D(-0.416828, 0.906445, -0.0679156, -0.908434, -0.418012, -0.00359169, -0.0316452, 0.0601998, 0.997685, 0.11239, -0.479244, 0)
 bone_name = "Bone.004"
 bone_idx = 3
 
@@ -438,8 +441,9 @@ bus = &"SFX"
 [node name="MidiPlayer" type="Node" parent="Head/Player Camera"]
 process_mode = 3
 script = ExtResource("8_jgd8i")
-file = "res://audio/music/Valentine #2.mid"
+file = "res://audio/music/Solitude.mid"
 playing = true
+volume_db = -11.692
 loop = true
 soundfont = "res://audio/Kirby 64 SF v1.0.sf2"
 bus = &"Master/Music"
@@ -480,13 +484,16 @@ equipped_weapon = ExtResource("13_yybc7")
 [node name="PlayerStats" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_1jxqw")
-max_health = 10.0
 max_stamina = 10.0
 sprinting_stamina_decrease_speed = 3.0
 
 [node name="PlayerPickupItem" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("13_oprun")
+
+[node name="PlayerInteract" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("22_w53g3")
 
 [node name="PlayerUseItem" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -548,5 +555,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322902, 1.05893, -0.039997
 [connection signal="area_exited" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_exited"]
 [connection signal="area_entered" from="Head/Player Camera/AttackHitbox" to="Head/Player Camera/AttackHitbox" method="_on_area_entered"]
 [connection signal="attack_pressed" from="PlayerInput" to="PlayerCombat" method="_on_player_input_attack_pressed"]
+[connection signal="interact_pressed" from="PlayerInput" to="PlayerInteract" method="_on_player_input_interact_pressed"]
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]
 [connection signal="player_attacked" from="PlayerHitbox" to="HUD" method="_on_player_hitbox_player_attacked"]
