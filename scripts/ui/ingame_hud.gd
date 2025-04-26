@@ -4,10 +4,14 @@ class_name PlayerHUD
 
 @export var player : Player
 
+@onready var hp_amount: Label = $"MarginContainer/VBoxContainer/HBoxContainer/HP Amount"
+@onready var stamina_change: ColorRect = $"MarginContainer/VBoxContainer/Stamina/Stamina Change"
+
 var stamina_starting_size_x
 
 @export var damage_flash_colour : Color
 @export var damage_flash_time : float = 0.15
+
 
 @export var interact_message_fade_time : float = 0.4
 @export var interact_message_stay_time : float = 3
@@ -18,13 +22,13 @@ var text_tween : Tween
 
 func _ready() -> void:
 	await get_tree().process_frame
-	stamina_starting_size_x = $"MarginContainer/VBoxContainer/Stamina/Stamina Change".size.x
+	stamina_starting_size_x = stamina_change.size.x
 
 func _process(delta: float) -> void:
-	$"MarginContainer/VBoxContainer/Health Amount".text = "HP " + str(floori(player.get_player_stats().current_health))
+	hp_amount.text = str(floori(player.get_player_stats().current_health))
 	
 	var staminaPercent = player.get_player_stats().current_stamina / player.get_player_stats().max_stamina
-	$"MarginContainer/VBoxContainer/Stamina/Stamina Change".size.x = stamina_starting_size_x * staminaPercent
+	stamina_change.size.x = stamina_starting_size_x * staminaPercent
 
 func _on_player_hitbox_player_attacked() -> void:
 	play_player_damaged_flash()

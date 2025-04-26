@@ -1,11 +1,8 @@
-[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://d3eef1eqab0co"]
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d3eef1eqab0co"]
 
 [ext_resource type="Texture2D" uid="uid://dxmcs1b4qos8y" path="res://levels/dungeon1/tileset/materials/dungeon_01_floor_tile_stone_wall.png" id="1_xsq10"]
-[ext_resource type="Texture2D" uid="uid://kdydrxlrilvn" path="res://levels/dungeon1/tileset/materials/dungeon_01_floor_tile_stone_wall_n.png" id="2_jjame"]
 
 [resource]
+shading_mode = 2
 albedo_texture = ExtResource("1_xsq10")
-normal_enabled = true
-normal_scale = 0.44
-normal_texture = ExtResource("2_jjame")
-texture_filter = 2
+texture_filter = 0

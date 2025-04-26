@@ -7,9 +7,9 @@ var current_health : float
 
 @export var max_stamina : float
 var current_stamina : float
-var default_stamina_recover_speed : float = 5
-var stamina_recovery_multiplier : float = 1
-var sprinting_stamina_decrease_speed : float = 10
+@export var default_stamina_recover_speed : float = 5
+@export var stamina_recovery_multiplier : float = 1
+@export var sprinting_stamina_decrease_speed : float = 10
 
 func _ready() -> void:
 	current_health = max_health

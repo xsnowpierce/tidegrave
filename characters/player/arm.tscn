@@ -1,5 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcdgtrp1nv1c7"]
-
-[ext_resource type="PackedScene" uid="uid://cmgewhoymf2ws" path="res://blender_files/arm.blend" id="1_q8oh2"]
-
-[node name="arm" instance=ExtResource("1_q8oh2")]

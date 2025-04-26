@@ -1,9 +1,11 @@
-[gd_scene load_steps=31 format=4 uid="uid://bfrbsfxb557wm"]
+[gd_scene load_steps=33 format=4 uid="uid://bfrbsfxb557wm"]
 
 [ext_resource type="Script" uid="uid://f6bnnl758quq" path="res://scripts/enemy/Enemy.gd" id="1_we66r"]
 [ext_resource type="Script" uid="uid://bt3jeon4k1fhv" path="res://scripts/enemy/EnemyStats.gd" id="2_ceslt"]
 [ext_resource type="Shader" uid="uid://dkyfo8fkc0yr4" path="res://characters/enemy/skeleton/skeleton_shader.tres" id="3_pm7ye"]
 [ext_resource type="Script" uid="uid://mhhledaqsq78" path="res://scripts/enemy/enemy_hitbox.gd" id="3_we66r"]
+[ext_resource type="Material" uid="uid://cjhrs6dhc7s04" path="res://characters/enemy/skeleton/metal.tres" id="4_nltyv"]
+[ext_resource type="Material" uid="uid://qp2qvif422pv" path="res://models/chest/wood.tres" id="4_pm7ye"]
 [ext_resource type="Script" uid="uid://fsuxeuaiufu4" path="res://characters/enemy/skeleton/enemy_ai.gd" id="5_0dqdt"]
 
 [sub_resource type="Resource" id="Resource_pm7ye"]
@@ -689,15 +691,15 @@ bones/1/parent = 0
 bones/1/rest = Transform3D(1.19209e-07, -0.968793, 0.247873, 1, 1.3211e-07, 3.54138e-08, -6.70552e-08, 0.247873, 0.968792, 0, 0.774528, 0)
 bones/1/enabled = true
 bones/1/position = Vector3(0, 0.774528, 0)
-bones/1/rotation = Quaternion(0.0883282, 0.0883282, 0.701568, 0.701568)
-bones/1/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.0883281, 0.0883281, 0.701568, 0.701568)
+bones/1/scale = Vector3(1, 1, 0.999999)
 bones/2/name = "Bone.018"
 bones/2/parent = 1
 bones/2/rest = Transform3D(1, 1.10808e-08, 3.21895e-08, -1.87139e-08, 0.968792, 0.247873, -2.84383e-08, -0.247873, 0.968792, -2.22045e-16, 0.249167, 3.72529e-09)
 bones/2/enabled = true
 bones/2/position = Vector3(-2.22045e-16, 0.249167, 3.72529e-09)
 bones/2/rotation = Quaternion(-0.0990298, 0.0760229, 0.605182, 0.786237)
-bones/2/scale = Vector3(1, 1, 1)
+bones/2/scale = Vector3(1, 0.999999, 0.999999)
 bones/3/name = "Bone.002"
 bones/3/parent = 2
 bones/3/rest = Transform3D(1, 3.15281e-16, -1.36529e-32, -3.15281e-16, 1, -8.66077e-17, -1.36529e-32, 8.66077e-17, 1, -4.66288e-09, 0.337716, 2.21297e-09)
@@ -710,14 +712,14 @@ bones/4/parent = 3
 bones/4/rest = Transform3D(1, 3.15281e-16, -1.36529e-32, -3.15281e-16, 1, -8.66077e-17, -1.36529e-32, 8.66077e-17, 1, -4.66288e-09, 0.372622, 2.21297e-09)
 bones/4/enabled = true
 bones/4/position = Vector3(-4.66288e-09, 0.372622, 2.21297e-09)
-bones/4/rotation = Quaternion(4.33039e-17, 0, -1.57641e-16, 1)
+bones/4/rotation = Quaternion(4.33039e-17, 0, -1.5764e-16, 1)
 bones/4/scale = Vector3(1, 1, 1)
 bones/5/name = "Bone.004"
 bones/5/parent = 0
 bones/5/rest = Transform3D(-1.19209e-07, 0.969972, -0.243217, -1, -1.19209e-07, 9.68575e-08, 6.70552e-08, 0.243217, 0.969972, 0, 0.774528, 0)
 bones/5/enabled = true
 bones/5/position = Vector3(0, 0.774528, 0)
-bones/5/rotation = Quaternion(0.0866431, -0.0866431, -0.701778, 0.701778)
+bones/5/rotation = Quaternion(0.086643, -0.0866431, -0.701778, 0.701778)
 bones/5/scale = Vector3(1, 1, 1)
 bones/6/name = "Bone.019"
 bones/6/parent = 5
@@ -738,7 +740,7 @@ bones/8/parent = 7
 bones/8/rest = Transform3D(1, -4.79765e-23, 0, 4.79765e-23, 1, 6.8238e-23, 0, -6.8238e-23, 1, 4.66288e-09, 0.396356, -1.61316e-09)
 bones/8/enabled = true
 bones/8/position = Vector3(4.66288e-09, 0.396356, -1.61316e-09)
-bones/8/rotation = Quaternion(-3.4119e-23, 0, 2.39882e-23, 1)
+bones/8/rotation = Quaternion(-3.4119e-23, 0, 2.39883e-23, 1)
 bones/8/scale = Vector3(1, 1, 1)
 bones/9/name = "Bone.008"
 bones/9/parent = 0
@@ -810,7 +812,7 @@ skin = SubResource("Skin_5xy0m")
 surface_material_override/0 = SubResource("ShaderMaterial_nltyv")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="skeleton/Armature/Skeleton3D"]
-transform = Transform3D(-0.96669, -0.25595, 0.000140384, 0.25595, -0.96669, -0.000318199, 0.00021714, -0.000271659, 1, -0.423202, 0.0878514, 0.0615689)
+transform = Transform3D(1.3029e-07, -1, -4.91738e-07, 1, 1.22876e-07, 7.61744e-08, -9.17941e-08, -2.98023e-08, 0.999999, -0.951729, 0.774528, 0.0617618)
 bone_name = "Bone.003"
 bone_idx = 4
 
@@ -833,7 +835,7 @@ transform = Transform3D(1, 7.27596e-11, 3.42105e-07, 1.1496e-09, 1, 4.45289e-09,
 shape = SubResource("BoxShape3D_pm7ye")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="skeleton/Armature/Skeleton3D"]
-transform = Transform3D(-0.967118, 0.254327, 0.000155449, -0.254327, -0.967118, 0.000336006, 0.000235781, 0.000285428, 1, 0.428133, 0.0831247, 0.0619659)
+transform = Transform3D(-1.04702e-07, 1, 2.04714e-22, -1, -1.21055e-07, 5.2825e-08, 6.1928e-08, -9.47077e-23, 1, 0.961223, 0.774528, 0.0617618)
 bone_name = "Bone.006"
 bone_idx = 8
 
@@ -846,6 +848,8 @@ transform = Transform3D(-8.19564e-08, 7.96281e-08, -1, 5.58794e-09, 1, -6.28643e
 transform = Transform3D(0.339378, 0.00159496, 0.0024941, 0.00249479, -0.000142293, -0.339381, -0.00159387, 0.339387, -0.000154011, 0, 0, 0)
 mesh = SubResource("ArrayMesh_06so4")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("4_nltyv")
+surface_material_override/1 = ExtResource("4_pm7ye")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

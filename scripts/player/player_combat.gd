@@ -4,6 +4,8 @@ class_name PlayerCombat
 
 @onready var weapon_parent: Node3D = $"../Head/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D/WeaponParent"
 
+@export_flags_3d_render var weapon_render_layer : int
+
 var is_attacking : bool
 var character : Player
 
@@ -34,17 +36,17 @@ func _on_player_input_attack_pressed() -> void:
 	
 	match(%PlayerInventory.equipped_weapon.attack_animation_type):
 		ATTACK_ANIMATION_STYLE.SWING:
-			%ArmAnimator.play("swing")
+			%ArmAnimator.play("Swing")
 		ATTACK_ANIMATION_STYLE.JAB:
-			%ArmAnimator.play("jab")
+			%ArmAnimator.play("Stab")
 	
 	%PlayerStats.current_stamina = 0
 	
-	await get_tree().create_timer(%ArmAnimator.current_animation_length / 2).timeout
+	await get_tree().create_timer(%ArmAnimator.current_animation_length / %ArmAnimator.speed_scale / 2, false).timeout
 	
 	%AttackHitbox.enable_attack_hitbox(%PlayerInventory.equipped_weapon, 0.6)
 	
-	await get_tree().create_timer(%ArmAnimator.current_animation_length / 2).timeout
+	await get_tree().create_timer(%ArmAnimator.current_animation_length / %ArmAnimator.speed_scale / 2, false).timeout
 	
 	is_attacking = false
 	%ArmAnimator.play("RESET")

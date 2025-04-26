@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://qp2qvif422pv"]
+
+[ext_resource type="Texture2D" uid="uid://2wwmd35eec0b" path="res://models/chest/wood.png" id="1_3xu3u"]
+
+[resource]
+shading_mode = 2
+albedo_texture = ExtResource("1_3xu3u")
+metallic_specular = 0.0
+texture_filter = 0
+disable_receive_shadows = true
