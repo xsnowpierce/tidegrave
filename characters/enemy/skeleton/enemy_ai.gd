@@ -45,10 +45,13 @@ func _physics_process(delta: float) -> void:
 		# outside of target angle
 		can_enemy_attack = false
 	
+	var distance_to_player : float = get_player_distance()
+	
+	if(distance_to_player > enemy.target_distance_to_player):
+		can_enemy_attack = false
+	
 	if(can_enemy_attack):
 		attack_player()
-	
-	var distance_to_player : float = get_player_distance()
 	
 	if distance_to_player > enemy.target_distance_to_player:
 		character.velocity.x = character.transform.basis.z.x * enemy.move_speed;

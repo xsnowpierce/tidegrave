@@ -1,20 +1,59 @@
-[gd_scene load_steps=31 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=39 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
 [ext_resource type="Script" uid="uid://dfpnth5k6p1u2" path="res://scripts/player/player_camera.gd" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dxmbfb4qphdfj" path="res://scripts/player/player_movement.gd" id="3_2hs0m"]
+[ext_resource type="Shader" uid="uid://cuh8fn8v2dftc" path="res://scripts/shaders/psx.gdshader" id="3_kyfeq"]
 [ext_resource type="Script" uid="uid://b6b20656cg47d" path="res://scripts/player/player_input.gd" id="4_1jxqw"]
 [ext_resource type="Script" uid="uid://savfgqh610vg" path="res://scripts/player/player_interact.gd" id="5_1jxqw"]
 [ext_resource type="PackedScene" uid="uid://oncjf8lbhw26" path="res://characters/player/ingame_hud.tscn" id="8_dw050"]
 [ext_resource type="Resource" uid="uid://ctp4spwvdaarf" path="res://resources/items/weapons/epee/epee.tres" id="9_58jvb"]
+[ext_resource type="Script" uid="uid://bip1mddvvyep8" path="res://scripts/item/inventory_item.gd" id="9_fpo3a"]
 [ext_resource type="Script" uid="uid://tk6ujsrpg0v1" path="res://scripts/player/player_combat.gd" id="9_y4r1p"]
 [ext_resource type="Script" uid="uid://di3l02i41lrtf" path="res://scripts/player/player_inventory.gd" id="10_d2wvv"]
+[ext_resource type="Resource" uid="uid://cfmof8qrvwdmq" path="res://resources/items/armour/chestplate/chestplate.tres" id="10_kyfeq"]
+[ext_resource type="Resource" uid="uid://dbrcymut50xbk" path="res://resources/items/dungeon key/dungeon_key.tres" id="11_5mkjs"]
 [ext_resource type="Script" uid="uid://26jidbn6glxh" path="res://characters/player/player_use_item.gd" id="11_icpky"]
 [ext_resource type="Script" uid="uid://cvwvqy2elhix1" path="res://scripts/player/player_attack_hitbox.gd" id="13_jej6c"]
 [ext_resource type="Script" uid="uid://byorchnqvpehk" path="res://scripts/player/player_pickup_item.gd" id="13_oprun"]
+[ext_resource type="Resource" uid="uid://bpojuo6xgii3r" path="res://resources/items/weapons/straight_sword/straight_sword.tres" id="13_yybc7"]
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player/player_hitbox.gd" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://wsryyhg4yd4r" path="res://characters/player/pause_menu.tscn" id="15_a8ls1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kyfeq"]
+render_priority = 2
+shader = ExtResource("3_kyfeq")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 0.3
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5mkjs"]
+render_priority = 1
+shader = ExtResource("3_kyfeq")
+shader_parameter/enable_fog = true
+shader_parameter/fog_color = Color(0, 0, 0, 1)
+shader_parameter/noise_color = Color(0, 0, 0, 1)
+shader_parameter/fog_distance = 100.0
+shader_parameter/fog_fade_range = 50.0
+shader_parameter/enable_noise = true
+shader_parameter/noise_time_fac = 4.0
+shader_parameter/enable_color_limitation = true
+shader_parameter/color_levels = 32
+shader_parameter/enable_dithering = true
+shader_parameter/dither_strength = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_yybc7"]
+material = SubResource("ShaderMaterial_5mkjs")
+flip_faces = true
 
 [sub_resource type="Animation" id="Animation_i5arm"]
 length = 0.001
@@ -218,12 +257,17 @@ cull_mask = 1048571
 current = true
 fov = 60.0
 near = 0.001
-far = 100.0
+far = 25.0
 script = ExtResource("2_sweqy")
 character = NodePath("../..")
 head = NodePath("..")
 player_movement = NodePath("../../PlayerMovement")
 head_bob_speed = 0.24
+
+[node name="PSX View" type="MeshInstance3D" parent="Head/Player Camera"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -0.100922)
+material_override = SubResource("ShaderMaterial_kyfeq")
+mesh = SubResource("PlaneMesh_yybc7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Player Camera"]
 libraries = {
@@ -293,7 +337,7 @@ mesh = SubResource("ArrayMesh_bj2ln")
 skin = SubResource("Skin_l7ec2")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
-transform = Transform3D(0.79256, -0.609295, 0.0246705, 0.609518, 0.79277, -0.00196165, -0.0183628, 0.0165918, 0.999694, -3.75268e-05, 0.5563, -0.000181578)
+transform = Transform3D(0.79256, -0.609295, 0.0246705, 0.609517, 0.79277, -0.00196164, -0.0183628, 0.0165918, 0.999694, -3.75268e-05, 0.5563, -0.000181578)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -341,7 +385,13 @@ script = ExtResource("9_y4r1p")
 [node name="PlayerInventory" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_d2wvv")
-equipped_weapon = ExtResource("9_58jvb")
+inventory_items = Dictionary[ExtResource("9_fpo3a"), int]({
+ExtResource("10_kyfeq"): 1,
+ExtResource("11_5mkjs"): 1,
+ExtResource("9_58jvb"): 1,
+ExtResource("13_yybc7"): 1
+})
+equipped_weapon = ExtResource("13_yybc7")
 
 [node name="PlayerStats" type="Node" parent="."]
 unique_name_in_owner = true

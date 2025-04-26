@@ -67,6 +67,7 @@ animations = [{
 [node name="torch_pillar" instance=ExtResource("1_6nkdr")]
 
 [node name="Cube" parent="." index="0"]
+cast_shadow = 0
 surface_material_override/0 = ExtResource("2_rw5mw")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." index="1"]

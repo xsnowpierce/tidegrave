@@ -10,6 +10,7 @@ class_name Enemy
 @export var hit_animation_name : String = ""
 @export var attack_animation_name : String = ""
 @export var idle_animation_name : String = ""
+@export var block_animation_name : String = ""
 @export var death_animation_name : String = ""
 
 @export_category("AI")
@@ -18,6 +19,8 @@ class_name Enemy
 @export var target_distance_to_player : float = 2
 @export var max_angle_to_player_acceptable : float = 10
 @export var can_attack : bool = true
+@export var can_block_attack : bool = true
+@export_range(0, 1) var block_chance : float = 0.2
 
 var current_health : int
 

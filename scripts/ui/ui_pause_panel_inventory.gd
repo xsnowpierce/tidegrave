@@ -4,7 +4,7 @@ class_name UIPausePanelInventory
 
 @onready var item_select_panel: UIPausePanelItemSelect = $"../Item Select Panel"
 
-var is_in_item_selection : bool
+var is_in_item_selection : bool = false
 
 var current_selecting_item : InventoryItem
 var last_selected_menu_item : Control
@@ -20,6 +20,7 @@ func hide_panel() -> void:
 	item_select_panel.hide_panel()
 	current_selecting_item = null
 	last_selected_menu_item = null
+	is_in_item_selection = false
 	
 func cancel_pressed() -> void:
 	pause_menu.switch_menu_panel(PauseMenu.PANEL.MAIN)

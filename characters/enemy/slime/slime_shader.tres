@@ -115,7 +115,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-671.512, -171.675)
 preview_params/Slime_Transparency = "0.5"
 nodes/fragment/3/node = SubResource("VisualShaderNodeColorParameter_yhci4")
 nodes/fragment/3/position = Vector2(-480, 80)
