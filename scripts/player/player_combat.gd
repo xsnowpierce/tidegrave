@@ -6,6 +6,9 @@ class_name PlayerCombat
 
 @export_flags_3d_render var weapon_render_layer : int
 
+@export_category("Audio")
+@export var swing_sound_sfx : AudioStream
+
 var is_attacking : bool
 var character : Player
 
@@ -41,6 +44,9 @@ func _on_player_input_attack_pressed() -> void:
 			%ArmAnimator.play("Stab")
 	
 	%PlayerStats.current_stamina = 0
+	
+	%SFXPlayer.stream = swing_sound_sfx
+	%SFXPlayer.play()
 	
 	await get_tree().create_timer(%ArmAnimator.current_animation_length / %ArmAnimator.speed_scale / 2, false).timeout
 	
