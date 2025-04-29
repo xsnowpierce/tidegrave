@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1w6ksv3esa3c"
-path.s3tc="res://.godot/imported/vampire_sword_gem.png-bb6f8cdf82fb342f23fea84fb38c8a53.s3tc.ctex"
+uid="uid://bgkelta1rjses"
+path.s3tc="res://.godot/imported/tileset_tile2.png-85d75e64cfd64c9a6a9f1c122bfe46ed.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "9f1468042e6080bb7f9d979d694894b3"
+"md5": "02924e85140505afab6ce25030097eb1"
 }
 
 [deps]
 
-source_file="res://resources/items/weapons/vampire_sword/vampire_sword_gem.png"
-dest_files=["res://.godot/imported/vampire_sword_gem.png-bb6f8cdf82fb342f23fea84fb38c8a53.s3tc.ctex"]
+source_file="res://blender_files/tileset_tile2.png"
+dest_files=["res://.godot/imported/tileset_tile2.png-85d75e64cfd64c9a6a9f1c122bfe46ed.s3tc.ctex"]
 
 [params]
 

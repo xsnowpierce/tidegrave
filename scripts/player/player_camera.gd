@@ -15,6 +15,7 @@ extends Camera3D
 @export_group("Settings")
 
 @export var head_bob_speed : float = 1
+@export var controller_sensitivity : float = 75
 
 #Mouse settings.
 @export_subgroup("Mouse settings")
@@ -52,7 +53,7 @@ func _process(_delta: float) -> void:
 	
 	var look_vector = Input.get_vector("look_left", "look_right", "look_up", "look_down")
 	if(look_vector.length() != 0):
-		apply_look(look_vector)
+		apply_look(look_vector * controller_sensitivity)
 
 func _unhandled_input(event)->void:
 	if(!character.can_player_look()):
@@ -77,13 +78,12 @@ func _unhandled_input(event)->void:
 #Handles aim look with the mouse.
 func aim_look(event: InputEventMouseMotion)-> void:
 	var viewport_transform: Transform2D = get_tree().root.get_final_transform()
-	apply_look(event.xformed_by(viewport_transform).relative)
+	apply_look(event.xformed_by(viewport_transform).relative * mouse_sensitivity)
 
 
 func apply_look(vector : Vector2) -> void:
 	var degrees_per_unit: float = 0.001
 	
-	vector *= mouse_sensitivity
 	vector *= degrees_per_unit
 	
 	add_yaw(vector.x)
