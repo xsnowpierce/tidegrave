@@ -8,3 +8,4 @@
 script = ExtResource("1_gyfs4")
 player_scene = ExtResource("2_d5x1h")
 start_scene = ExtResource("3_gyfs4")
+player_spawn_location = Vector3(5, 0, -5)

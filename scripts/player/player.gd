@@ -63,3 +63,6 @@ func get_inventory() -> PlayerInventory:
 
 func get_use_item() -> PlayerUseItem:
 	return %PlayerUseItem
+
+func get_camera_rotation() -> Vector3:
+	return $"%Player Camera".global_rotation

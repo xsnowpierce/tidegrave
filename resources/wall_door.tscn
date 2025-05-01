@@ -1,0 +1,77 @@
+[gd_scene load_steps=9 format=3 uid="uid://bp5pdascb4uvr"]
+
+[ext_resource type="Script" uid="uid://dfker8qg5kkku" path="res://scripts/world/wall_door_interactable.gd" id="1_ab3cr"]
+[ext_resource type="Resource" uid="uid://dbrcymut50xbk" path="res://resources/items/dungeon key/dungeon_key.tres" id="2_yoeop"]
+[ext_resource type="Material" uid="uid://d3eef1eqab0co" path="res://levels/dungeon1/tileset/materials/stone_wall.tres" id="3_cbf1h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r3gnu"]
+size = Vector3(3.40479, 4.50159, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qxj5j"]
+size = Vector3(3.39655, 3.99292, 1)
+
+[sub_resource type="Animation" id="Animation_qxj5j"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ulpql"]
+resource_name = "wall_door_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2, 0), Vector3(0, 6.02095, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_r3gnu"]
+_data = {
+&"RESET": SubResource("Animation_qxj5j"),
+&"wall_door_open": SubResource("Animation_ulpql")
+}
+
+[node name="Wall Door" type="Area3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+collision_layer = 32
+collision_mask = 16
+script = ExtResource("1_ab3cr")
+door_is_locked = true
+required_key = ExtResource("2_yoeop")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0388184, 1.75079, 0)
+shape = SubResource("BoxShape3D_r3gnu")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+material_override = ExtResource("3_cbf1h")
+use_collision = true
+size = Vector3(3.5, 4, 1)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0448303, 0.00183105, 0)
+shape = SubResource("BoxShape3D_qxj5j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_r3gnu")
+}
+speed_scale = 0.5

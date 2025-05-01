@@ -13,6 +13,9 @@ data = PackedVector3Array(0, 0.1095, -0.3, 0.1959, 0.3325, -0.1959, 0, 0.3325, -
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o3h0m"]
 resource_name = "Barrel"
 cull_mode = 2
+shading_mode = 0
+specular_mode = 2
+vertex_color_use_as_albedo = true
 albedo_texture = ExtResource("1_gsn4o")
 texture_filter = 2
 

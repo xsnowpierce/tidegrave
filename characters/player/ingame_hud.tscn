@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://oncjf8lbhw26"]
+[gd_scene load_steps=5 format=3 uid="uid://oncjf8lbhw26"]
 
 [ext_resource type="Script" uid="uid://binmxu60q4fpx" path="res://scripts/ui/ingame_hud.gd" id="1_xaq45"]
+[ext_resource type="Shader" uid="uid://vl1vrkityc4r" path="res://scripts/shaders/compass.tres" id="2_20tb0"]
+[ext_resource type="Texture2D" uid="uid://bcpf2y6w40ygn" path="res://images/compass.png" id="3_sl2gh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qsp83"]
+shader = ExtResource("2_20tb0")
+shader_parameter/Offset = 0.046
+shader_parameter/Texture = ExtResource("3_sl2gh")
 
 [node name="HUD" type="Control"]
 layout_mode = 3
@@ -82,3 +89,57 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 13
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Compass" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Area" type="Control" parent="Compass"]
+layout_mode = 1
+anchor_right = 1.0
+anchor_bottom = 0.165
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="Compass/Area"]
+clip_contents = true
+custom_minimum_size = Vector2(161, 0)
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="TextureRect" parent="Compass/Area/Control"]
+texture_repeat = 2
+material = SubResource("ShaderMaterial_qsp83")
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 7.475
+offset_bottom = 7.475
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.56, 0.56)
+mouse_filter = 2
+texture = ExtResource("3_sl2gh")
+expand_mode = 5
+stretch_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Compass/Area/Control"]
+custom_minimum_size = Vector2(4, 4)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2

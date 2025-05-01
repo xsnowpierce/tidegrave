@@ -6,6 +6,7 @@ class_name PlayerHUD
 
 @onready var hp_amount: Label = $"MarginContainer/VBoxContainer/HBoxContainer/HP Amount"
 @onready var stamina_change: ColorRect = $"MarginContainer/VBoxContainer/Stamina/Stamina Change"
+@onready var label: TextureRect = $Compass/Area/Control/Label
 
 var stamina_starting_size_x
 
@@ -16,6 +17,8 @@ var stamina_starting_size_x
 @export var interact_message_fade_time : float = 0.4
 @export var interact_message_stay_time : float = 3
 var interact_message_list : Array[String]
+
+var highest_y : float
 
 var damage_flash_tween : Tween
 var text_tween : Tween
@@ -29,6 +32,8 @@ func _process(delta: float) -> void:
 	
 	var staminaPercent = player.get_player_stats().current_stamina / player.get_player_stats().max_stamina
 	stamina_change.size.x = stamina_starting_size_x * staminaPercent
+	
+	update_compass_rotation(player.get_camera_rotation().y / PI)
 
 func _on_player_hitbox_player_attacked() -> void:
 	play_player_damaged_flash()
@@ -66,3 +71,6 @@ func play_interact_messages() -> void:
 	
 	if(!interact_message_list.is_empty()):
 		play_interact_messages()
+
+func update_compass_rotation(rot : float) -> void:
+	label.material.set_shader_parameter("Offset", rot / 2 + 0.046)

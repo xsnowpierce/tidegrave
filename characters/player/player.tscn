@@ -1,8 +1,7 @@
-[gd_scene load_steps=48 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=47 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
-[ext_resource type="Environment" uid="uid://cnxq7oyfis56g" path="res://levels/dungeon1/dungeon_environment.tres" id="2_4cx7u"]
 [ext_resource type="Script" uid="uid://dfpnth5k6p1u2" path="res://scripts/player/player_camera.gd" id="2_sweqy"]
 [ext_resource type="Script" uid="uid://dxmbfb4qphdfj" path="res://scripts/player/player_movement.gd" id="3_2hs0m"]
 [ext_resource type="Script" uid="uid://b6b20656cg47d" path="res://scripts/player/player_input.gd" id="4_1jxqw"]
@@ -369,7 +368,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, 0)
 unique_name_in_owner = true
 process_mode = 1
 cull_mask = 1048571
-environment = ExtResource("2_4cx7u")
 current = true
 fov = 60.0
 near = 0.001
