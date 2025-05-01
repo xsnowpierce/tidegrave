@@ -7,28 +7,37 @@ class_name EnemyAI
 @onready var animation_player : AnimationPlayer = $"../AnimationPlayer"
 @onready var audio_player : AudioStreamPlayer3D = $"../AudioStreamPlayer3D"
 
-var player : CharacterBody3D
+var aggression_player : Player
 var has_player : bool
 
 var is_attacking : bool
 var is_being_hit : bool
+var is_dying : bool
+
+var hit_flash_tween : Tween
+var hit_flash_speed : float = 0.18
+@export var use_surface_material_override : bool = false
+@export var albedo_color_path : String = "albedo_color"
+
+@export var collision_collider : CollisionShape3D
 
 func _on_wakeup_area_body_entered(body : Node3D) -> void:
-	if(body is CharacterBody3D):
-		player = body
+	if(body is Player):
+		aggression_player = body
 		has_player = true
 	else:
 		print("body entered that was not player player, ", body.get_class())
 
 func _on_wakeup_area_body_exited(body : Node3D) -> void:
-	has_player = false
-	player = null
+	if(body is Player):
+		aggression_player = null
+		has_player = false
 
 func _physics_process(delta: float) -> void:
 	if not has_player:
 		return
 	
-	if(is_attacking or is_being_hit):
+	if(is_attacking or is_being_hit or is_dying):
 		return
 	
 	var angle_to_player : float = get_player_angle()
@@ -65,7 +74,7 @@ func _physics_process(delta: float) -> void:
 	animate()
 
 func get_player_distance() -> float:
-	var player_non_y : Vector3 = player.global_position
+	var player_non_y : Vector3 = aggression_player.global_position
 	player_non_y.y = 0
 	
 	var our_non_y : Vector3 = character.global_position
@@ -74,7 +83,7 @@ func get_player_distance() -> float:
 	return our_non_y.distance_to(player_non_y)
 
 func get_player_angle() -> float:
-	var to_player = (player.global_position - character.global_position)
+	var to_player = (aggression_player.global_position - character.global_position)
 	to_player.y = 0
 	to_player = to_player.normalized()
 
@@ -90,7 +99,7 @@ func get_player_angle() -> float:
 
 func animate() -> void:
 	
-	if(is_attacking or is_being_hit):
+	if(is_attacking or is_being_hit or is_dying):
 		return
 	
 	if(character.velocity.length() > 0 and !enemy.move_animation_name.is_empty()):
@@ -102,7 +111,7 @@ func animate() -> void:
 			animation_player.play("RESET")
 
 func attack_player() -> void:
-	if(enemy.attack_animation_name.is_empty() or is_attacking):
+	if(enemy.attack_animation_name.is_empty() or is_attacking or is_dying):
 		return
 		
 	is_attacking = true
@@ -111,7 +120,7 @@ func attack_player() -> void:
 	is_attacking = false
 
 func attacked_from_player() -> void:
-	if(enemy.hit_animation_name.is_empty() or is_being_hit):
+	if(is_being_hit or is_dying):
 		return
 		
 	is_being_hit = true
@@ -123,25 +132,32 @@ func attacked_from_player() -> void:
 	play_hit_flash()
 
 func play_hit_flash() -> void:
-	var current_tint_alpha : float = .5
-	for mesh in enemy.meshes:
-		mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", .5)
-		
-	while(current_tint_alpha > 0):
-		for mesh in enemy.meshes:
-			mesh.get_surface_override_material(0).set_shader_parameter("HitEffect", current_tint_alpha)
-		current_tint_alpha -= get_process_delta_time() * enemy.hit_effect_speed
-		await get_tree().process_frame
+	if(hit_flash_tween):
+		hit_flash_tween.kill()
+	
+	hit_flash_tween = create_tween()
+	var target_color : Color = Color.RED
+	
+	if(!use_surface_material_override):
+		var starting_albedo : Color = enemy.mesh.get_active_material(0).albedo_color
+		hit_flash_tween.tween_property(enemy.mesh.get_active_material(0), albedo_color_path, target_color, hit_flash_speed)
+		hit_flash_tween.tween_property(enemy.mesh.get_active_material(0), albedo_color_path, starting_albedo, hit_flash_speed)
+	else:
+		var starting_albedo : Color = enemy.mesh.get_surface_override_material(0).get_shader_parameter("albedo_color")
+		hit_flash_tween.tween_property(enemy.mesh.get_surface_override_material(0), albedo_color_path, target_color, hit_flash_speed)
+		hit_flash_tween.tween_property(enemy.mesh.get_surface_override_material(0), albedo_color_path, starting_albedo, hit_flash_speed)
 
 func play_hit_animation() -> void:
+	is_being_hit = true
 	if(!enemy.hit_animation_name.is_empty()):
 		animation_player.play(enemy.hit_animation_name)
-		await animation_player.animation_finished
+		await animation_player.current_animation_length
 	else:
 		await get_tree().create_timer(0.2).timeout
 	is_being_hit = false
 
 func death() -> void:
+	is_dying = true
 	if(enemy.death_animation_name.is_empty()):
 		enemy.queue_free()
 		return
@@ -149,8 +165,16 @@ func death() -> void:
 	play_hit_flash()
 	animation_player.play(enemy.death_animation_name)
 	
+	aggression_player.add_experience(enemy.experience)
 	audio_player.stream = enemy.death_sound
 	audio_player.play()
 	
 	await animation_player.animation_finished
+	
+	try_drop_item()
+	
 	enemy.queue_free()
+
+func try_drop_item() -> void:
+	var spawn_location : Vector3 = get_parent().global_position + Vector3(0, 1, 0)
+	

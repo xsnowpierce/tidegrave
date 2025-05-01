@@ -15,7 +15,8 @@ var current_panel : UIPausePanel
 enum PANEL {
 	MAIN,
 	EQUIPMENT,
-	INVENTORY
+	INVENTORY,
+	SYSTEM
 }
 
 func _ready() -> void:
@@ -54,6 +55,12 @@ func close_pause_menu() -> void:
 	pause_menu_open = false
 	get_tree().paused = false
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	$"Background/Main Panel".hide_panel()
+	$"Background/Equipment Panel".hide_panel()
+	$"Background/Item Select Panel".hide_panel()
+	$"Background/Inventory Panel".hide_panel()
+	$"Background/System Panel".hide_panel()
 
 func select_pressed() -> void:
 	pass
@@ -72,4 +79,6 @@ func switch_menu_panel(panel : PANEL) -> void:
 			current_panel = $"Background/Equipment Panel"
 		PANEL.INVENTORY:
 			current_panel = $"Background/Inventory Panel"
+		PANEL.SYSTEM:
+			current_panel = $"Background/System Panel"
 	current_panel.show_panel()

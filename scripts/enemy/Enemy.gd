@@ -3,7 +3,7 @@ extends CharacterBody3D
 class_name Enemy
 
 @export var enemy_stats : EnemyStats
-@export var meshes : Array[MeshInstance3D]
+@export var mesh : MeshInstance3D
 
 @export_category("Animations")
 @export var move_animation_name : String = ""
@@ -23,6 +23,10 @@ class_name Enemy
 @export_range(0, 1) var block_chance : float = 0.2
 @export var stop_walking_near_player : bool = false
 
+@export_category("Drops")
+@export var experience : int
+@export var item_drop_list : Array[ItemDropRate]
+
 @export_category("Audio")
 @export var attacked_sound : AudioStream
 @export var death_sound : AudioStream
@@ -36,11 +40,13 @@ func _ready() -> void:
 	
 func _on_enemy_hitbox_area_entered(area: Area3D) -> void:
 	if(area is PlayerAttackHitbox):
+		$EnemyAI.aggression_player = area.player
 		take_damage(area.attack_damage)
 
-func take_damage(amount : int) -> void:
-	current_health -= amount
-	
+func take_damage(damage : DamageValue) -> void:
+	print(str(damage.damage_to_string()), ", ", str(enemy_stats.get_damage_after_resistances(damage).damage_to_string()))
+	current_health -= enemy_stats.get_damage_after_resistances(damage).get_magnitude()
+	print("new health " , str(current_health))
 	if(current_health > 0):
 		$EnemyAI.attacked_from_player()
 	else:

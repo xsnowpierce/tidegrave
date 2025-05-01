@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dt4ibdhjqfriw"]
 
 [ext_resource type="PackedScene" uid="uid://dvp2ikhd1vvbs" path="res://models/chest/chest.tscn" id="6_5sorg"]
-[ext_resource type="PackedScene" uid="uid://bfrbsfxb557wm" path="res://characters/enemy/skeleton/skeleton.tscn" id="7_ulpql"]
+[ext_resource type="PackedScene" uid="uid://cdfb1jghuedd2" path="res://characters/enemy/slime/slime.tscn" id="7_ulpql"]
 [ext_resource type="Resource" uid="uid://dbrcymut50xbk" path="res://resources/items/dungeon key/dungeon_key.tres" id="8_qxj5j"]
 [ext_resource type="MeshLibrary" uid="uid://pqa4es4gifnp" path="res://gridmap-test/tilemap.tres" id="9_slc4o"]
 [ext_resource type="Environment" uid="uid://cnxq7oyfis56g" path="res://levels/dungeon1/dungeon_environment.tres" id="10_i76xq"]
@@ -46,5 +46,7 @@ metadata/_editor_floor_ = Vector3(0, 0, 0)
 [node name="OccluderInstance3D" type="OccluderInstance3D" parent="."]
 occluder = SubResource("QuadOccluder3D_ssd7a")
 
-[node name="Skeleton" parent="." instance=ExtResource("7_ulpql")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.27765, -7.22408e-05, -37.3335)
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Slime" parent="Enemies" instance=ExtResource("7_ulpql")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16811, 0, -9.21085)

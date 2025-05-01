@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=50 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
@@ -28,6 +28,7 @@
 [ext_resource type="Resource" uid="uid://cyt2upkef4yra" path="res://resources/items/weapons/vampire_sword/vampire_sword.tres" id="20_e0pgg"]
 [ext_resource type="Resource" uid="uid://6i7rkge0388e" path="res://resources/items/weapons/arming_sword/arming_sword.tres" id="20_sbttr"]
 [ext_resource type="Resource" uid="uid://b06xvihnhhjmr" path="res://resources/items/weapons/falcata/falcata.tres" id="21_6pj1p"]
+[ext_resource type="Resource" uid="uid://b028fm1pjhlt5" path="res://resources/items/weapons/hand_axe/hand_axe.tres" id="22_6pj1p"]
 [ext_resource type="Script" uid="uid://cy7t328tvg8ey" path="res://characters/player/player_interact.gd" id="22_w53g3"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
@@ -381,6 +382,7 @@ character = NodePath("../..")
 head = NodePath("..")
 player_movement = NodePath("../../PlayerMovement")
 head_bob_speed = 0.24
+controller_sensitivity = 60.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Player Camera"]
 libraries = {
@@ -487,7 +489,7 @@ file = "res://audio/music/Solitude.mid"
 playing = true
 volume_db = -11.692
 loop = true
-soundfont = "res://audio/Mario_and_Sonic_At_The_Olympic_Winter_Games__10_UPDATED.sf2"
+soundfont = "res://audio/soundfont.sf2"
 bus = &"Master/Music"
 metadata/_custom_type_script = "uid://b0j6b7pdnesn0"
 
@@ -500,7 +502,10 @@ unique_name_in_owner = true
 script = ExtResource("3_2hs0m")
 character3d = NodePath("..")
 player_input = NodePath("../PlayerInput")
+SPEED = 2.8
+RUNNING_SPEED = 4.2
 JUMPING_VELOCITY = 3.0
+DECELERATION = 10.0
 
 [node name="PlayerInput" type="Node" parent="."]
 unique_name_in_owner = true
@@ -522,8 +527,10 @@ ExtResource("9_58jvb"): 1,
 ExtResource("13_yybc7"): 1,
 ExtResource("20_e0pgg"): 1,
 ExtResource("20_sbttr"): 1,
-ExtResource("21_6pj1p"): 1
+ExtResource("21_6pj1p"): 1,
+ExtResource("22_6pj1p"): 1
 })
+equipped_weapon = ExtResource("20_sbttr")
 
 [node name="PlayerStats" type="Node" parent="."]
 unique_name_in_owner = true
@@ -601,4 +608,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322902, 1.05893, -0.039997
 [connection signal="attack_pressed" from="PlayerInput" to="PlayerCombat" method="_on_player_input_attack_pressed"]
 [connection signal="interact_pressed" from="PlayerInput" to="PlayerInteract" method="_on_player_input_interact_pressed"]
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]
+[connection signal="player_attacked" from="PlayerHitbox" to="PlayerStats" method="_on_player_hitbox_player_attacked"]
 [connection signal="player_attacked" from="PlayerHitbox" to="HUD" method="_on_player_hitbox_player_attacked"]

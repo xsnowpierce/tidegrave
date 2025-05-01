@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://wsryyhg4yd4r"]
+[gd_scene load_steps=13 format=3 uid="uid://wsryyhg4yd4r"]
 
 [ext_resource type="Script" uid="uid://5ciie1nmlavn" path="res://scripts/ui/ui_pause_menu.gd" id="1_myx47"]
 [ext_resource type="Script" uid="uid://bg5sbnki1m7ei" path="res://scripts/ui/ui_pause_panel_main.gd" id="2_7l7mv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://droqqtx815fq4" path="res://scripts/ui/ui_pause_panel_inventory.gd" id="6_22hgx"]
 [ext_resource type="Script" uid="uid://dlgridhkbtjhw" path="res://scripts/ui/ui_pause_panel_item_select.gd" id="6_v4r4p"]
 [ext_resource type="PackedScene" uid="uid://c4urpynr740c8" path="res://characters/player/ui_item_select_item.tscn" id="7_1s2dm"]
+[ext_resource type="Script" uid="uid://dw3chafixo0ty" path="res://characters/player/ui_pause_panel_system.gd" id="9_j88gx"]
 
 [sub_resource type="Animation" id="Animation_71k7c"]
 length = 0.001
@@ -48,7 +49,6 @@ _data = {
 
 [node name="Pause Menu" type="Control"]
 process_mode = 3
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -102,11 +102,10 @@ theme_override_font_sizes/font_size = 13
 text = "INVENTORY"
 icon_alignment = 1
 
-[node name="QUIT" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
+[node name="SYSTEM" type="Button" parent="Background/Main Panel/Menu Options/Buttons"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 13
-text = "QUIT
-"
+text = "SYSTEM"
 
 [node name="Stats" type="MarginContainer" parent="Background/Main Panel"]
 process_mode = 3
@@ -427,7 +426,6 @@ size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 13
 
 [node name="Item Select Panel" type="MarginContainer" parent="Background"]
-visible = false
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -463,8 +461,8 @@ stretch = true
 transparent_bg = true
 handle_input_locally = false
 canvas_item_default_texture_filter = 0
-size = Vector2i(2, 2)
-render_target_update_mode = 0
+size = Vector2i(256, 192)
+render_target_update_mode = 4
 
 [node name="Camera3D" type="Camera3D" parent="Background/Item Select Panel/Items/Item Image/SubViewportContainer/SubViewport"]
 cull_mask = 4
@@ -511,7 +509,6 @@ grow_vertical = 2
 color = Color(0.992157, 0.992157, 0.992157, 0.203922)
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Background/Item Select Panel/Items/Control"]
-clip_contents = false
 layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
@@ -582,9 +579,52 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 13
 text = "CANCEL"
 
+[node name="System Panel" type="MarginContainer" parent="Background"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 175
+theme_override_constants/margin_bottom = 10
+script = ExtResource("9_j88gx")
+
+[node name="Menu" type="VBoxContainer" parent="Background/System Panel"]
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="Background/System Panel/Menu"]
+custom_minimum_size = Vector2(0, 16)
+layout_mode = 2
+color = Color(0.310617, 0.310617, 0.310617, 1)
+
+[node name="Label" type="Label" parent="Background/System Panel/Menu/ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 13
+text = "SYSTEM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="Background/System Panel/Menu"]
+layout_mode = 2
+
+[node name="QUIT GAME" type="Button" parent="Background/System Panel/Menu/Buttons"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 13
+text = "QUIT GAME"
+icon_alignment = 1
+
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/EQUIPMENT" to="Background/Main Panel" method="_on_equipment_pressed"]
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/INVENTORY" to="Background/Main Panel" method="_on_inventory_pressed"]
-[connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/QUIT" to="Background/Main Panel" method="_on_quit_pressed"]
+[connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/SYSTEM" to="Background/Main Panel" method="_on_system_pressed"]
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Weapon Item" to="Background/Equipment Panel" method="_on_weapon_item_pressed"]
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Shield Item" to="Background/Equipment Panel" method="_on_shield_item_pressed"]
 [connection signal="pressed" from="Background/Equipment Panel/VBoxContainer/Head Item" to="Background/Equipment Panel" method="_on_head_item_pressed"]
@@ -598,3 +638,4 @@ text = "CANCEL"
 [connection signal="pressed" from="Background/Item Select Panel/Items/Control/ScrollContainer/MarginContainer/Button Holder/Take Off Button" to="Background/Item Select Panel" method="_on_take_off_button_pressed"]
 [connection signal="pressed" from="Background/Inventory Panel/ColorRect/VBoxContainer/USE BUTTON" to="Background/Inventory Panel" method="_on_use_button_pressed"]
 [connection signal="pressed" from="Background/Inventory Panel/ColorRect/VBoxContainer/CANCEL BUTTON" to="Background/Inventory Panel" method="_on_cancel_button_pressed"]
+[connection signal="pressed" from="Background/System Panel/Menu/Buttons/QUIT GAME" to="Background/System Panel" method="_on_quit_game_pressed"]

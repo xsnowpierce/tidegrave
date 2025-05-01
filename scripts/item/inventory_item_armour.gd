@@ -11,4 +11,6 @@ enum EQUIP_TYPE {
 }
 @export var equip_type : EQUIP_TYPE
 
-@export var defence : int
+@export var slash_defence : int
+@export var pierce_defence : int
+@export var blunt_defence : int

@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	
 	update_compass_rotation(player.get_camera_rotation().y / PI)
 
-func _on_player_hitbox_player_attacked() -> void:
+func _on_player_hitbox_player_attacked(damage : DamageValue) -> void:
 	play_player_damaged_flash()
 
 func play_player_damaged_flash() -> void:

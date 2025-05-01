@@ -64,3 +64,21 @@ func equip_item(item : InventoryEquippable) -> void:
 				equipped_shield = item
 	else:
 		printerr("Unhandled equipment: ", item.name)
+
+func get_damage_after_defence(damage : DamageValue) -> DamageValue:
+	damage = damage_reduction_calculation(equipped_helmet, damage)
+	damage = damage_reduction_calculation(equipped_chestplate, damage)
+	damage = damage_reduction_calculation(equipped_gauntlets, damage)
+	damage = damage_reduction_calculation(equipped_leggings, damage)
+	damage = damage_reduction_calculation(equipped_shield, damage)
+	return damage
+
+func damage_reduction_calculation(armour : InventoryArmour, damage : DamageValue) -> DamageValue:
+	if(!armour):
+		return damage
+	
+	damage.damage_amount_slash = floori(damage.damage_amount_slash - damage.damage_amount_slash * (armour.slash_defence / 10.0)) + 1
+	damage.damage_amount_pierce = floori(damage.damage_amount_pierce - damage.damage_amount_pierce * (armour.pierce_defence / 10.0)) + 1
+	damage.damage_amount_blunt = floori(damage.damage_amount_blunt - damage.damage_amount_blunt * (armour.blunt_defence / 10.0)) + 1
+	
+	return damage

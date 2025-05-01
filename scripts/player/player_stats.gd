@@ -18,6 +18,8 @@ var current_stamina : float
 @export var stamina_recovery_multiplier : float = 1
 @export var sprinting_stamina_decrease_speed : float = 10
 
+signal player_leveled_up()
+
 func _ready() -> void:
 	current_health = get_max_health()
 	current_stamina = max_stamina
@@ -42,3 +44,19 @@ func get_max_health() -> int:
 
 func get_exp_to_level_up(level : int) -> int:
 	return 100 + (level * 73.6)
+
+func add_experience(amount : int) -> void:
+	current_experience += amount
+	if(current_experience > get_exp_to_level_up(player_level)):
+		current_experience -= get_exp_to_level_up(player_level)
+		player_level += 1
+		player_leveled_up.emit()
+
+func _on_player_hitbox_player_attacked(damage : DamageValue) -> void:
+	var damage_amount : int = damage.damage_amount_slash + damage.damage_amount_pierce + damage.damage_amount_blunt
+	current_health = max(0, current_health - damage_amount)
+	if(current_health <= 0):
+		player_death()
+
+func player_death() -> void:
+	print("player death")

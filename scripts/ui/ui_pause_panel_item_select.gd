@@ -26,7 +26,6 @@ func show_panel() -> void:
 
 func cancel_pressed() -> void:
 	hide_panel()
-	$"Items/Item Image/SubViewportContainer/SubViewport/AnimationPlayer".pause()
 
 func hide_panel() -> void:
 	super()
@@ -108,7 +107,8 @@ func item_button_selected(item_held : InventoryItem) -> void:
 				child.layers = item_render_layer
 		mesh_instance.add_child(current_item_selected_scene)
 		current_item_selected_scene.position = Vector3.ZERO
-
+	$"Items/Item Image/SubViewportContainer/SubViewport/AnimationPlayer".stop()
+	$"Items/Item Image/SubViewportContainer/SubViewport/AnimationPlayer".play("rotate_item")
 
 func _on_take_off_button_item_button_selected(item_held: InventoryItem) -> void:
 	if(current_item_selected_scene):

@@ -15,13 +15,19 @@ extends Camera3D
 @export_group("Settings")
 
 @export var head_bob_speed : float = 1
-@export var controller_sensitivity : float = 75
 
 #Mouse settings.
 @export_subgroup("Mouse settings")
 
 #mouse sensitivity.
 @export_range(1, 100, 1) var mouse_sensitivity: int = 50
+
+@export_subgroup("Controller settings")
+@export var controller_sensitivity : float = 75
+@export var controller_acceleration : float = 200
+@export var controller_decelleration : float = 200
+var current_look_vector : Vector2 = Vector2.ZERO
+
 
 #pitch clamp settings.
 @export_subgroup("Clamp settings")
@@ -40,7 +46,7 @@ func _ready():
 	$AnimationPlayer.play("head_bob")
 	Input.set_use_accumulated_input(false)
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if(!character.can_player_look()):
 		return
 	var animation_speed : float = player_movement.get_velocity_magnitude() * head_bob_speed
@@ -51,9 +57,17 @@ func _process(_delta: float) -> void:
 	if(!character.can_player_move()):
 		$AnimationPlayer.speed_scale = 0
 	
-	var look_vector = Input.get_vector("look_left", "look_right", "look_up", "look_down")
-	if(look_vector.length() != 0):
-		apply_look(look_vector * controller_sensitivity)
+	var raw_look_vector: Vector2 = Input.get_vector("look_left", "look_right", "look_up", "look_down")
+
+	if raw_look_vector.length() > 0:
+		var target_vector = raw_look_vector * controller_sensitivity
+		current_look_vector = current_look_vector.move_toward(target_vector, controller_acceleration * delta)
+	else:
+		current_look_vector = current_look_vector.move_toward(Vector2.ZERO, controller_decelleration * delta)
+
+	if current_look_vector.length() > 0:
+		apply_look(current_look_vector)
+
 
 func _unhandled_input(event)->void:
 	if(!character.can_player_look()):

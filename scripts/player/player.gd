@@ -66,3 +66,6 @@ func get_use_item() -> PlayerUseItem:
 
 func get_camera_rotation() -> Vector3:
 	return $"%Player Camera".global_rotation
+
+func add_experience(amount : int) -> void:
+	$PlayerStats.add_experience(amount)
