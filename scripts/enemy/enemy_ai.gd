@@ -54,12 +54,12 @@ func _physics_process(delta: float) -> void:
 	if(can_enemy_attack):
 		attack_player()
 	
-	if distance_to_player > enemy.target_distance_to_player:
-		character.velocity.x = character.transform.basis.z.x * enemy.move_speed;
-		character.velocity.z = character.transform.basis.z.z * enemy.move_speed;
-	else:
+	if(enemy.stop_walking_near_player and distance_to_player < enemy.target_distance_to_player):
 		character.velocity.x = move_toward(character.velocity.x, 0, enemy.move_speed);
 		character.velocity.z = move_toward(character.velocity.z, 0, enemy.move_speed);
+	else:
+		character.velocity.x = character.transform.basis.z.x * enemy.move_speed;
+		character.velocity.z = character.transform.basis.z.z * enemy.move_speed;
 
 	character.move_and_slide()
 	animate()

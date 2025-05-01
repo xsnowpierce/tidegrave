@@ -1,0 +1,15 @@
+places assets were obtained from:
+	
+open game art .org
+
+wall and floor texture for dungeon
+- https://opengameart.org/content/seamless-textures
+
+music played
+- https://opengameart.org/content/50-midi-tunes
+
+wood texture
+- https://opengameart.org/content/wood-planks
+
+leather texture
+- https://opengameart.org/content/tileable-leather-texture

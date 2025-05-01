@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://ckgju87agli76"]
+[gd_scene load_steps=49 format=4 uid="uid://ckgju87agli76"]
 
 [ext_resource type="Script" uid="uid://q4754kfc6npl" path="res://scripts/player/player.gd" id="1_hqtel"]
 [ext_resource type="Script" uid="uid://ctvs7cunvnd10" path="res://scripts/player/player_stats.gd" id="2_1jxqw"]
@@ -26,6 +26,8 @@
 [ext_resource type="Script" uid="uid://dh6tk0a5mjwql" path="res://scripts/player/player_hitbox.gd" id="14_f1ej7"]
 [ext_resource type="PackedScene" uid="uid://wsryyhg4yd4r" path="res://characters/player/pause_menu.tscn" id="15_a8ls1"]
 [ext_resource type="Resource" uid="uid://cyt2upkef4yra" path="res://resources/items/weapons/vampire_sword/vampire_sword.tres" id="20_e0pgg"]
+[ext_resource type="Resource" uid="uid://6i7rkge0388e" path="res://resources/items/weapons/arming_sword/arming_sword.tres" id="20_sbttr"]
+[ext_resource type="Resource" uid="uid://b06xvihnhhjmr" path="res://resources/items/weapons/falcata/falcata.tres" id="21_6pj1p"]
 [ext_resource type="Script" uid="uid://cy7t328tvg8ey" path="res://characters/player/player_interact.gd" id="22_w53g3"]
 
 [sub_resource type="Animation" id="Animation_i5arm"]
@@ -358,7 +360,9 @@ size = Vector3(0.8, 2, 0.8)
 [node name="Player" type="CharacterBody3D"]
 collision_layer = 4
 collision_mask = 515
+slide_on_ceiling = false
 floor_constant_speed = true
+platform_floor_layers = 3
 script = ExtResource("1_hqtel")
 
 [node name="Head" type="Node3D" parent="."]
@@ -371,7 +375,7 @@ cull_mask = 1048571
 current = true
 fov = 60.0
 near = 0.001
-far = 100.0
+far = 12.5
 script = ExtResource("2_sweqy")
 character = NodePath("../..")
 head = NodePath("..")
@@ -483,7 +487,7 @@ file = "res://audio/music/Solitude.mid"
 playing = true
 volume_db = -11.692
 loop = true
-soundfont = "res://audio/Kirby 64 SF v1.0.sf2"
+soundfont = "res://audio/Mario_and_Sonic_At_The_Olympic_Winter_Games__10_UPDATED.sf2"
 bus = &"Master/Music"
 metadata/_custom_type_script = "uid://b0j6b7pdnesn0"
 
@@ -516,9 +520,10 @@ ExtResource("10_kyfeq"): 1,
 ExtResource("11_5mkjs"): 1,
 ExtResource("9_58jvb"): 1,
 ExtResource("13_yybc7"): 1,
-ExtResource("20_e0pgg"): 1
+ExtResource("20_e0pgg"): 1,
+ExtResource("20_sbttr"): 1,
+ExtResource("21_6pj1p"): 1
 })
-equipped_weapon = ExtResource("20_e0pgg")
 
 [node name="PlayerStats" type="Node" parent="."]
 unique_name_in_owner = true

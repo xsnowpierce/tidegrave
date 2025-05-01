@@ -21,6 +21,7 @@ class_name Enemy
 @export var can_attack : bool = true
 @export var can_block_attack : bool = true
 @export_range(0, 1) var block_chance : float = 0.2
+@export var stop_walking_near_player : bool = false
 
 @export_category("Audio")
 @export var attacked_sound : AudioStream

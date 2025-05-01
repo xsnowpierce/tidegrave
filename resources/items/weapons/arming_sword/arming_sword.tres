@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="InventoryWeapon" load_steps=5 format=3 uid="uid://6i7rkge0388e"]
+
+[ext_resource type="Script" uid="uid://ds3k4nnb7njr5" path="res://scripts/item/inventory_item_weapon.gd" id="1_iq5me"]
+[ext_resource type="Script" uid="uid://bhdcbtq0tadis" path="res://scripts/damage_value.gd" id="1_j1u44"]
+[ext_resource type="PackedScene" uid="uid://bvqlallatrmdf" path="res://resources/items/weapons/arming_sword/arming_sword.glb" id="2_bt4ua"]
+
+[sub_resource type="Resource" id="Resource_fo4xw"]
+script = ExtResource("1_j1u44")
+damage_amount_slash = 1
+damage_amount_pierce = 0
+damage_amount_blunt = 0
+metadata/_custom_type_script = "uid://bhdcbtq0tadis"
+
+[resource]
+script = ExtResource("1_iq5me")
+weapon_type = 0
+attack_animation_type = 0
+damage = SubResource("Resource_fo4xw")
+cooldown_speed = 1.0
+name = "Arming Sword"
+description = "Arming"
+item_scene = ExtResource("2_bt4ua")
+centre_mesh_offset = Vector3(0, 0, 0)
+purchase_price = 0
+sell_price = 0
+metadata/_custom_type_script = "uid://ds3k4nnb7njr5"
