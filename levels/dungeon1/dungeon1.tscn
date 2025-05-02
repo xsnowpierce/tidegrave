@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt4ibdhjqfriw"]
+[gd_scene load_steps=10 format=3 uid="uid://dt4ibdhjqfriw"]
 
 [ext_resource type="PackedScene" uid="uid://dvp2ikhd1vvbs" path="res://models/chest/chest.tscn" id="6_5sorg"]
 [ext_resource type="PackedScene" uid="uid://cdfb1jghuedd2" path="res://characters/enemy/slime/slime.tscn" id="7_ulpql"]
 [ext_resource type="Resource" uid="uid://dbrcymut50xbk" path="res://resources/items/dungeon key/dungeon_key.tres" id="8_qxj5j"]
+[ext_resource type="PackedScene" uid="uid://bp5pdascb4uvr" path="res://resources/wall_door.tscn" id="8_r3gnu"]
 [ext_resource type="MeshLibrary" uid="uid://pqa4es4gifnp" path="res://gridmap-test/tilemap.tres" id="9_slc4o"]
 [ext_resource type="Environment" uid="uid://cnxq7oyfis56g" path="res://levels/dungeon1/dungeon_environment.tres" id="10_i76xq"]
 [ext_resource type="PackedScene" uid="uid://tsfmu41ajqnm" path="res://models/barrel/barrel.tscn" id="10_slc4o"]
@@ -50,3 +51,6 @@ occluder = SubResource("QuadOccluder3D_ssd7a")
 
 [node name="Slime" parent="Enemies" instance=ExtResource("7_ulpql")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.16811, 0, -9.21085)
+
+[node name="Wall Door" parent="." instance=ExtResource("8_r3gnu")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.7031, 2.95414, -42.4109)

@@ -490,7 +490,7 @@ playing = true
 volume_db = -11.692
 loop = true
 soundfont = "res://audio/soundfont.sf2"
-bus = &"Master/Music"
+bus = &"Music"
 metadata/_custom_type_script = "uid://b0j6b7pdnesn0"
 
 [node name="PlayerCollider" type="CollisionShape3D" parent="."]
