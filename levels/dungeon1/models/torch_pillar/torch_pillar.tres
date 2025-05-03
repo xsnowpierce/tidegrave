@@ -1,9 +1,0 @@
-[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://bq5vns4r0m58r"]
-
-[ext_resource type="Texture2D" uid="uid://bytsj3hcpofhi" path="res://levels/dungeon1/models/torch_pillar/stone.png" id="1_3ix8s"]
-
-[resource]
-shading_mode = 2
-albedo_texture = ExtResource("1_3ix8s")
-metallic_specular = 0.0
-texture_filter = 2

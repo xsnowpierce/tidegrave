@@ -99,6 +99,7 @@ unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 13
 text = "Dialogue..."
 vertical_alignment = 1
 seconds_per_step = 0.0

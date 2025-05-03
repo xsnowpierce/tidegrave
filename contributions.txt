@@ -13,3 +13,9 @@ wood texture
 
 leather texture
 - https://opengameart.org/content/tileable-leather-texture
+
+stone texture
+- https://opengameart.org/content/metalstone-textures
+
+stone wall texture
+- https://opengameart.org/content/stone-wall-with-cracks

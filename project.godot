@@ -68,6 +68,34 @@ Boat=""
 
 theme/custom_font="uid://kvcsvwmw1muq"
 
+[importer_defaults]
+
+2d_array_texture={
+&"mipmaps/generate": false
+}
+3d_texture={
+&"mipmaps/generate": false
+}
+texture={
+"compress/channel_pack": 0,
+"compress/hdr_compression": 1,
+"compress/high_quality": false,
+"compress/lossy_quality": 0.7,
+"compress/mode": 2,
+"compress/normal_map": 0,
+"detect_3d/compress_to": 0,
+"mipmaps/generate": false,
+"mipmaps/limit": -1,
+"process/fix_alpha_border": true,
+"process/hdr_as_srgb": false,
+"process/hdr_clamp_exposure": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"process/size_limit": 0,
+"roughness/mode": 0,
+"roughness/src_normal": ""
+}
+
 [input]
 
 ui_accept={
@@ -189,6 +217,10 @@ menu_cancel={
 , Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":1,"pressure":0.0,"pressed":true,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://characters/npc/father_altrius/dialogue/dialogue.dialogue")
 
 [layer_names]
 

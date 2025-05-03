@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://2iw3s0fnonod"
+path="res://.godot/imported/dialogue.dialogue-8b9f37fb3976ea68c3e14b2dbeeee603.tres"
+
+[deps]
+
+source_file="res://characters/npc/father_altrius/dialogue/dialogue.dialogue"
+dest_files=["res://.godot/imported/dialogue.dialogue-8b9f37fb3976ea68c3e14b2dbeeee603.tres"]
+
+[params]
+
+defaults=true

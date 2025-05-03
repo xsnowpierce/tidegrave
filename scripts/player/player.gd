@@ -69,3 +69,6 @@ func get_camera_rotation() -> Vector3:
 
 func add_experience(amount : int) -> void:
 	$PlayerStats.add_experience(amount)
+
+func set_camera_far_culling(amount : float) -> void:
+	%"Player Camera".far = amount

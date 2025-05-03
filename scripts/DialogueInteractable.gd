@@ -5,14 +5,15 @@ class_name DialogueInteractable
 @export var dialogue : DialogueResource
 
 var is_interacting : bool = false
-var animation_player : AnimationPlayer
-
-func _ready() -> void:
-	animation_player = get_parent().get_node("AnimationPlayer")
+@export var animation_player : AnimationPlayer
 
 func interact(player : Player) -> PlayerUseItem.USE_ITEM_RESULT:
+	start_dialogue()
+	return PlayerUseItem.USE_ITEM_RESULT.IGNORE
+
+func start_dialogue() -> void:
 	if(is_interacting):
-		return PlayerUseItem.USE_ITEM_RESULT.IGNORE
+		return
 		
 	is_interacting = true
 	
@@ -20,11 +21,9 @@ func interact(player : Player) -> PlayerUseItem.USE_ITEM_RESULT:
 		animation_player.play("Talk")
 		await get_tree().create_timer(0.666).timeout
 		animation_player.pause()
-		
-	return PlayerUseItem.USE_ITEM_RESULT.IGNORE
 	
-	DialogueManager.show_dialogue_balloon(dialogue, "start")
-	await DialogueManager.dialogue_ended
+	#DialogueManager.show_dialogue_balloon(dialogue, "start")
+	#await DialogueManager.dialogue_ended
 	
 	if(animation_player):
 		animation_player.play()
