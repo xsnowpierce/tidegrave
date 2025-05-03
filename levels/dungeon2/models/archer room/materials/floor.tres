@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b55ulqkcecir6"]
+
+[ext_resource type="Texture2D" uid="uid://c04y18f3p7e18" path="res://levels/dungeon2/models/archer room/bridges_stone_floor.png" id="1_m3buv"]
+
+[resource]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_m3buv")
+texture_filter = 0

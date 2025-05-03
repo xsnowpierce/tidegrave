@@ -376,7 +376,7 @@ cull_mask = 1048571
 current = true
 fov = 60.0
 near = 0.001
-far = 12.5
+far = 20.0
 script = ExtResource("2_sweqy")
 character = NodePath("../..")
 head = NodePath("..")
@@ -505,7 +505,8 @@ player_input = NodePath("../PlayerInput")
 SPEED = 2.8
 RUNNING_SPEED = 4.2
 JUMPING_VELOCITY = 3.0
-DECELERATION = 10.0
+ACCELERATION = 14.0
+DECELERATION = 14.0
 
 [node name="PlayerInput" type="Node" parent="."]
 unique_name_in_owner = true

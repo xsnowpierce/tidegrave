@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://1ju7j6do2iqx"]
+
+[ext_resource type="Texture2D" uid="uid://csw75up50lvaq" path="res://levels/dungeon2/models/archer room/bridges_stone_wall.png" id="1_hubi0"]
+
+[resource]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_hubi0")
+texture_filter = 0

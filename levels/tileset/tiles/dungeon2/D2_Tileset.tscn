@@ -1000,6 +1000,7 @@ skeleton = NodePath("")
 shape = SubResource("ConcavePolygonShape3D_0u2u8")
 
 [node name="D2_Floor Corner" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
 mesh = SubResource("ArrayMesh_j4m31")
 skeleton = NodePath("")
 
