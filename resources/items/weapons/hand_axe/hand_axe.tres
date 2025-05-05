@@ -9,6 +9,7 @@ script = ExtResource("1_qhqkj")
 damage_amount_slash = 1
 damage_amount_pierce = 0
 damage_amount_blunt = 0
+damage_amount_unscaled = 0
 metadata/_custom_type_script = "uid://bhdcbtq0tadis"
 
 [resource]

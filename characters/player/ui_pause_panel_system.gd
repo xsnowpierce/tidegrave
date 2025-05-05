@@ -9,3 +9,6 @@ func _on_quit_game_pressed() -> void:
 func show_panel() -> void:
 	super()
 	$"Menu/Buttons/QUIT GAME".grab_focus()
+
+func cancel_pressed() -> void:
+	pause_menu.switch_menu_panel(PauseMenu.PANEL.MAIN)

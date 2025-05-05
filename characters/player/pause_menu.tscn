@@ -622,6 +622,9 @@ theme_override_font_sizes/font_size = 13
 text = "QUIT GAME"
 icon_alignment = 1
 
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/EQUIPMENT" to="Background/Main Panel" method="_on_equipment_pressed"]
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/INVENTORY" to="Background/Main Panel" method="_on_inventory_pressed"]
 [connection signal="pressed" from="Background/Main Panel/Menu Options/Buttons/SYSTEM" to="Background/Main Panel" method="_on_system_pressed"]

@@ -9,7 +9,10 @@ var pause_menu_open : bool
 var character : Player 
 
 @onready var stats: UIMenuStats = $"Background/Main Panel/Stats"
-
+@onready var audio_stream_player_3d: AudioStreamPlayer3D = $AudioStreamPlayer3D
+const MENU_SELECT = preload("res://audio/SFX/MENU B_Select.wav")
+const MENU_BACK = preload("res://audio/SFX/MENU B_Back.wav")
+const MENU_PICK = preload("res://audio/SFX/MENU_Pick.wav")
 var current_panel : UIPausePanel
 
 enum PANEL {
@@ -22,16 +25,14 @@ enum PANEL {
 func _ready() -> void:
 	close_pause_menu()
 	character = get_parent()
-	
 
 func _process(delta: float) -> void:
 	
 	if(Input.is_action_just_released("pause")):
-		
-		if(pause_menu_open):
-			close_pause_menu()
-		elif(!pause_menu_open):
+		if(!pause_menu_open):
 			open_pause_menu()
+		else:
+			cancel_pressed()
 	
 	elif(Input.is_action_just_released("menu_accept") and pause_menu_open):
 		select_pressed()
@@ -63,11 +64,12 @@ func close_pause_menu() -> void:
 	$"Background/System Panel".hide_panel()
 
 func select_pressed() -> void:
-	pass
+	play_accept_sound()
 
 func cancel_pressed() -> void:
 	if(current_panel):
 		current_panel.cancel_pressed()
+	play_cancel_sound()
 
 func switch_menu_panel(panel : PANEL) -> void:
 	if(current_panel):
@@ -82,3 +84,15 @@ func switch_menu_panel(panel : PANEL) -> void:
 		PANEL.SYSTEM:
 			current_panel = $"Background/System Panel"
 	current_panel.show_panel()
+
+func play_accept_sound() -> void:
+	audio_stream_player_3d.stream = MENU_SELECT
+	audio_stream_player_3d.play()
+
+func play_cancel_sound() -> void:
+	audio_stream_player_3d.stream = MENU_BACK
+	audio_stream_player_3d.play()
+
+func play_move_sound() -> void:
+	audio_stream_player_3d.stream = MENU_PICK
+	audio_stream_player_3d.play()
