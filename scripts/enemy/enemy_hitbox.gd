@@ -1,7 +1,5 @@
-extends Area3D
+extends DamagePlayerHitbox
 
 class_name EnemyHitbox
-
-@export var damage : DamageValue
 
 @onready var enemy : Enemy = get_parent()

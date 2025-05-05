@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=4 uid="uid://bccdmclusd5u7"]
+[gd_scene load_steps=53 format=4 uid="uid://bccdmclusd5u7"]
 
 [ext_resource type="Script" uid="uid://bn3s2grcx2riq" path="res://scripts/level_information.gd" id="1_byfl4"]
 [ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://levels/island/environment.tres" id="1_dwbse"]
@@ -660,6 +660,10 @@ _data = {
 &"Talk": SubResource("Animation_dtohg")
 }
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_tfcg6"]
+height = 1.60873
+radius = 0.111816
+
 [sub_resource type="Resource" id="Resource_tfcg6"]
 script = ExtResource("13_tfcg6")
 level_scene = ExtResource("12_t0kee")
@@ -1102,12 +1106,24 @@ billboard = 2
 texture_filter = 0
 texture = ExtResource("10_fo4nd")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.003479, 0)
+shape = SubResource("CylinderShape3D_tfcg6")
+
 [node name="Sprite3D2" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -5.73789, 3.67198, 7.25715)
 cast_shadow = 0
 billboard = 2
 texture_filter = 0
 texture = ExtResource("11_fo4nd")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sprite3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sprite3D2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0879364, 0)
+shape = SubResource("CylinderShape3D_tfcg6")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 2, -14)

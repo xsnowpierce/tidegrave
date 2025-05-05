@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpq5ug8mgtthe"
-path="res://.godot/imported/CameraShake-icon.jpg-5025c823e68bed21ac36e924b05e06f3.ctex"
+uid="uid://cxwi1gwxmrvxh"
+path.s3tc="res://.godot/imported/door_door.png-fe799a4478fadcd9866df9f6791643d7.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "c8dfb83874ab0159a248da6530bac066"
 }
 
 [deps]
 
-source_file="res://addons/CameraShake3D/CameraShake-icon.jpg"
-dest_files=["res://.godot/imported/CameraShake-icon.jpg-5025c823e68bed21ac36e924b05e06f3.ctex"]
+source_file="res://models/door/door_door.png"
+dest_files=["res://.godot/imported/door_door.png-fe799a4478fadcd9866df9f6791643d7.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
@@ -31,4 +35,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

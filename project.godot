@@ -237,6 +237,7 @@ locale/translations_pot_files=PackedStringArray("res://characters/npc/father_alt
 3d_physics/layer_8="EnemyHitbox"
 3d_physics/layer_9="EnemyAttackHitbox"
 3d_physics/layer_10="EnemyWakeupCollider"
+3d_physics/layer_11="PlayerEffectArea"
 
 [rendering]
 

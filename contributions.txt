@@ -19,3 +19,9 @@ stone texture
 
 stone wall texture
 - https://opengameart.org/content/stone-wall-with-cracks
+
+rust texture
+- https://opengameart.org/content/rusted-metal-texture-pack
+
+wood texture
+- https://opengameart.org/content/handpainted-wood

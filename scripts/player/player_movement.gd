@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 	if not character3d.is_on_floor():
 		character3d.velocity += character3d.get_gravity() * delta
 
-	if player_has_control:
+	if player_has_control and character.is_on_floor():
 		
 		var target_speed := SPEED
 		if player_input.sprinting:
