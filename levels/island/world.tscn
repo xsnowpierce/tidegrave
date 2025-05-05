@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=4 uid="uid://bccdmclusd5u7"]
+[gd_scene load_steps=54 format=4 uid="uid://bccdmclusd5u7"]
 
 [ext_resource type="Script" uid="uid://bn3s2grcx2riq" path="res://scripts/level_information.gd" id="1_byfl4"]
 [ext_resource type="Environment" uid="uid://cyky3eujucem5" path="res://levels/island/environment.tres" id="1_dwbse"]
@@ -672,6 +672,9 @@ metadata/_custom_type_script = "uid://cesvinv2kcel8"
 [sub_resource type="BoxShape3D" id="BoxShape3D_fo4nd"]
 size = Vector3(2, 2, 2)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tfcg6"]
+data = PackedVector3Array(-0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5)
+
 [node name="World" type="Node3D" node_paths=PackedStringArray("spawnpoint")]
 script = ExtResource("1_byfl4")
 spawnpoint = NodePath("SPAWNPOINT")
@@ -1143,4 +1146,12 @@ shape = SubResource("BoxShape3D_fo4nd")
 shape = SubResource("BoxShape3D_fo4nd")
 
 [node name="SPAWNPOINT" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55, 0)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="CSGBox3D"]
+
+[node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="CSGBox3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_tfcg6")

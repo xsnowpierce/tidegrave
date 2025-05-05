@@ -370,7 +370,9 @@ script = ExtResource("1_hqtel")
 [node name="Head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38356, 0)
 
-[node name="Player Camera" type="Camera3D" parent="Head" node_paths=PackedStringArray("character", "head", "player_movement")]
+[node name="HeadAnimator" type="Node3D" parent="Head"]
+
+[node name="Player Camera" type="Camera3D" parent="Head/HeadAnimator" node_paths=PackedStringArray("character", "head", "player_movement")]
 unique_name_in_owner = true
 process_mode = 1
 cull_mask = 1048571
@@ -379,27 +381,27 @@ fov = 60.0
 near = 0.001
 far = 20.0
 script = ExtResource("2_sweqy")
-character = NodePath("../..")
-head = NodePath("..")
-player_movement = NodePath("../../PlayerMovement")
+character = NodePath("../../..")
+head = NodePath("../..")
+player_movement = NodePath("../../../PlayerMovement")
 head_bob_speed = 0.24
 controller_sensitivity = 60.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/Player Camera"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Head/HeadAnimator/Player Camera"]
 libraries = {
 &"": SubResource("AnimationLibrary_wc5p8")
 }
 
-[node name="Interact Area" type="Area3D" parent="Head/Player Camera"]
+[node name="Interact Area" type="Area3D" parent="Head/HeadAnimator/Player Camera"]
 collision_layer = 16
 collision_mask = 32
 script = ExtResource("5_1jxqw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Player Camera/Interact Area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/HeadAnimator/Player Camera/Interact Area"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, -1.11873)
 shape = SubResource("CylinderShape3D_2hs0m")
 
-[node name="AttackHitbox" type="Area3D" parent="Head/Player Camera" node_paths=PackedStringArray("coll")]
+[node name="AttackHitbox" type="Area3D" parent="Head/HeadAnimator/Player Camera" node_paths=PackedStringArray("coll")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.38356, 0)
 collision_layer = 64
@@ -407,17 +409,17 @@ collision_mask = 128
 script = ExtResource("13_jej6c")
 coll = NodePath("CollisionShape3D")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/Player Camera/AttackHitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Head/HeadAnimator/Player Camera/AttackHitbox"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0276184, 1.00698, -0.718575)
 shape = SubResource("CapsuleShape3D_f1ej7")
 debug_color = Color(0.686716, 0, 0.154157, 0.42)
 
-[node name="arm" type="Node3D" parent="Head/Player Camera"]
+[node name="arm" type="Node3D" parent="Head/HeadAnimator/Player Camera"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.138, -0.098, -0.047)
 
-[node name="Armature" type="Node3D" parent="Head/Player Camera/arm"]
+[node name="Armature" type="Node3D" parent="Head/HeadAnimator/Player Camera/arm"]
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Head/Player Camera/arm/Armature"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Head/HeadAnimator/Player Camera/arm/Armature"]
 bones/0/name = "Bone"
 bones/0/parent = -1
 bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -461,29 +463,29 @@ bones/5/position = Vector3(0, 0.065823, 0)
 bones/5/rotation = Quaternion(0.241573, -0.117367, -0.420945, 0.866414)
 bones/5/scale = Vector3(1, 1, 1)
 
-[node name="Cylinder" type="MeshInstance3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
+[node name="Cylinder" type="MeshInstance3D" parent="Head/HeadAnimator/Player Camera/arm/Armature/Skeleton3D"]
 mesh = SubResource("ArrayMesh_hkr0w")
 skin = SubResource("Skin_h2fb0")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/Player Camera/arm/Armature/Skeleton3D"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Head/HeadAnimator/Player Camera/arm/Armature/Skeleton3D"]
 transform = Transform3D(1, 0, 2.38418e-07, 0, 1, 0, -2.38418e-07, 0, 1, 0, 0.538187, 0)
 bone_name = "Bone.004"
 bone_idx = 3
 
-[node name="WeaponParent" type="Node3D" parent="Head/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D"]
+[node name="WeaponParent" type="Node3D" parent="Head/HeadAnimator/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(-4.37113e-08, 1, -1.94707e-07, -1, -4.37114e-08, -1.94707e-07, -1.94707e-07, 1.94707e-07, 1, 0, 0.0549999, 0.0207325)
 
-[node name="ArmAnimator" type="AnimationPlayer" parent="Head/Player Camera/arm"]
+[node name="ArmAnimator" type="AnimationPlayer" parent="Head/HeadAnimator/Player Camera/arm"]
 unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_4cx7u")
 }
 
-[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="Head/Player Camera"]
+[node name="SFXPlayer" type="AudioStreamPlayer3D" parent="Head/HeadAnimator/Player Camera"]
 unique_name_in_owner = true
 bus = &"SFX"
 
-[node name="MidiPlayer" type="Node" parent="Head/Player Camera"]
+[node name="MidiPlayer" type="Node" parent="Head/HeadAnimator/Player Camera"]
 process_mode = 3
 script = ExtResource("8_jgd8i")
 file = "res://audio/music/Solitude.mid"
@@ -498,10 +500,10 @@ metadata/_custom_type_script = "uid://b0j6b7pdnesn0"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.85, 0)
 shape = SubResource("CapsuleShape3D_a202f")
 
-[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("character3d", "player_input")]
+[node name="PlayerMovement" type="Node" parent="." node_paths=PackedStringArray("character", "player_input")]
 unique_name_in_owner = true
 script = ExtResource("3_2hs0m")
-character3d = NodePath("..")
+character = NodePath("..")
 player_input = NodePath("../PlayerInput")
 SPEED = 2.8
 RUNNING_SPEED = 4.2
@@ -604,9 +606,9 @@ unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.322902, 1.05893, -0.039997)
 
 [connection signal="player_state_changed" from="." to="PlayerMovement" method="_on_player_player_state_changed"]
-[connection signal="area_entered" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_entered"]
-[connection signal="area_exited" from="Head/Player Camera/Interact Area" to="Head/Player Camera/Interact Area" method="_on_area_exited"]
-[connection signal="area_entered" from="Head/Player Camera/AttackHitbox" to="Head/Player Camera/AttackHitbox" method="_on_area_entered"]
+[connection signal="area_entered" from="Head/HeadAnimator/Player Camera/Interact Area" to="Head/HeadAnimator/Player Camera/Interact Area" method="_on_area_entered"]
+[connection signal="area_exited" from="Head/HeadAnimator/Player Camera/Interact Area" to="Head/HeadAnimator/Player Camera/Interact Area" method="_on_area_exited"]
+[connection signal="area_entered" from="Head/HeadAnimator/Player Camera/AttackHitbox" to="Head/HeadAnimator/Player Camera/AttackHitbox" method="_on_area_entered"]
 [connection signal="attack_pressed" from="PlayerInput" to="PlayerCombat" method="_on_player_input_attack_pressed"]
 [connection signal="interact_pressed" from="PlayerInput" to="PlayerInteract" method="_on_player_input_interact_pressed"]
 [connection signal="area_entered" from="PlayerHitbox" to="PlayerHitbox" method="_on_area_entered"]

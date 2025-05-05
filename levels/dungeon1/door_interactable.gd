@@ -42,8 +42,8 @@ func close_door() -> void:
 func _on_player_exit_area_area_exited(area: Area3D) -> void:
 	if(door_is_opened):
 		scheduled_to_close = true
-
-func _process(delta: float) -> void:
-	if(scheduled_to_close):
-		if(!animation_player.is_playing()):
-			close_door()
+		
+		if(animation_player.is_playing()):
+			await animation_player.animation_finished
+		
+		close_door()

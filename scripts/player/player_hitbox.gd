@@ -11,7 +11,5 @@ func _on_area_entered(area: Area3D) -> void:
 		match(area.effect_type):
 			AreaPlayerEffect.EFFECT_TYPE.DEATH:
 				var damage : DamageValue = DamageValue.new()
-				damage.damage_amount_blunt = 10000000
-				damage.damage_amount_pierce = 10000000
-				damage.damage_amount_slash = 10000000
+				damage.damage_amount_unscaled = 30000000
 				player_attacked.emit(damage)

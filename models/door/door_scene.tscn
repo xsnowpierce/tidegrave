@@ -108,7 +108,7 @@ _data = {
 size = Vector3(0.3, 3, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr7oj"]
-size = Vector3(4, 3, 3)
+size = Vector3(6, 3, 4)
 
 [node name="Door" type="Area3D" node_paths=PackedStringArray("animation_player")]
 collision_layer = 32

@@ -3,7 +3,7 @@ extends Area3D
 class_name PlayerAttackHitbox
 
 var attack_damage : DamageValue
-@onready var player: Player = $"../../.."
+@onready var player: Player = $"../../../.."
 
 @export var coll : CollisionShape3D
 

@@ -125,6 +125,7 @@ script = ExtResource("12_yowmm")
 damage_amount_slash = 15
 damage_amount_pierce = 0
 damage_amount_blunt = 0
+damage_amount_unscaled = 0
 metadata/_custom_type_script = "uid://bhdcbtq0tadis"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_ssd7a"]
@@ -235,7 +236,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -23, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, 0, -1)
 
 [node name="Player" parent="." instance=ExtResource("4_iqist")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36, 0, -73)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -14)
 
 [node name="Swinging Axe" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, -78)

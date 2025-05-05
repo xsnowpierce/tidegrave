@@ -2,7 +2,7 @@ extends Node
 
 class_name PlayerCombat
 
-@onready var weapon_parent: Node3D = $"../Head/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D/WeaponParent"
+@onready var weapon_parent: Node3D = $"../Head/HeadAnimator/Player Camera/arm/Armature/Skeleton3D/BoneAttachment3D/WeaponParent"
 
 @export_flags_3d_render var weapon_render_layer : int
 

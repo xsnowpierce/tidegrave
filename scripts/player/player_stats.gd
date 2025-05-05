@@ -53,7 +53,7 @@ func add_experience(amount : int) -> void:
 		player_leveled_up.emit()
 
 func _on_player_hitbox_player_attacked(damage : DamageValue) -> void:
-	var damage_amount : int = damage.damage_amount_slash + damage.damage_amount_pierce + damage.damage_amount_blunt
+	var damage_amount : int = damage.get_magnitude()
 	current_health = max(0, current_health - damage_amount)
 	
 	# get a percentage of health we took for the camera shake effect
