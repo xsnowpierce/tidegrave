@@ -37,7 +37,6 @@ buses/default_bus_layout="uid://c7hq2x84p2tni"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-_CameraShake3D="*res://addons/CameraShake3D/CameraShake3D/CameraShake3DNode.gd"
 
 [display]
 
@@ -57,7 +56,7 @@ version_control/autoload_on_startup=true
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/CameraShake3D/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/midi/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/midi/plugin.cfg", "res://addons/resources_spreadsheet_view/plugin.cfg")
 
 [global_group]
 
